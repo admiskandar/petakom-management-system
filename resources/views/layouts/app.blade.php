@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -15,6 +16,13 @@
 
         <!-- Styles -->
         @livewireStyles
+
+        <!-- App css -->
+        <link rel="stylesheet" href="{{ asset('build/assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('build/assets/css/icons.css') }}">
+        <link rel="stylesheet" href="{{ asset('build/assets/css/metisMenu.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}">
+
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -40,5 +48,18 @@
         @stack('modals')
 
         @livewireScripts
+        <!-- jQuery  -->
+
+        <script src="{{ asset('build/assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('build/assets/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('build/assets/js/metisMenu.min.js') }}"></script>
+        <script src="{{ asset('build/assets/js/waves.min.js') }}"></script>
+        <script src="{{ asset('build/assets/js/jquery.slimscroll.min.js') }}"></script>
+
+        <script src="{{ asset('build/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
+        <script src="{{ asset('build/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
+
+        <!-- App js -->
+        <script src="{{ asset('build/assets/js/app.js') }}"></script>
     </body>
 </html>

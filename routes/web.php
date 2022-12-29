@@ -25,4 +25,38 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    
+
+
+
+
+    //temporary
+    Route::get('/profile', function () {
+        return view('ManageProfile.UpdateProfilePage');
+    })->name('profile');
+
+    Route::get('/registration', function () {
+        return view('ManageRegistration.AddRegistrationPage');
+    })->name('registration');
+
+    Route::get('/activity', function () {
+        return view('ManageActivity.ActivityInterface');
+    })->name('activity');
+
+    Route::get('/calendar', function () {
+        return view('ManageCalendar.CalendarHome');
+    })->name('calendar');
+
+    Route::get('/election', function () {
+        return view('ManageElection.ViewLeaderboard');
+    })->name('election');
+
+    Route::get('/report', function () {
+        return view('ManageReport.ViewProposal');
+    })->name('report');
+
+    Route::get('/bulletin', function () {
+        return view('ManageBulletin.BulletinBoard');
+    })->name('bulletin');
 });
