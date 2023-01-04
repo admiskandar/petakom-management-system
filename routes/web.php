@@ -25,12 +25,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
-    
-
-
-
-
     //temporary
     Route::get('/profile', function () {
         return view('ManageProfile.UpdateProfilePage');
@@ -56,7 +50,10 @@ Route::middleware([
         return view('ManageReport.ViewProposal');
     })->name('report');
 
-    Route::get('/bulletin', function () {
-        return view('ManageBulletin.BulletinBoard');
-    })->name('bulletin');
+    // Route::get('/bulletins', function () {
+    //     return view('ManageBulletin.BulletinBoard');
+    // })->name('bulletins');
 });
+
+use App\Http\Controllers\BulletinController;
+Route::resource('bulletin', BulletinController::class);

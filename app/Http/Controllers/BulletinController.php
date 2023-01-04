@@ -13,7 +13,7 @@ class BulletinController extends Controller
      */
     public function index()
     {
-        //
+        return view('ManageBulletin.BulletinBoard');
     }
 
     /**
@@ -23,7 +23,7 @@ class BulletinController extends Controller
      */
     public function create()
     {
-        //
+        return view('ManageBulletin.NewPost');
     }
 
     /**
@@ -34,7 +34,7 @@ class BulletinController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('ManageBulletin.SinglePost');
     }
 
     /**
@@ -45,7 +45,7 @@ class BulletinController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('ManageBulletin.SinglePost');
     }
 
     /**
@@ -56,7 +56,7 @@ class BulletinController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('ManageBulletin.EditPost');
     }
 
     /**
@@ -68,7 +68,7 @@ class BulletinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return view('ManageBulletin.SinglePost');
     }
 
     /**
@@ -79,6 +79,6 @@ class BulletinController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return view('ManageBulletin.BulletinBoard');
     }
 }
