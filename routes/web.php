@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -26,7 +28,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    
+
 
 
 
@@ -52,11 +54,14 @@ Route::middleware([
         return view('ManageElection.ViewLeaderboard');
     })->name('election');
 
-    Route::get('/report', function () {
-        return view('ManageReport.ViewProposal');
-    })->name('report');
+    // Route::get('/report', function () {
+    //     return view('ManageReport.ReportHome');
+    // })->name('report');
 
     Route::get('/bulletin', function () {
         return view('ManageBulletin.BulletinBoard');
     })->name('bulletin');
 });
+
+// The route we have created to show all blog posts.
+Route::resource('report', ReportController::class);
