@@ -1,17 +1,196 @@
 <x-app-layout>
-    <h2>Bulletin Board</h2>
-    <div>
-        <input type="text" name="search">
-        <button class="btn btn-gradient-primary">Search</button>
-        <button class="btn btn-gradient-primary">Filter</button>
-        <button class="btn btn-gradient-primary">Sort</button>
-        <button class="btn btn-gradient-primary"><a href="{{ route('bulletin.create') }}">New</a></button>
-    </div>
-    <div>
-        <img src="" alt="">
-        <h3>Title</h3>
-        <h4>Date</h4>
-        <p>Brief Description</p>
         {{-- <button class="btn btn-gradient-primary"><a href="{{ route('bulletin.show', $bulletin->id) }}">View More</a></button> --}}
+
+    <!-- Page Content-->
+    <div class="page-content">
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="float-right">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                                <li class="breadcrumb-item active">Bulletin Board</li>
+                            </ol>
+                        </div>
+                        <!-- <h4 class="page-title">Bulletin Board</h4> -->
+                        <h2>Bulletin Board</h2>
+                    </div><!--end page-title-box-->
+                </div><!--end col-->
+            </div>
+            <!-- end page title end breadcrumb -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <!-- <h5 class="mt-0">Here the list of all posted bulletins. <span class="badge badge-pink">6</span></h5> -->
+                            <h5 class="mt-0">Here the list of all posted bulletins.</h5>
+                        </li>
+                    </ul>
+                </div>
+                <!--end col-->
+
+                <div class="col-lg-6 text-right">
+                    <div class="text-right">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <div class="input-group">                               
+                                    <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
+                                    <span class="input-group-append">
+                                        <button type="button" class="btn btn-gradient-primary"><i class="fas fa-search">Search</i></button>
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="list-inline-item">
+                                <button type="button" class="btn btn-gradient-primary">Filter</button>
+                            </li>
+                            <li class="list-inline-item">
+                                <button type="button" class="btn btn-gradient-primary">Sort</button>
+                            </li>
+                            <li class="list-inline-item">
+                                <button type="button" class="btn btn-gradient-primary"><a href="{{ route('bulletin.create') }}">New</a></button>
+                            </li>
+                        </ul>
+                    </div>                            
+                </div><!--end col-->
+            </div><!--end row-->
+            
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">                                        
+                            <div class="text-center project-card">
+                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
+                                <span class="badge badge-soft-success font-11">Marketing</span>
+                                <h3 class="project-title ">Marketech World</h3>
+                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
+                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
+                                </p>     
+                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
+                            </div>                                                                      
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div><!--end col-->
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">                                        
+                            <div class="text-center project-card">
+                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
+                                <span class="badge badge-soft-success font-11">Marketing</span>
+                                <h3 class="project-title ">Marketech World</h3>
+                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
+                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
+                                </p>     
+                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
+                            </div>                                                                      
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div><!--end col-->
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">                                        
+                            <div class="text-center project-card">
+                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
+                                <span class="badge badge-soft-success font-11">Marketing</span>
+                                <h3 class="project-title ">Marketech World</h3>
+                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
+                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
+                                </p>     
+                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
+                            </div>                                                                      
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div><!--end col-->
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">                                        
+                            <div class="text-center project-card">
+                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
+                                <span class="badge badge-soft-success font-11">Marketing</span>
+                                <h3 class="project-title ">Marketech World</h3>
+                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
+                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
+                                </p>     
+                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
+                            </div>                                                                      
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div><!--end col-->
+            </div><!--end row-->
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">                                        
+                            <div class="text-center project-card">
+                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
+                                <span class="badge badge-soft-success font-11">Marketing</span>
+                                <h3 class="project-title ">Marketech World</h3>
+                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
+                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
+                                </p>     
+                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
+                            </div>                                                                      
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div><!--end col-->
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">                                        
+                            <div class="text-center project-card">
+                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
+                                <span class="badge badge-soft-success font-11">Marketing</span>
+                                <h3 class="project-title ">Marketech World</h3>
+                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
+                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
+                                </p>     
+                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
+                            </div>                                                                      
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div><!--end col-->
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">                                        
+                            <div class="text-center project-card">
+                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
+                                <span class="badge badge-soft-success font-11">Marketing</span>
+                                <h3 class="project-title ">Marketech World</h3>
+                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
+                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
+                                </p>     
+                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
+                            </div>                                                                      
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div><!--end col-->
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">                                        
+                            <div class="text-center project-card">
+                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
+                                <span class="badge badge-soft-success font-11">Marketing</span>
+                                <h3 class="project-title ">Marketech World</h3>
+                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
+                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
+                                </p>     
+                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
+                            </div>                                                                      
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div><!--end col-->
+            </div><!--end row-->
+
+
+
+
+        </div><!-- container -->
+
+        <footer class="footer text-center text-sm-left">
+            &copy; 2019 Metrica <span class="text-muted d-none d-sm-inline-block float-right">Crafted with <i class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
+        </footer><!--end footer-->
     </div>
+        <!-- end page content -->
+        <!-- refer file:///C:/Users/iski/Documents/light-material-vertical/projects/projects-project.html -->
+
 </x-app-layout>
