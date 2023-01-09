@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalendarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,10 +45,9 @@ Route::middleware([
         return view('ManageActivity.ActivityInterface');
     })->name('activity');
 
-    Route::get('/calendar', function () {
-        return view('ManageCalendar.CalendarHome');
-    })->name('calendar');
 
+    Route::resource('/calendar', CalendarController::class);
+ 
     Route::get('/election', function () {
         return view('ManageElection.ViewLeaderboard');
     })->name('election');
