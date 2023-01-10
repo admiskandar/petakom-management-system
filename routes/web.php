@@ -53,6 +53,10 @@ Route::middleware([
     // Route::get('/bulletins', function () {
     //     return view('ManageBulletin.BulletinBoard');
     // })->name('bulletins');
+
+    Route::get('/bookmark', function () {
+        return view('ManageBulletin.MyBookmark');
+    })->name('bookmark');
 });
 
 use App\Http\Controllers\BulletinController;

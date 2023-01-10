@@ -43,6 +43,9 @@
                                 </div>
                             </li>
                             <li class="list-inline-item">
+                                <button type="button" class="btn btn-gradient-primary"><a href="{{ route('bookmark') }}">My Bookmark</a></button>
+                            </li>
+                            <li class="list-inline-item">
                                 <button type="button" class="btn btn-gradient-primary">Filter</button>
                             </li>
                             <li class="list-inline-item">
@@ -55,135 +58,76 @@
                     </div>                            
                 </div><!--end col-->
             </div><!--end row-->
-            
+
+            <!-- Start of Bulletin Post -->
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-body">                                        
-                            <div class="text-center project-card">
-                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
-                                <span class="badge badge-soft-success font-11">Marketing</span>
-                                <h3 class="project-title ">Marketech World</h3>
-                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
-                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>     
-                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
-                            </div>                                                                      
-                        </div><!--end card-body-->
-                    </div><!--end card-->
-                </div><!--end col-->
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-body">                                        
-                            <div class="text-center project-card">
-                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
-                                <span class="badge badge-soft-success font-11">Marketing</span>
-                                <h3 class="project-title ">Marketech World</h3>
-                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
-                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>     
-                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
-                            </div>                                                                      
-                        </div><!--end card-body-->
-                    </div><!--end card-->
-                </div><!--end col-->
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-body">                                        
-                            <div class="text-center project-card">
-                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
-                                <span class="badge badge-soft-success font-11">Marketing</span>
-                                <h3 class="project-title ">Marketech World</h3>
-                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
-                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>     
-                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
-                            </div>                                                                      
-                        </div><!--end card-body-->
-                    </div><!--end card-->
-                </div><!--end col-->
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-body">                                        
-                            <div class="text-center project-card">
-                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
-                                <span class="badge badge-soft-success font-11">Marketing</span>
-                                <h3 class="project-title ">Marketech World</h3>
-                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
-                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>     
-                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
-                            </div>                                                                      
-                        </div><!--end card-body-->
-                    </div><!--end card-->
-                </div><!--end col-->
-            </div><!--end row-->
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-body">                                        
-                            <div class="text-center project-card">
-                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
-                                <span class="badge badge-soft-success font-11">Marketing</span>
-                                <h3 class="project-title ">Marketech World</h3>
-                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
-                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>     
-                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
-                            </div>                                                                      
-                        </div><!--end card-body-->
-                    </div><!--end card-->
-                </div><!--end col-->
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-body">                                        
-                            <div class="text-center project-card">
-                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
-                                <span class="badge badge-soft-success font-11">Marketing</span>
-                                <h3 class="project-title ">Marketech World</h3>
-                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
-                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>     
-                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
-                            </div>                                                                      
-                        </div><!--end card-body-->
-                    </div><!--end card-->
-                </div><!--end col-->
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-body">                                        
-                            <div class="text-center project-card">
-                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
-                                <span class="badge badge-soft-success font-11">Marketing</span>
-                                <h3 class="project-title ">Marketech World</h3>
-                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
-                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>     
-                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
-                            </div>                                                                      
-                        </div><!--end card-body-->
-                    </div><!--end card-->
-                </div><!--end col-->
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-body">                                        
-                            <div class="text-center project-card">
-                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" height="80" class="mx-auto d-block mb-3"> 
-                                <span class="badge badge-soft-success font-11">Marketing</span>
-                                <h3 class="project-title ">Marketech World</h3>
-                                <p class="text-muted"><span class="text-secondary font-14"><b>Description :</b></span>There are many variations of passages of 
-                                    Lorem Ipsum available, but the majority have suffered alteration in some form.
-                                </p>     
-                                <button type="button" class="btn btn-secondary waves-effect">View More</button> 
-                            </div>                                                                      
-                        </div><!--end card-body-->
-                    </div><!--end card-->
-                </div><!--end col-->
-            </div><!--end row-->
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="blog-card">
+                                        <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" class="img-fluid"/>
+                                        <div class="meta-box">
+                                            <ul class="p-0 mt-4 list-inline">
+                                                <li class="list-inline-item"><span class="badge badge-secondary px-3">Food</span></li>
+                                                <li class="list-inline-item">26 mars 2019</li>
+                                                <li class="list-inline-item">by <a href="">admin</a></li>
+                                            </ul>
+                                        </div><!--end meta-box-->            
+                                        <h4 class="mt-2 mb-3">
+                                            <a href="">It is a long established fact that a reader will be</a>
+                                        </h4>
+                                        <p class="text-muted">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Cum sociis natoque penatibus et magnis.</p>
+                                        <a href="#" class="text-primary">Continue Reading <i class="fas fa-long-arrow-alt-right"></i></a>
+                                    </div><!--end blog-card-->                                   
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                        </div> <!--end col-->
 
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="blog-card">
+                                        <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" class="img-fluid"/>
+                                        <div class="meta-box">
+                                            <ul class="p-0 mt-4 list-inline">
+                                                <li class="list-inline-item"><span class="badge badge-purple px-3">Interior</span></li>
+                                                <li class="list-inline-item">26 mars 2019</li>
+                                                <li class="list-inline-item">by <a href="">admin</a></li>
+                                            </ul>
+                                        </div><!--end meta-box-->            
+                                        <h4 class="mt-2 mb-3">
+                                            <a href="">It is a long established fact that a reader will be</a>
+                                        </h4>
+                                        <p class="text-muted">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Cum sociis natoque penatibus et magnis.</p>
+                                        <a href="#" class="text-primary">Continue Reading <i class="fas fa-long-arrow-alt-right"></i></a>
+                                    </div><!--end blog-card-->
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                        </div> <!--end col-->
 
-
-
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="blog-card">
+                                        <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" class="img-fluid"/>
+                                        <div class="meta-box">
+                                            <ul class="p-0 mt-4 list-inline">
+                                                <li class="list-inline-item"><span class="badge badge-success px-3">Food</span></li>
+                                                <li class="list-inline-item">26 mars 2019</li>
+                                                <li class="list-inline-item">by <a href="">admin</a></li>
+                                            </ul>
+                                        </div><!--end meta-box-->            
+                                        <h4 class="mt-2 mb-3">
+                                            <a href="">It is a long established fact that a reader will be</a>
+                                        </h4>
+                                        <p class="text-muted">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Cum sociis natoque penatibus et magnis.</p>
+                                        <a href="#" class="text-primary">Continue Reading <i class="fas fa-long-arrow-alt-right"></i></a>
+                                    </div><!--end blog-card-->
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                        </div> <!--end col-->                           
+                    </div><!--end row-->
+            <!-- End of Bulletin Post --> 
         </div><!-- container -->
 
         <footer class="footer text-center text-sm-left">
@@ -191,6 +135,7 @@
         </footer><!--end footer-->
     </div>
         <!-- end page content -->
-        <!-- refer file:///C:/Users/iski/Documents/light-material-vertical/projects/projects-project.html -->
-
 </x-app-layout>
+
+        <!-- refer file:///C:/Users/iski/Documents/light-material-vertical/projects/projects-project.html -->
+        <!-- refer file:///C:/Users/iski/Documents/light-material-vertical/pages/pages-blogs.html -->
