@@ -28,76 +28,49 @@
                                 <table id="datatable" class="table">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th>Customer Name</th>
-                                            <th>Email</th>
-                                            <th>Phone No</th>
-                                            <th>Country</th>
+                                            <th>Title</th>
+                                            <th>Date</th>
+                                            <th>Organizer</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr><!--end tr-->
                                     </thead>
 
                                     <tbody>
+                                        @foreach($reports as $data)
                                         <tr>
-                                            <td><img src="../assets/images/users/user-10.jpg" alt="" class="thumb-sm rounded-circle mr-2">Donald Gardner<small class="badge badge-soft-pink ml-1">New</small></td>
-                                            <td>xyx@gmail.com</td>
-                                            <td>+123456789</td>
-                                            <td>Tokyo, JAP</td>
+                                            <td>{{$data->title}}</td>
+                                            <td>{{$data->start_date}}</td>
+                                            <td>{{$data->organizer}}</td>
+                                            @if($data->status == 0)
+                                            <?php
+                                            $labelstatus = "Pending";
+                                            $labelcolor = "badge badge-warning";
+                                            ?>
+                                            @elseif ($data->status == 1)
+                                            <?php
+                                            $labelstatus = "Approve";
+                                            $labelcolor = "badge badge-success";
+                                            ?>
+                                            @elseif ($data->status == 2)
+                                            <?php
+                                            $labelstatus = "Reject";
+                                            $labelcolor = "badge badge-danger";
+                                            ?>
+                                            @endif
                                             <td>
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
+                                                <span class="{{ $labelcolor }}">{{ $labelstatus }}</span>
                                             </td>
-                                        </tr><!--end tr-->
-                                        <tr>
-                                            <td><img src="../assets/images/users/user-9.jpg" alt="" class="thumb-sm rounded-circle mr-2">Matt Rosales</td>
-                                            <td>xyx@gmail.com</td>
-                                            <td>+123456789</td>
-                                            <td>San Francisco USA</td>
                                             <td>
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
+                                                @if ($data->user_id == auth()->user()->id)
+                                                <a href="{{route('report.edit', [$data->id], 'report.edit')}}" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
+                                                @else
+                                                @endif
+                                                <a href="{{route('report.destroy', $data->id)}}"><i class="fas fa-trash-alt text-danger font-16"></i></a>
                                             </td>
-                                        </tr><!--end tr-->
-                                        <tr>
-                                            <td><img src="../assets/images/users/user-8.jpg" alt="" class="thumb-sm rounded-circle mr-2">Michael Hill<small class="badge badge-soft-blue ml-1">New</small></td>
-                                            <td>xyx@gmail.com</td>
-                                            <td>+123456789</td>
-                                            <td>Sydeny AUS</td>
-                                            <td>
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr><!--end tr-->
-                                        <tr>
-                                            <td><img src="../assets/images/users/user-7.jpg" alt="" class="thumb-sm rounded-circle mr-2">Nancy Flanary</td>
-                                            <td>xyx@gmail.com</td>
-                                            <td>+123456789</td>
-                                            <td>Berlin GER</td>
-                                            <td>
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr><!--end tr-->
-                                        <tr>
-                                            <td><img src="../assets/images/users/user-6.jpg" alt="" class="thumb-sm rounded-circle mr-2">Dorothy Key</td>
-                                            <td>xyx@gmail.com</td>
-                                            <td>+123456789</td>
-                                            <td>New York USA</td>
-                                            <td>
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr><!--end tr-->
-                                        <tr>
-                                            <td><img src="../assets/images/users/user-5.jpg" alt="" class="thumb-sm rounded-circle mr-2">Joseph Cross</td>
-                                            <td>xyx@gmail.com</td>
-                                            <td>+123456789</td>
-                                            <td>Tokyo JAP</td>
-                                            <td>
-                                                <a href="#" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt text-danger font-16"></i></a>
-                                            </td>
-                                        </tr><!--end tr-->
-
+                                        </tr>
+                                        @endforeach
+                                        <!--end tr-->
                                     </tbody>
                                 </table>
                             </div>

@@ -1,65 +1,79 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
-        
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        <!-- Styles -->
-        @livewireStyles
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <!-- App css -->
-        <link rel="stylesheet" href="{{ asset('build/assets/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/assets/css/icons.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/assets/css/metisMenu.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}">
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
+    <!-- Styles -->
+    @livewireStyles
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+    <!-- App css -->
+    <link rel="stylesheet" href="{{ asset('build/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/metisMenu.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}" <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('build/assets/plugins/datatables/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/plugins/datatables/buttons.bootstrap4.min.css') }}">
+    <!-- Responsive datatable examples -->
+    <link rel="stylesheet" href="{{ asset('build/assets/plugins/datatables/responsive.bootstrap4.min.css') }}"> 
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+</head>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+<body class="font-sans antialiased">
+    <x-jet-banner />
 
-        @stack('modals')
+    <div class="min-h-screen bg-gray-100">
+        @livewire('navigation-menu')
 
-        @livewireScripts
-        <!-- jQuery  -->
+        <!-- Page Heading -->
+        @if (isset($header))
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
+        @endif
 
-        <script src="{{ asset('build/assets/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('build/assets/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('build/assets/js/metisMenu.min.js') }}"></script>
-        <script src="{{ asset('build/assets/js/waves.min.js') }}"></script>
-        <script src="{{ asset('build/assets/js/jquery.slimscroll.min.js') }}"></script>
+        <!-- Page Content -->
+        <main>
+            {{ $slot }}
+        </main>
+    </div>
 
-        <script src="{{ asset('build/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
-        <script src="{{ asset('build/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
+    @stack('modals')
 
-        <!-- App js -->
-        <script src="{{ asset('build/assets/js/app.js') }}"></script>
-    </body>
+    @livewireScripts
+    <!-- jQuery  -->
+
+    <script src="{{ asset('build/assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('build/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('build/assets/js/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('build/assets/js/waves.min.js') }}"></script>
+    <script src="{{ asset('build/assets/js/jquery.slimscroll.min.js') }}"></script>
+
+    <script src="{{ asset('build/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('build/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
+
+    <!-- Required datatable js -->
+    <script src="{{ asset('build/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('build/assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('build/assets/plugins/peity-chart/jquery.peity.min.js') }}"></script>
+
+    <script src="{{ asset('build/assets/pages/jquery.ana_customers.inity.js') }}"></script>
+
+    <!-- App js -->
+    <script src="{{ asset('build/assets/js/app.js') }}"></script>
+</body>
+
 </html>

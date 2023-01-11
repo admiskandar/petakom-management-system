@@ -15,7 +15,20 @@ return new class extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
+            $table->text('title');
+            $table->text('objective');
+            $table->text('organizer');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->text('location');
+            $table->integer('participation');
+            $table->decimal('budget');
+            $table->integer('status');
+            $table->unsignedBigInteger('user_id');//foreign key
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');//foreign key
         });
     }
 

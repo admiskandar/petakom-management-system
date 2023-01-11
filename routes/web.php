@@ -63,5 +63,5 @@ Route::middleware([
     })->name('bulletin');
 });
 
-// The route we have created to show all blog posts.
-Route::resource('report', ReportController::class);
+// The route we have created to show all report.
+Route::resource('/report', ReportController::class);

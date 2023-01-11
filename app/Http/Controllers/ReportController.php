@@ -15,8 +15,9 @@ class ReportController extends Controller
     public function index()
     {
         //
+        $reports = ReportRecord::all();
+        return view('ManageReport.ReportHome', ["reports" => $reports]);
 
-        return view('ManageReport.ReportHome');
     }
 
     /**
@@ -38,7 +39,25 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //store a new proposal
+        $newProposal = ReportRecord::create([
+            'title' => $request->title,
+            'objective' => $request->objective,
+            'organizer' => $request->organizer,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+            'location' => $request->location,
+            'participation' => $request->participation,
+            'budget' => $request->budget,
+            'status' => 0,
+            'user_id' => auth()->user()->id,
+        ]);
+
+        // return view('ManageReport.ReportHome');
+        return redirect()->route('report.index',$newProposal->id);
+        // return redirect()->back();//redirect ke page sama
     }
 
     /**
@@ -58,9 +77,14 @@ class ReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ReportRecord $proposal)
     {
         //
+        if($proposal->user_id == auth()->user()->id){
+            return view('ManageReport.EditProposal', [
+                'data' => $proposal,
+                ]); //returns the edit view with the post
+        }
     }
 
     /**
@@ -81,8 +105,13 @@ class ReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ReportRecord $proposal)
     {
-        //
+        //delete data
+        if($proposal->user_id == auth()->user()->id){
+            $proposal->delete();
+        }
+
+        return redirect()->route('report.index');
     }
 }
