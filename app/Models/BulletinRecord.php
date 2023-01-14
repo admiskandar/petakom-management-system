@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BulletinRecord extends Model
 {
-    // use HasFactory;
+    use HasFactory;
 
     protected $table = 'bulletins';
 
@@ -21,6 +21,6 @@ class BulletinRecord extends Model
         'bulletin_pdf',
         'bulletin_image',
         'bulletin_video',
-        'bulletin_link'
+        'bulletin_link',
     ];
 }

@@ -66,7 +66,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="blog-card">
-                                <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" class="img-fluid"/>
+                                <img src="{{ asset('uploads/images/'.$bulletin->bulletin_image) }}"  width="70px" height="70px" alt="" class="img-fluid"/>
+                                <!-- <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" class="img-fluid"/> -->
                                 <div class="meta-box">
                                     <ul class="p-0 mt-4 list-inline">
                                         <li class="list-inline-item"><span class="badge badge-secondary px-3">{{$bulletin->bulletin_category}}</span></li>

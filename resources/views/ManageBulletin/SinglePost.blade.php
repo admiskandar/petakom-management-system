@@ -24,7 +24,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <img src="../assets/images/products/2.jpg" alt="" class=" mx-auto  d-block" height="400">                                           
+                                    <img src="{{ asset('uploads/images/'.$bulletin->bulletin_image) }}"  alt="" class=" mx-auto  d-block" height="400">                                       
                                 </div><!--end col-->
                                 <div class="col-lg-6 align-self-center">
                                     <div class="single-pro-detail">

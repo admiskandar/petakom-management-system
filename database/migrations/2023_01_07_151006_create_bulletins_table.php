@@ -23,9 +23,9 @@ return new class extends Migration
             $table->string('bulletin_tag');
             $table->text('bulletin_excerpt');
             $table->text('bulletin_detail');
-            // $table->binary('bulletin_pdf')->nullable();
-            // $table->binary('bulletin_image')->nullable();
-            // $table->binary('bulletin_video')->nullable();
+            $table->binary('bulletin_pdf')->nullable();
+            $table->string('bulletin_image');
+            $table->binary('bulletin_video')->nullable();
             $table->binary('bulletin_link');
 
             // $table->unsignedInteger('user_id')->nullable();

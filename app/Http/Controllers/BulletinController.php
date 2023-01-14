@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BulletinRecord;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class BulletinController extends Controller
 {
@@ -38,34 +39,54 @@ class BulletinController extends Controller
     {
 
         //To validate required fields
-        $request->validate([
-            'bulletin_name'=> 'required',
-            'bulletin_category'=> 'required',
-            'bulletin_date'=> 'required',
-            'bulletin_tag'=> 'required',
-            'bulletin_excerpt'=> 'required',
-            'bulletin_detail'=> 'required',
-            // 'bulletin_pdf'=> 'required',
-            // 'bulletin_image'=> 'required',
-            // 'bulletin_video'=> 'required',
-            'bulletin_link' => 'required'
-        ]);
+        // $request->validate([
+        //     // 'bulletin_name'=> 'required',
+        //     // 'bulletin_category'=> 'required',
+        //     // 'bulletin_date'=> 'required',
+        //     // 'bulletin_tag'=> 'required',
+        //     // 'bulletin_excerpt'=> 'required',
+        //     // 'bulletin_detail'=> 'required',
+        //     // 'bulletin_pdf'=> 'required',
+        //     'bulletin_image'=> 'required|image|mimes:png,jpg,jpeg|max:2048',
+        //     // 'bulletin_video'=> 'required',
+        //     // 'bulletin_link' => 'required'
+        // ]);
 
         // BulletinRecord::create($request->all());
 
         //Getting values from the form
-        $bulletin = new BulletinRecord([
-            'bulletin_name' => $request->get('bulletin_name'),
-            'bulletin_category' => $request->get('bulletin_category'),
-            'bulletin_date' => $request->get('bulletin_date'),
-            'bulletin_tag' => $request->get('bulletin_tag'),
-            'bulletin_excerpt' => $request->get('bulletin_excerpt'),
-            'bulletin_detail' => $request->get('bulletin_detail'),
-            // 'bulletin_pdf' => $request->get('bulletin_pdf'),
-            // 'bulletin_image' => $request->get('bulletin_image'),
-            // 'bulletin_video' => $request->get('bulletin_video'),
-            'bulletin_link' => $request->get('bulletin_link')
-        ]);
+        // $bulletin = new BulletinRecord([
+        //     'bulletin_name' => $request->get('bulletin_name'),
+        //     'bulletin_category' => $request->get('bulletin_category'),
+        //     'bulletin_date' => $request->get('bulletin_date'),
+        //     'bulletin_tag' => $request->get('bulletin_tag'),
+        //     'bulletin_excerpt' => $request->get('bulletin_excerpt'),
+        //     'bulletin_detail' => $request->get('bulletin_detail'),
+        //     // 'bulletin_pdf' => $request->get('bulletin_pdf'),
+        //     // 'bulletin_image' => $request->get('bulletin_image'),
+        //     // 'bulletin_video' => $request->get('bulletin_video'),
+        //     'bulletin_link' => $request->get('bulletin_link')
+        // ]);
+
+
+        $bulletin = new BulletinRecord;
+        $bulletin -> bulletin_name = $request->input('bulletin_name');
+        $bulletin -> bulletin_category = $request->input('bulletin_category');
+        $bulletin -> bulletin_date = $request->input('bulletin_date');
+        $bulletin -> bulletin_tag = $request->input('bulletin_tag');
+        $bulletin -> bulletin_excerpt = $request->input('bulletin_excerpt');
+        $bulletin -> bulletin_detail = $request->input('bulletin_detail');
+        $bulletin -> bulletin_link = $request->input('bulletin_link');
+        
+        if($request->hasfile('bulletin_image'))
+        {
+            $file = $request->file('bulletin_image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/images/', $filename);
+            $bulletin->bulletin_image = $filename;
+        }
+   
         $bulletin->save();
         
         $bulletin_id = BulletinRecord::find($bulletin->id);
@@ -107,19 +128,19 @@ class BulletinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //To validate required fields
-        $request->validate([
-            'bulletin_name'=> 'required',
-            'bulletin_category'=> 'required',
-            'bulletin_date'=> 'required',
-            'bulletin_tag'=> 'required',
-            'bulletin_excerpt'=> 'required',
-            'bulletin_detail'=> 'required',
-            // 'bulletin_pdf'=> 'required',
-            // 'bulletin_image'=> 'required',
-            // 'bulletin_video'=> 'required',
-            'bulletin_link' => 'required'
-        ]);
+        // //To validate required fields
+        // $request->validate([
+        //     'bulletin_name'=> 'required',
+        //     'bulletin_category'=> 'required',
+        //     'bulletin_date'=> 'required',
+        //     'bulletin_tag'=> 'required',
+        //     'bulletin_excerpt'=> 'required',
+        //     'bulletin_detail'=> 'required',
+        //     // 'bulletin_pdf'=> 'required',
+        //     // 'bulletin_image'=> 'required',
+        //     // 'bulletin_video'=> 'required',
+        //     'bulletin_link' => 'required'
+        // ]);
 
         $bulletin = BulletinRecord::find($id);
         // getting values from form
@@ -129,11 +150,21 @@ class BulletinController extends Controller
         $bulletin -> bulletin_tag = $request->get('bulletin_tag');
         $bulletin -> bulletin_excerpt = $request->get('bulletin_excerpt');
         $bulletin -> bulletin_detail = $request->get('bulletin_detail');
-        // $bulletin -> bulletin_pdf = $request->get('bulletin_pdf');
-        // $bulletin -> bulletin_image = $request->get('bulletin_image');
-        // $bulletin -> bulletin_video = $request->get('bulletin_video');
         $bulletin -> bulletin_link = $request->get('bulletin_link');
-        $bulletin->save();
+        if($request->hasfile('bulletin_image'))
+        {
+            $destination = 'uploads/images/'.$bulletin->bulletin_image;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('bulletin_image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/images/', $filename);
+            $bulletin->bulletin_image = $filename;
+        }
+        $bulletin->update();
 
         $bulletin_id = BulletinRecord::find($bulletin->id);
         return view ('ManageBulletin.SinglePost', ["bulletin"=>$bulletin_id]);
@@ -148,7 +179,15 @@ class BulletinController extends Controller
     public function destroy($id)
     {
         $bulletin = BulletinRecord::find($id);
+        $destination = 'uploads/images/'.$bulletin->bulletin_image;
+        if(File::exists($destination))
+        {
+            File::delete($destination);
+        }
         $bulletin->delete();
         return redirect ('/bulletin'); 
     }
 }
+
+
+// refer https://www.fundaofwebit.com/post/laravel-8-crud-with-image-upload-tutorial

@@ -3,7 +3,7 @@
 
     <div class="page-content">
         <!-- Start of the form -->
-        <form action="{{ route('bulletin.update', [$bulletin->id])}}" method="post">
+        <form action="{{ route('bulletin.update', [$bulletin->id])}}" method="post" enctype="multipart/form-data">
              @method('PATCH') 
             @csrf
             <div class="row">
@@ -72,11 +72,17 @@
                                     <div class="form-group">
                                         <label for="bulletin_image">Images</label>
                                         <div class="custom-file mb-3">
-                                            <input type="file" class="custom-file-input" name="bulletin_image">
-                                            <label class="custom-file-label" for="bulletin_image">Choose file</label>
+                                            <!-- <input type="file" class="custom-file-input" name="bulletin_image">
+                                            <label class="custom-file-label" for="bulletin_image">Choose file</label> -->
+                                            <div class="image">
+                                                <label><h4>Add image</h4></label>
+                                                <input type="file" name="bulletin_image" class="form-control">
+                                                <img src="{{ asset('uploads/images/'.$bulletin->bulletin_image) }}" width="70px" height="70px" alt="Image">
+                                            </div>
+                                            
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="bulletin_video">Videos</label>
                                         <div class="custom-file mb-3">
                                             <input type="file" class="custom-file-input" name="bulletin_video">
@@ -89,7 +95,7 @@
                                             <input type="file" class="custom-file-input" name="bulletin_pdf">
                                             <label class="custom-file-label" for="bulletin_pdf">Choose file</label>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group row">
                                         <div>
                                             <button type="submit" class="btn btn-gradient-primary">Submit</button>

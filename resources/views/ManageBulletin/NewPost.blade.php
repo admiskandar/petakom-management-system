@@ -3,7 +3,7 @@
 
     <div class="page-content">
         <!-- Start of the form -->
-        <form action="{{ route('bulletin.store') }}" method="post">
+        <form action="{{ route('bulletin.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-lg-12">
@@ -72,9 +72,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="bulletin_image">Images</label>
-                                        <div class="custom-file mb-3">
+                                        <!-- <div class="custom-file mb-3">
                                             <input type="file" class="custom-file-input" name="bulletin_image">
                                             <label class="custom-file-label" for="bulletin_image">Choose file</label>
+                                        </div> -->
+                                        <div class="image">
+                                            <label><h4>Add image</h4></label>
+                                            <input type="file" name="bulletin_image" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
