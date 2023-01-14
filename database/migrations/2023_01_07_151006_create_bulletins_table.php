@@ -16,20 +16,20 @@ return new class extends Migration
         Schema::create('bulletins', function (Blueprint $table) {
             // $table->id();
             // $table->timestamps();
-            $table->increments('bulletin_id');
+            $table->id('bulletin_id');
             $table->string('bulletin_name');
             $table->string('bulletin_category');
             $table->date('bulletin_date');
-            $table->string('bulletin_tag')->nullable();
-            $table->text('bulletin_excerpt')->nullable();
-            $table->text('bulletin_detail')->nullable();
-            $table->string('bulletin_pdf')->nullable();
-            $table->string('bulletin_image')->nullable();
-            $table->string('bulletin_video')->nullable();
-            $table->string('bulletin_link')->nullable();
+            $table->string('bulletin_tag');
+            $table->text('bulletin_excerpt');
+            $table->text('bulletin_detail');
+            // $table->binary('bulletin_pdf')->nullable();
+            // $table->binary('bulletin_image')->nullable();
+            // $table->binary('bulletin_video')->nullable();
+            $table->binary('bulletin_link');
 
-            $table->unsignedInteger('user_id')->nullable();
-            $table->unsignedInteger('activity_id')->nullable();
+            // $table->unsignedInteger('user_id')->nullable();
+            // $table->unsignedInteger('activity_id')->nullable();
             $table->timestamps();
 
             // $table->foreign('user_id')->references('id')->on('users');
