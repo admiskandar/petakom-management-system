@@ -74,28 +74,31 @@
                                         <div class="custom-file mb-3">
                                             <!-- <input type="file" class="custom-file-input" name="bulletin_image">
                                             <label class="custom-file-label" for="bulletin_image">Choose file</label> -->
-                                            <div class="image">
-                                                <label><h4>Add image</h4></label>
-                                                <input type="file" name="bulletin_image" class="form-control">
-                                                <img src="{{ asset('uploads/images/'.$bulletin->bulletin_image) }}" width="70px" height="70px" alt="Image">
-                                            </div>
+                                            <!-- <img src="{{ asset('uploads/images/'.$bulletin->bulletin_image) }}" class ="mx-auto d-block" width="50%" height="50%"> -->
+                                            <iframe src="{{ asset('uploads/images/'.$bulletin->bulletin_image) }}" height="200" width="300" title="{{ asset('uploads/images/'.$bulletin->bulletin_image) }}"></iframe>
+                                            <input type="file" name="bulletin_image" class="form-control">
                                             
                                         </div>
                                     </div>
-                                    <!-- <div class="form-group">
+                                    <div class="form-group">
                                         <label for="bulletin_video">Videos</label>
-                                        <div class="custom-file mb-3">
+                                        <!-- <div class="custom-file mb-3">
                                             <input type="file" class="custom-file-input" name="bulletin_video">
                                             <label class="custom-file-label" for="bulletin_video">Choose file</label>
-                                        </div>
+                                        </div> -->
+                                            <iframe src="{{ asset('uploads/videos/'.$bulletin->bulletin_video) }}" height="200" width="300" title="{{ asset('uploads/videos/'.$bulletin->bulletin_video) }}"></iframe>
+                                            <input type="file" name="bulletin_video" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="bulletin_pdf">PDF</label>
-                                        <div class="custom-file mb-3">
+                                        <!-- <div class="custom-file mb-3">
                                             <input type="file" class="custom-file-input" name="bulletin_pdf">
                                             <label class="custom-file-label" for="bulletin_pdf">Choose file</label>
-                                        </div>
-                                    </div> -->
+                                        </div> -->
+                                        <iframe src="{{ asset('uploads/pdf/'.$bulletin->bulletin_pdf) }}" height="200" width="300" title="{{ asset('uploads/pdf/'.$bulletin->bulletin_pdf) }}"></iframe>
+                                        <input type="file" name="bulletin_pdf" class="form-control">
+                                        
+                                    </div>
                                     <div class="form-group row">
                                         <div>
                                             <button type="submit" class="btn btn-gradient-primary">Submit</button>

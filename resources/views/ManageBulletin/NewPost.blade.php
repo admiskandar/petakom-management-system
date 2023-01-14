@@ -1,6 +1,5 @@
 <x-app-layout>
     <h2>New Post</h2>
-
     <div class="page-content">
         <!-- Start of the form -->
         <form action="{{ route('bulletin.store') }}" method="post" enctype="multipart/form-data">
@@ -10,10 +9,6 @@
                     <div class="card">
                         <div class="card-body">        
                             <h4 class="mt-0 header-title">New Post</h4>
-                            <p class="text-muted mb-3">Here are examples of <code class="highlighter-rouge">.form-control</code> applied to each
-                                textual HTML5 <code class="highlighter-rouge">&lt;input&gt;</code> <code class="highlighter-rouge">type</code>.
-                            </p>
-                            
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group row">
@@ -63,7 +58,6 @@
                                 </div>
 
                                 <div class="col-lg-6">
-                                    
                                     <div class="form-group">
                                         <label for="bulletin_detail">Details</label>
                                         <div>
@@ -76,34 +70,31 @@
                                             <input type="file" class="custom-file-input" name="bulletin_image">
                                             <label class="custom-file-label" for="bulletin_image">Choose file</label>
                                         </div> -->
-                                        <div class="image">
-                                            <label><h4>Add image</h4></label>
-                                            <input type="file" name="bulletin_image" class="form-control">
-                                        </div>
+                                        <input type="file" name="bulletin_image" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="bulletin_video">Videos</label>
-                                        <div class="custom-file mb-3">
+                                        <!-- <div class="custom-file mb-3">
                                             <input type="file" class="custom-file-input" name="bulletin_video">
                                             <label class="custom-file-label" for="bulletin_video">Choose file</label>
-                                        </div>
+                                        </div> -->
+                                        <input type="file" name="bulletin_video" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="bulletin_pdf">PDF</label>
-                                        <div class="custom-file mb-3">
+                                        <!-- <div class="custom-file mb-3">
                                             <input type="file" class="custom-file-input" name="bulletin_pdf">
                                             <label class="custom-file-label" for="bulletin_pdf">Choose file</label>
-                                        </div>
+                                        </div> -->
+                                        <input type="file" name="bulletin_pdf" class="form-control">
                                     </div>
                                     <div class="form-group row">
                                         <div>
                                             <button type="submit" class="btn btn-gradient-primary">Submit</button>
                                             <button type="button" class="btn btn-gradient-danger">Cancel</button>
                                         </div>
-                                    </div>  
-                                    
+                                    </div>
                                 </div>
-                                
                             </div>                                                                      
                         </div><!--end card-body-->
                     </div><!--end card-->
@@ -112,7 +103,5 @@
         </form>
         <!-- End of the form -->
     </div>
-
-
 </x-app-layout>
 <!-- refer file:///C:/Users/iski/Documents/light-material-vertical/others/forms-elements.html -->

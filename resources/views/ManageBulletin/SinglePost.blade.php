@@ -60,32 +60,36 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="pro-order-box">
-                                        <i class="mdi mdi-truck-fast text-success"></i>
-                                        <h4 class="header-title">bulletin_image</h4>
-                                        <p class="text-muted mb-0">
-                                            It is a long established fact that a reader will be distracted.
-                                            Contrary to popular belief.
-                                        </p>
+                                        <i class="text-success">Image</i>
+                                        <iframe src="{{ asset('uploads/images/'.$bulletin->bulletin_image) }}" height="413" width="413" title="{{ asset('uploads/images/'.$bulletin->bulletin_image) }}"></iframe>
+                                        <br>
+                                        <h4 class="header-title"><a href="{{ asset('uploads/images/'.$bulletin->bulletin_image) }}" target="_blank">{{$bulletin->bulletin_image}}</a></h4>                                     
+                                        <!-- <p class="text-muted mb-0">
+                                            This post has an image attachment. Click the text to view/download the image.
+                                        </p> -->
+                                        
                                     </div>
                                 </div><!--end col-->
                                 <div class="col-lg-4">
                                     <div class="pro-order-box">
-                                        <i class="mdi mdi-refresh text-danger"></i>
-                                        <h4 class="header-title">bulletin_video</h4>
-                                        <p class="text-muted mb-0">
-                                            It is a long established fact that a reader will be distracted.
-                                            Contrary to popular belief.
-                                        </p>
+                                        <i class="text-warning">Video</i>
+                                        <iframe src="{{ asset('uploads/videos/'.$bulletin->bulletin_video) }}" height="413" width="413" title="{{ asset('uploads/videos/'.$bulletin->bulletin_video) }}"></iframe>
+                                        <br>
+                                        <h4 class="header-title"><a href="{{ asset('uploads/videos/'.$bulletin->bulletin_video) }}" target="_blank">{{$bulletin->bulletin_video}}</a></h4>
+                                        <!-- <p class="text-muted mb-0">
+                                            This post has a video attachment. Click the text to view/download the video.
+                                        </p> -->
                                     </div>
                                 </div><!--end col-->
                                 <div class="col-lg-4">
                                     <div class="pro-order-box">
-                                        <i class="mdi mdi-headset text-warning"></i>
-                                        <h4 class="header-title">bulletin_pdf</h4>
-                                        <p class="text-muted mb-0">
-                                            It is a long established fact that a reader will be distracted.
-                                            Contrary to popular belief.
-                                        </p>
+                                        <i class="text-danger">PDF</i>
+                                        <iframe src="{{ asset('uploads/pdf/'.$bulletin->bulletin_pdf) }}" height="413" width="413" title="{{ asset('uploads/images/'.$bulletin->bulletin_pdf) }}"></iframe>
+                                        <br>
+                                        <h4 class="header-title"><a href="{{ asset('uploads/pdf/'.$bulletin->bulletin_pdf) }}" target="_blank">{{$bulletin->bulletin_pdf}}</a></h4>
+                                        <!-- <p class="text-muted mb-0">
+                                            This post has a pdf attachment. Click the text to view/download the pdf.
+                                        </p> -->
                                     </div>
                                 </div><!--end col-->
                             </div><!--end row-->

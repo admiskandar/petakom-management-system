@@ -52,22 +52,6 @@ class BulletinController extends Controller
         //     // 'bulletin_link' => 'required'
         // ]);
 
-        // BulletinRecord::create($request->all());
-
-        //Getting values from the form
-        // $bulletin = new BulletinRecord([
-        //     'bulletin_name' => $request->get('bulletin_name'),
-        //     'bulletin_category' => $request->get('bulletin_category'),
-        //     'bulletin_date' => $request->get('bulletin_date'),
-        //     'bulletin_tag' => $request->get('bulletin_tag'),
-        //     'bulletin_excerpt' => $request->get('bulletin_excerpt'),
-        //     'bulletin_detail' => $request->get('bulletin_detail'),
-        //     // 'bulletin_pdf' => $request->get('bulletin_pdf'),
-        //     // 'bulletin_image' => $request->get('bulletin_image'),
-        //     // 'bulletin_video' => $request->get('bulletin_video'),
-        //     'bulletin_link' => $request->get('bulletin_link')
-        // ]);
-
 
         $bulletin = new BulletinRecord;
         $bulletin -> bulletin_name = $request->input('bulletin_name');
@@ -78,6 +62,16 @@ class BulletinController extends Controller
         $bulletin -> bulletin_detail = $request->input('bulletin_detail');
         $bulletin -> bulletin_link = $request->input('bulletin_link');
         
+
+        if($request->hasfile('bulletin_pdf'))
+        {
+            $file = $request->file('bulletin_pdf');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/pdf/', $filename);
+            $bulletin->bulletin_pdf = $filename;
+        }
+
         if($request->hasfile('bulletin_image'))
         {
             $file = $request->file('bulletin_image');
@@ -85,6 +79,15 @@ class BulletinController extends Controller
             $filename = time().'.'.$extention;
             $file->move('uploads/images/', $filename);
             $bulletin->bulletin_image = $filename;
+        }
+
+        if($request->hasfile('bulletin_video'))
+        {
+            $file = $request->file('bulletin_video');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/videos/', $filename);
+            $bulletin->bulletin_video = $filename;
         }
    
         $bulletin->save();
@@ -151,7 +154,21 @@ class BulletinController extends Controller
         $bulletin -> bulletin_excerpt = $request->get('bulletin_excerpt');
         $bulletin -> bulletin_detail = $request->get('bulletin_detail');
         $bulletin -> bulletin_link = $request->get('bulletin_link');
-        if($request->hasfile('bulletin_image'))
+
+        if($request->hasfile('bulletin_pdf'))
+        {
+            $destination = 'uploads/pdf/'.$bulletin->bulletin_pdf;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('bulletin_pdf');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/pdf/', $filename);
+            $bulletin->bulletin_pdf = $filename;
+        }
+
         {
             $destination = 'uploads/images/'.$bulletin->bulletin_image;
             if(File::exists($destination))
@@ -163,6 +180,19 @@ class BulletinController extends Controller
             $filename = time().'.'.$extention;
             $file->move('uploads/images/', $filename);
             $bulletin->bulletin_image = $filename;
+        }
+        
+        {
+            $destination = 'uploads/videos/'.$bulletin->bulletin_video;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('bulletin_video');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/videos/', $filename);
+            $bulletin->bulletin_videos = $filename;
         }
         $bulletin->update();
 
@@ -179,7 +209,19 @@ class BulletinController extends Controller
     public function destroy($id)
     {
         $bulletin = BulletinRecord::find($id);
+        $destination = 'uploads/pdf/'.$bulletin->bulletin_pdf;
+        if(File::exists($destination))
+        {
+            File::delete($destination);
+        }
+
         $destination = 'uploads/images/'.$bulletin->bulletin_image;
+        if(File::exists($destination))
+        {
+            File::delete($destination);
+        }
+
+        $destination = 'uploads/videos/'.$bulletin->bulletin_video;
         if(File::exists($destination))
         {
             File::delete($destination);
