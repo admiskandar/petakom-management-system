@@ -28,16 +28,23 @@
                                 </div><!--end col-->
                                 <div class="col-lg-6 align-self-center">
                                     <div class="single-pro-detail">
-                                        <p class="mb-1">bullletin_type</p>
+                                        <p class="mb-1"><span class="badge badge-secondary px-3">{{$bulletin->bulletin_category}}</span></p>
                                         <div class="custom-border mb-3"></div>
-                                        <h3 class="pro-title">bulletin_name</h3>
-                                        <p class="text-muted mb-2">bulletin_category</p>                                         
+                                        <h3 class="pro-title">{{$bulletin->bulletin_name}}</h3>
+                                        <h6 class="text-muted font-13">Tag :</h6> 
+                                        <p class="text mb-2">{{$bulletin->bulletin_tag}}</p>                                         
                                         <h6 class="text-muted font-13">Details :</h6> 
-                                        <p class="text-muted mb-4">bulletin_detail</p>                                             
+                                        <p class="text mb-4">{{$bulletin->bulletin_detail}}</p>                                             
                                         <h6 class="text-muted font-13">Link :</h6> 
-                                        <p class="text-muted mb-4">bulletin_link</p>        
-                                        <button type="button" class="btn btn-gradient-primary waves-effect waves-light">Edit</button>                                     
-                                        <button type="button" class="btn btn-gradient-primary waves-effect waves-light">Add to Bookmark</button>                                     
+                                        <p class="text-muted mb-4"><a href="{{$bulletin->bulletin_link}}">{{$bulletin->bulletin_link}}</a>  </p>
+                                        <button type="button" class="btn btn-gradient-primary waves-effect waves-light"><a href="{{ route('bulletin.edit', [$bulletin->id])}}" class="text-primary">Edit</a></button>                                     
+                                        <button type="button" class="btn btn-gradient-primary waves-effect waves-light">Add to Bookmark</button>
+                                        <br>
+                                        <form action="{{ route('bulletin.destroy', [$bulletin->id])}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger">Delete</button>
+                                        </form>                                     
                                     </div>
                                 </div><!--end col-->                                            
                             </div><!--end row-->

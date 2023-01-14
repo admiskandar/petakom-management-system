@@ -32,9 +32,10 @@
                                         <label class="col-sm-2 col-form-label text-right">Category</label>
                                         <div class="col-sm-10">
                                             <select class="bulletin_category" name="bulletin_category">
-                                                <option selected="">Choose the bulletin type</option>
-                                                <option value="petakom">PETAKOM</option>
-                                                <option value="fkom">FKOM</option>
+                                                <option value="GENERAL">GENERAL</option>
+                                                <option value="CLASS">CLASS</option>
+                                                <option value="EVENT">EVENT</option>
+                                                <option value="WEBINAR">WEBINAR</option>                                                
                                             </select>
                                         </div>
                                     </div>
@@ -42,11 +43,8 @@
                                         <label class="col-sm-2 col-form-label text-right">Tag</label>
                                         <div class="col-sm-10">
                                             <select class="bulletin_tag" name="bulletin_tag">
-                                                <option selected="">Choose the bulletin tag</option>
-                                                <option value="general">GENERAL</option>
-                                                <option value="class">CLASS</option>
-                                                <option value="event">EVENT</option>
-                                                <option value="webinar">WEBINAR</option>
+                                            <option value="PETAKOM">PETAKOM</option>
+                                                <option value="FKOM">FKOM</option>
                                             </select>
                                         </div>
                                     </div>

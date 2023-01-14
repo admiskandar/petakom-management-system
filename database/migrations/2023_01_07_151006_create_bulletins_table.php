@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('bulletins', function (Blueprint $table) {
             // $table->id();
             // $table->timestamps();
-            $table->id('bulletin_id');
+            $table->id();
             $table->string('bulletin_name');
             $table->string('bulletin_category');
             $table->date('bulletin_date');

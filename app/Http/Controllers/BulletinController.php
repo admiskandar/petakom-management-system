@@ -14,8 +14,8 @@ class BulletinController extends Controller
      */
     public function index()
     {
-        // $bulletins = BulletinRecord::all();
-        return view('ManageBulletin.BulletinBoard');
+        $bulletins = BulletinRecord::all();
+        return view('ManageBulletin.BulletinBoard', compact('bulletins'));
     }
 
     /**
@@ -68,7 +68,8 @@ class BulletinController extends Controller
         ]);
         $bulletin->save();
         
-        return view('ManageBulletin.SinglePost');
+        $bulletin_id = BulletinRecord::find($bulletin->id);
+        return view ('ManageBulletin.SinglePost', ["bulletin"=>$bulletin_id]);
     }
 
     /**
@@ -79,7 +80,10 @@ class BulletinController extends Controller
      */
     public function show($id)
     {
-        return view('ManageBulletin.SinglePost');
+        $bulletin = BulletinRecord::find($id);
+        return view ('ManageBulletin.SinglePost', ["bulletin"=>$bulletin]);
+
+        // change column bulletin_id to id because of this https://laracasts.com/discuss/channels/laravel/unknown-column-find-and-i-did-not-find-it
     }
 
     /**
@@ -90,7 +94,8 @@ class BulletinController extends Controller
      */
     public function edit($id)
     {
-        return view('ManageBulletin.EditPost');
+        $bulletin = BulletinRecord::find($id);
+        return view ('ManageBulletin.EditPost', ["bulletin"=>$bulletin]);
     }
 
     /**
@@ -102,7 +107,36 @@ class BulletinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return view('ManageBulletin.SinglePost');
+        //To validate required fields
+        $request->validate([
+            'bulletin_name'=> 'required',
+            'bulletin_category'=> 'required',
+            'bulletin_date'=> 'required',
+            'bulletin_tag'=> 'required',
+            'bulletin_excerpt'=> 'required',
+            'bulletin_detail'=> 'required',
+            // 'bulletin_pdf'=> 'required',
+            // 'bulletin_image'=> 'required',
+            // 'bulletin_video'=> 'required',
+            'bulletin_link' => 'required'
+        ]);
+
+        $bulletin = BulletinRecord::find($id);
+        // getting values from form
+        $bulletin -> bulletin_name = $request->get('bulletin_name');
+        $bulletin -> bulletin_category = $request->get('bulletin_category');
+        $bulletin -> bulletin_date = $request->get('bulletin_date');
+        $bulletin -> bulletin_tag = $request->get('bulletin_tag');
+        $bulletin -> bulletin_excerpt = $request->get('bulletin_excerpt');
+        $bulletin -> bulletin_detail = $request->get('bulletin_detail');
+        // $bulletin -> bulletin_pdf = $request->get('bulletin_pdf');
+        // $bulletin -> bulletin_image = $request->get('bulletin_image');
+        // $bulletin -> bulletin_video = $request->get('bulletin_video');
+        $bulletin -> bulletin_link = $request->get('bulletin_link');
+        $bulletin->save();
+
+        $bulletin_id = BulletinRecord::find($bulletin->id);
+        return view ('ManageBulletin.SinglePost', ["bulletin"=>$bulletin_id]);
     }
 
     /**
@@ -113,6 +147,8 @@ class BulletinController extends Controller
      */
     public function destroy($id)
     {
-        return view('ManageBulletin.BulletinBoard');
+        $bulletin = BulletinRecord::find($id);
+        $bulletin->delete();
+        return redirect ('/bulletin'); 
     }
 }
