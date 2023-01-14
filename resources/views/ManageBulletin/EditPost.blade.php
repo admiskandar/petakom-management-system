@@ -4,7 +4,7 @@
     <div class="page-content">
         <!-- Start of the form -->
         <form action="{{ route('bulletin.update', [$bulletin->id])}}" method="post" enctype="multipart/form-data">
-             @method('PATCH') 
+            @method('PATCH') 
             @csrf
             <div class="row">
                 <div class="col-lg-12">
