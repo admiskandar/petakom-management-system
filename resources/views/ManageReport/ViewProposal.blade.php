@@ -52,10 +52,10 @@
                                                 <span class="{{ $labelcolor }}">{{ $labelstatus }}</span>
                                             </td>
                                             <td>
-                                                <form action="{{route('storeReport',  ['id' => $report->id])}}" method="POST">
+                                                <form id="generate-form" action="{{route('storeReport',  ['id' => $report->id])}}" method="POST">
                                                     @csrf
                                                     <a href="{{route('report.ViewReport',[$report->id])}}" class="mr-2"><i class="fas fa-eye text-info font-16"></i></a>
-                                                    <button type="submit" class="btn btn-gradient-primary"><i class="mdi mdi-plus-circle-outline mr-2"></i>Generate</button>
+                                                    <button type="submit" class="btn btn-gradient-primary" id="generate" data-proposal-id="{{ $report->proposal_id }}"><i class="mdi mdi-plus-circle-outline mr-2"></i>Generate</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -73,3 +73,71 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    ! function($) {
+        "use strict";
+
+        var SweetAlert = function() {};
+
+        SweetAlert.prototype.init = function() {
+
+                $('#generate').click(function(e) {
+                    e.preventDefault(); // prevent the form from submitting
+
+                    // check if proposal id already exists in reports table
+                    var proposalId = $(this).data('proposal-id'); // get the proposal id from the button
+                    var url = '{{ route("checkProposalId", ":proposalId") }}'; // set the url to check proposal id
+                    // url = url.replace(':proposalId', proposalId); // replace the placeholder with the actual proposal id
+                    $.ajax({
+                        url: url,
+                        type: 'GET',
+                        data:{ proposalId: proposalId },
+                        success: function(response) {
+                            if (response.exists) { // if proposal id already exists in reports table
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: "Proposal already generated!",
+                                    type: 'error',
+                                    confirmButtonText: 'OK'
+                                });
+                            } else { // if proposal id does not exist in reports table
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You want to generate this proposal!",
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '$success',
+                                    cancelButtonColor: '$danger',
+                                    confirmButtonText: 'Yes, generate it!'
+                                }).then((result) => {
+                                    if (result.value) {
+                                        //submit the form here
+                                        $("#generate-form").submit();
+                                        Swal.fire({
+                                            title: 'Success!',
+                                            text: 'The proposal has been generated.',
+                                            type: 'success',
+                                            timer: 2000,
+                                            showConfirmButton: false
+                                        });
+                                    }
+                                });
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(xhr.responseText);
+                        }
+                    });
+                });
+            },
+
+            //init
+            $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
+    }(window.jQuery),
+
+    //initializing
+    function($) {
+        "use strict";
+        $.SweetAlert.init()
+    }(window.jQuery);
+</script>

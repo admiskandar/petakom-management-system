@@ -5,12 +5,14 @@
             Report Proposal
         </h2>
     </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
+                            <a href="{{route('report.ReportHomePage')}}"><button class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"><i class="fas fa-chevron-left"></i></button></a>
                             <div class="card" hidden>
                                 <div class="card-body invoice-head">
                                     <div class="row">
@@ -154,15 +156,13 @@
                             <!--begin::Tab-->
                             <div class="tab-pane show active px-7" id="kt_user_edit_tab_1" role="tabpanel">
                                 <!--begin::Row-->
-                                <div class="card-header">
+                                <div>
                                     <h2 class="card-title">Program Information</h2>
                                 </div>
                                 <div class="card-content collpase show">
                                     <div class="card-body">
-
-
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="mdi mdi-emoticon">&nbsp;&nbsp;&nbsp;</i>Program Details</h4>
+                                            <h4 class="form-section"><i class="fas fa-file-alt">&nbsp;&nbsp;&nbsp;</i>Program Details</h4>
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -211,7 +211,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h4 class="form-section"><i class="flaticon-email">&nbsp;&nbsp;&nbsp;</i>Time and Date Details</h4>
+                                        <h4 class="form-section"><i class="fas fa-calendar-alt">&nbsp;&nbsp;&nbsp;</i>Time and Date Details</h4>
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -250,7 +250,7 @@
                                             </div>
                                         </div>
 
-                                        <h4 class="form-section"><i class="la la-briefcase">&nbsp;&nbsp;&nbsp;</i>Budget Details</h4>
+                                        <h4 class="form-section"><i class="fas fa-money-bill-wave">&nbsp;&nbsp;&nbsp;</i>Budget Details</h4>
                                         <hr>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -264,20 +264,20 @@
                                         </div>
                                         <hr>
                                         <div class="form-actions text-center">
+                                            @if ($proposal->status != 1 && $proposal->status != 2)
                                             <form id="approve" class="form form-horizontal" action="{{route('updateStatusApproved' , ['id' => $proposal->id])}}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('PUT')
                                                 <input value="1" name="statusApproved" hidden>
-                                                @if ($proposal->status == 1)
-                                                <button id="approve-button" class="btn btn-primary float-md-right" type="submit" style="display: none">Approve</button>
-                                                @endif
+                                                <button id="approve-button" class="btn btn-primary float-md-right" type="submit" class="card hidden">Approve</button>
                                             </form>
                                             <form id="reject" class="form form-horizontal" action="{{route('updateStatusReject' , ['id' => $proposal->id])}}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('PUT')
                                                 <input value="2" name="statusReject" hidden>
-                                                <button id="reject-button" class="btn btn-danger float-md-right mx-3" type="submit">Reject</button>
+                                                <button id="reject-button" class="btn btn-danger float-md-right mx-3 class=" card hidden" type="submit">Reject</button>
                                             </form>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -289,3 +289,75 @@
         </div><!--end row-->
     </div>
 </x-app-layout>
+<script>
+    ! function($) {
+        "use strict";
+
+        var SweetAlert = function() {};
+
+        SweetAlert.prototype.init = function() {
+
+                //Parameter
+                $('#approve-button').click(function(e) {
+                    e.preventDefault(); // prevent the form from submitting
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to approve this proposal!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '$success',
+                        cancelButtonColor: '$danger',
+                        confirmButtonText: 'Yes, approve it!'
+                    }).then((result) => {
+                        if (result.value) {
+                            //submit the form here
+                            $("#approve").submit();
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'The proposal has been approved.',
+                                type: 'success',
+                                timer: 2000,
+                                showConfirmButton: false
+                            })
+                        }
+                    })
+                });
+
+                //Parameter
+                $('#reject-button').click(function(e) {
+                    e.preventDefault(); // prevent the form from submitting
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to reject this proposal!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '$success',
+                        cancelButtonColor: '$danger',
+                        confirmButtonText: 'Yes, reject it!'
+                    }).then((result) => {
+                        if (result.value) {
+                            //submit the form here
+                            $("#reject").submit();
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'The proposal has been rejected.',
+                                type: 'success',
+                                timer: 2000,
+                                showConfirmButton: false
+                            })
+                        }
+                    })
+                });
+
+
+            },
+            //init
+            $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
+    }(window.jQuery),
+
+    //initializing
+    function($) {
+        "use strict";
+        $.SweetAlert.init()
+    }(window.jQuery);
+</script>

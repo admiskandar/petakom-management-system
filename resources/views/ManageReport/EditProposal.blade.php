@@ -20,11 +20,11 @@
                                 </div>
                                 <div class="card-content collpase show">
                                     <div class="card-body">
-                                        <form class="form form-horizontal" action="{{route('update' , ['id' => $reports->id])}}" method="POST" enctype="multipart/form-data">
+                                        <form class="form form-horizontal" action="{{route('update' , ['id' => $reports->id])}}" method="POST" enctype="multipart/form-data" id="form-edit">
                                             @csrf
                                             @method('PUT')
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="mdi mdi-emoticon">&nbsp;&nbsp;&nbsp;</i>Program Details</h4>
+                                                <h4 class="form-section"><i class="fas fa-file-alt">&nbsp;&nbsp;&nbsp;</i>Program Details</h4>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -73,14 +73,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <h4 class="form-section"><i class="flaticon-email">&nbsp;&nbsp;&nbsp;</i>Time and Date Details</h4>
+                                            <h4 class="form-section"><i class="fas fa-calendar-alt">&nbsp;&nbsp;&nbsp;</i>Time and Date Details</h4>
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control">Start Date</label>
                                                         <div class="col-md-9 mx-auto">
-                                                            <input type="date" class="form-control border-primary" value="{{ old('start_date', $reports->start_date) }}"  placeholder="" id="start_date" name="start_date">
+                                                            <input type="date" class="form-control border-primary" value="{{ old('start_date', $reports->start_date) }}" placeholder="" id="start_date" name="start_date">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -106,13 +106,13 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control">End Date</label>
                                                         <div class="col-md-9 mx-auto">
-                                                            <input type="time" class="form-control border-primary" placeholder=""  value="{{ old('end_time', $reports->end_time) }}" name="end_time" id="end_time">
+                                                            <input type="time" class="form-control border-primary" placeholder="" value="{{ old('end_time', $reports->end_time) }}" name="end_time" id="end_time">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <h4 class="form-section"><i class="la la-briefcase">&nbsp;&nbsp;&nbsp;</i>Budget Details</h4>
+                                            <h4 class="form-section"><i class="fas fa-money-bill-wave">&nbsp;&nbsp;&nbsp;</i>Budget Details</h4>
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -126,7 +126,7 @@
                                             </div>
                                             <hr>
                                             <div class="form-actions text-center">
-                                                <button class="btn btn-primary float-md-right" type="submit">
+                                                <button class="btn btn-primary float-md-right" type="submit" id="edit">
                                                     <i class="fa fa-dot-circle-o"></i>Update</button>&nbsp;&nbsp;
                                             </div>
                                         </form>
@@ -140,3 +140,50 @@
         </div><!--end row-->
     </div>
 </x-app-layout>
+
+<script>
+    ! function($) {
+        "use strict";
+
+        var SweetAlert = function() {};
+
+        SweetAlert.prototype.init = function() {
+
+                //Parameter
+                $('#edit').click(function(e) {
+                    e.preventDefault(); // prevent the form from submitting
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to update this data!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '$success',
+                        cancelButtonColor: '$danger',
+                        confirmButtonText: 'Yes, update it!'
+                    }).then((result) => {
+                        if (result.value) {
+                            //submit the form here
+                            $("#form-edit").submit();
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Your data has been updated.',
+                                type: 'success',
+                                timer: 50000,
+                                showConfirmButton: false
+                            })
+                        }
+                    })
+                });
+
+
+            },
+            //init
+            $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
+    }(window.jQuery),
+
+    //initializing
+    function($) {
+        "use strict";
+        $.SweetAlert.init()
+    }(window.jQuery);
+</script>

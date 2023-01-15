@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('participation');
             $table->decimal('budget');
             $table->integer('status');
+            $table->integer('generate');
             $table->unsignedBigInteger('user_id');//foreign key
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');//foreign key

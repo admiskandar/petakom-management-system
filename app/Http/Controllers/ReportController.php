@@ -29,8 +29,31 @@ class ReportController extends Controller
         //
         $data = ReportRecord::all();
         $data->setTable('reports');
+
+        // Check if proposal already exists in reports table
+        $proposal_id = request()->input('proposal_id');
+        $existing_record = ReportRecord::where('proposal_id', $proposal_id)->first();
+
+        if ($existing_record) {
+            // If a record with the given proposal id already exists, show an error message
+            return redirect()->back()->with('error', 'A proposal with that ID already exists.');
+        } else {
+            // If the proposal id does not exist, proceed with generating the report
+            // ...
+        }
+
         return view('ManageReport.ViewProposal', ["datas" => $data]);
     }
+
+
+    public function checkProposalId(Request $request)
+    {
+        $proposalId = $request->proposalId;
+        $exists = ReportRecord::where('proposal_id', $proposalId)->exists();
+
+        return response()->json(['exists' => $exists]);
+    }
+
 
     public function generate()
     {
@@ -72,6 +95,7 @@ class ReportController extends Controller
             'participation' => $request->participation,
             'budget' => $request->budget,
             'status' => 0,
+            'generate' => 1,
             'user_id' => auth()->user()->id,
         ]);
 
@@ -87,6 +111,7 @@ class ReportController extends Controller
         $report->proposal_id = $id;
         $report->date = Carbon::now();
         $report->status = 1;
+        $report->generate_status = 0;
         $report->save();
 
         return redirect()->route('report.ViewProposal');

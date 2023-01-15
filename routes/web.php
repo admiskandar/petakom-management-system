@@ -79,7 +79,7 @@ Route::controller(App\Http\Controllers\ReportController::class)->group(function 
 
     Route::get('/report', 'App\Http\Controllers\ReportController@generate')->name('report.ViewProposal');//link to go to reporthomepage
     Route::post('/generate/{id}', 'App\Http\Controllers\ReportController@storeReport')->name('storeReport');//link to store the data in the database
-    // Route::post('/report/store', 'App\Http\Controllers\ReportController@storeReport')->name('generate');
+    Route::get('/check-proposal-id/{proposalId}', 'YourController@checkProposalId')->name('checkProposalId');
 
 }); 
 

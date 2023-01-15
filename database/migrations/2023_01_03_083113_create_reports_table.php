@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('proposal_id');//foreign key
             $table->dateTime('date');
             $table->integer('status');
+            $table->integer('generate_status');
             $table->timestamps();
             $table->foreign('proposal_id')->references('id')->on('proposals');//foreign key
         });

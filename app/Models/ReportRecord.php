@@ -11,7 +11,7 @@ class ReportRecord extends Model
 
     protected $table = 'proposals';
 
-    protected $fillable = ['title', 'objective', 'organizer', 'start_date', 'end_date', 'start_time', 'end_time', 'location', 'participation', 'budget', 'status', 'user_id'];
+    protected $fillable = ['title', 'objective', 'organizer', 'start_date', 'end_date', 'start_time', 'end_time', 'location', 'participation', 'budget', 'status', 'generate', 'user_id'];
 
     public function insertToProposals()
     {

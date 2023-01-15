@@ -26,7 +26,10 @@
     <link rel="stylesheet" href="{{ asset('build/assets/plugins/datatables/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/plugins/datatables/buttons.bootstrap4.min.css') }}">
     <!-- Responsive datatable examples -->
-    <link rel="stylesheet" href="{{ asset('build/assets/plugins/datatables/responsive.bootstrap4.min.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('build/assets/plugins/datatables/responsive.bootstrap4.min.css') }}">
+    <!-- Sweet Alert -->
+    <link href="{{ asset('build/assets/plugins/sweet-alert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('build/assets/plugins/animate/animate.css')}}" type="text/css">
 
 </head>
 
@@ -74,6 +77,9 @@
 
     <!-- App js -->
     <script src="{{ asset('build/assets/js/app.js') }}"></script>
+
+    <script src="{{ asset('build/assets/plugins/sweet-alert2/sweetalert2.min.js')}}"></script>
+    <!-- <script src="{{ asset('build/assets/pages/jquery.sweet-alert.init.js')}}"></script> -->
 </body>
 
 </html>

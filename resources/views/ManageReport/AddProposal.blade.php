@@ -20,10 +20,10 @@
                                 </div>
                                 <div class="card-content collpase show">
                                     <div class="card-body">
-                                        <form class="form form-horizontal" action="{{route('store')}}" method="POST" enctype="multipart/form-data">
+                                        <form class="form form-horizontal" action="{{route('store')}}" method="POST" enctype="multipart/form-data" id="form">
                                             @csrf
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="mdi mdi-emoticon">&nbsp;&nbsp;&nbsp;</i>Program Details</h4>
+                                                <h4 class="form-section"><i class="fas fa-file-alt">&nbsp;&nbsp;&nbsp;</i>Program Details</h4>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -72,7 +72,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <h4 class="form-section"><i class="flaticon-email">&nbsp;&nbsp;&nbsp;</i>Time and Date Details</h4>
+                                            <h4 class="form-section"><i class="fas fa-calendar-alt">&nbsp;&nbsp;&nbsp;</i>Time and Date Details</h4>
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -111,7 +111,7 @@
                                                 </div>
                                             </div>
 
-                                            <h4 class="form-section"><i class="la la-briefcase">&nbsp;&nbsp;&nbsp;</i>Budget Details</h4>
+                                            <h4 class="form-section"><i class="fas fa-money-bill-wave">&nbsp;&nbsp;&nbsp;</i>Budget Details</h4>
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -125,7 +125,7 @@
                                             </div>
                                             <hr>
                                             <div class="form-actions text-center">
-                                                <button class="btn btn-primary float-md-right" type="submit">
+                                                <button class="btn btn-primary float-md-right" type="submit" id="sa-params">
                                                     <i class="fa fa-dot-circle-o"></i>Save</button>&nbsp;&nbsp;
                                             </div>
                                         </form>
@@ -139,3 +139,50 @@
         </div><!--end row-->
     </div>
 </x-app-layout>
+
+<script>
+    ! function($) {
+        "use strict";
+
+        var SweetAlert = function() {};
+
+        SweetAlert.prototype.init = function() {
+
+                //Parameter
+                $('#sa-params').click(function(e) {
+                    e.preventDefault(); // prevent the form from submitting
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to add this data!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '$success',
+                        cancelButtonColor: '$danger',
+                        confirmButtonText: 'Yes, add it!'
+                    }).then((result) => {
+                        if (result.value) {
+                            //submit the form here
+                            $("#form").submit();
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Your data has been saved.',
+                                type: 'success',
+                                timer: 20000,
+                                showConfirmButton: false
+                            })
+                        }
+                    })
+                });
+
+
+            },
+            //init
+            $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
+    }(window.jQuery),
+
+    //initializing
+    function($) {
+        "use strict";
+        $.SweetAlert.init()
+    }(window.jQuery);
+</script>
