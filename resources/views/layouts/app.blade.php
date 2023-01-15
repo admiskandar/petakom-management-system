@@ -18,11 +18,20 @@
     <!-- Styles -->
     @livewireStyles
 
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('build/assets/images/favicon.ico') }}">
+
+    <link href="{{ asset('build/assets/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/assets/plugins/filter/magnific-popup.css') }}" rel="stylesheet" type="text/css" />
+
+
     <!-- App css -->
     <link rel="stylesheet" href="{{ asset('build/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/icons.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/metisMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}">
+
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -50,6 +59,8 @@
     <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/list/main.css" />
 
     <!-- calendar css -->
+
+
 
 </head>
 
@@ -88,6 +99,7 @@
     <script src="{{ asset('build/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('build/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
 
+
     <!-- App js -->
     <script src="{{ asset('build/assets/js/app.js') }}"></script>
     <!-- jQuery  -->
@@ -110,6 +122,17 @@
 
     <!-- App js -->
     <script src="{{ asset('build') }}/assets/js/app.js"></script>
+
+    <script src="{{ asset('build/assets/plugins/dropify/js/dropify.min.js') }}"></script>
+    <script src="{{ asset('build/assets/pages/jquery.form-upload.init.js') }}"></script>
+
+    <script src="{{ asset('build/assets/plugins/filter/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('build/assets/plugins/filter/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ asset('build/assets/plugins/filter/query.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('build/assets/pages/jquery.gallery.inity.js') }}"></script>
+
+    <!-- App js -->
+    <script src="{{ asset('build/assets/js/app.js') }}"></script>
 
 </body>
 
