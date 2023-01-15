@@ -1,65 +1,116 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
-        
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-        <!-- Styles -->
-        @livewireStyles
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <!-- App css -->
-        <link rel="stylesheet" href="{{ asset('build/assets/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/assets/css/icons.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/assets/css/metisMenu.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}">
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
+    <!-- Styles -->
+    @livewireStyles
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+    <!-- App css -->
+    <link rel="stylesheet" href="{{ asset('build/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/metisMenu.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+    <!-- Styles -->
+    @livewireStyles
 
-        @stack('modals')
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('build') }}/assets/images/petakom-logo.png">
 
-        @livewireScripts
-        <!-- jQuery  -->
+    <!-- App css -->
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/css/icons.css">
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/css/metisMenu.min.css">
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/css/style.css">
 
-        <script src="{{ asset('build/assets/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('build/assets/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('build/assets/js/metisMenu.min.js') }}"></script>
-        <script src="{{ asset('build/assets/js/waves.min.js') }}"></script>
-        <script src="{{ asset('build/assets/js/jquery.slimscroll.min.js') }}"></script>
+    <!-- calendar css -->
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/core/main.css">
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/core/main.css" />
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/daygrid/main.css" />
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/bootstrap/main.css" />
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/timegrid/main.css" />
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/list/main.css" />
 
-        <script src="{{ asset('build/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
-        <script src="{{ asset('build/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
+    <!-- calendar css -->
 
-        <!-- App js -->
-        <script src="{{ asset('build/assets/js/app.js') }}"></script>
-    </body>
+</head>
+
+<body class="font-sans antialiased">
+    <x-jet-banner />
+
+    <div class="min-h-screen bg-gray-100">
+        @livewire('navigation-menu')
+
+        <!-- Page Heading -->
+        @if (isset($header))
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
+        @endif
+
+        <!-- Page Content -->
+        <main>
+            {{ $slot }}
+        </main>
+    </div>
+
+    @stack('modals')
+
+    @livewireScripts
+    <!-- jQuery  -->
+
+    <script src="{{ asset('build/assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('build/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('build/assets/js/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('build/assets/js/waves.min.js') }}"></script>
+    <script src="{{ asset('build/assets/js/jquery.slimscroll.min.js') }}"></script>
+
+    <script src="{{ asset('build/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('build/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
+
+    <!-- App js -->
+    <script src="{{ asset('build/assets/js/app.js') }}"></script>
+    <!-- jQuery  -->
+    <script src="{{ asset('build') }}/assets/js/jquery.min.js"></script>
+    <script src="{{ asset('build') }}/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('build') }}/assets/js/metisMenu.min.js"></script>
+    <script src="{{ asset('build') }}/assets/js/waves.min.js"></script>
+    <script src="{{ asset('build') }}/assets/js/jquery.slimscroll.min.js"></script>
+
+    <script src="{{ asset('build') }}/assets/plugins/apexcharts/apexcharts.min.js"></script>
+    <script src="{{ asset('build') }}/assets/pages/jquery.analytics_dashboard.init.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/moment/moment.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/fullcalendar/packages/core/main.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/fullcalendar/packages/daygrid/main.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/fullcalendar/packages/timegrid/main.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/fullcalendar/packages/interaction/main.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/fullcalendar/packages/list/main.js"></script>
+    <!-- <script src="{{ asset('build') }}/assets/pages/jquery.calendar.js"></script> -->
+
+    <!-- App js -->
+    <script src="{{ asset('build') }}/assets/js/app.js"></script>
+
+</body>
+
 </html>

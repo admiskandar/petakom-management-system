@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class CalendarRecord extends Model
 {
-    use HasFactory;
+    protected $table = 'calendars';
+    protected $fillable = [
+        'id',
+        'created_at',
+        'updated_at',
+        'date',
+        'category',
+        'title',
+        'message',
+        'url'
+    ];
+
 }
