@@ -23,10 +23,10 @@ return new class extends Migration
             $table->string('bulletin_tag');
             $table->text('bulletin_excerpt');
             $table->text('bulletin_detail');
-            $table->string('bulletin_pdf');
-            $table->string('bulletin_image');
-            $table->string('bulletin_video');
-            $table->binary('bulletin_link');
+            $table->string('bulletin_pdf')->nullable();
+            $table->string('bulletin_image')->nullable();
+            $table->string('bulletin_video')->nullable();
+            $table->binary('bulletin_link')->nullable();
 
             // $table->unsignedInteger('user_id')->nullable();
             // $table->unsignedInteger('activity_id')->nullable();

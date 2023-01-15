@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\BulletinRecord;
+use App\Models\BookmarkRecord;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class BulletinController extends Controller
@@ -229,6 +231,29 @@ class BulletinController extends Controller
         $bulletin->delete();
         return redirect ('/bulletin'); 
     }
+
+
+    // Bookmark function
+    public function ViewBookmark()
+    {
+        $user_id = Auth::id();
+        $bookmarks = BookmarkRecord::where('user_id', 'like', '%'.$user_id.'%')->get();
+
+        return view('ManageBulletin.MyBookmark', compact('bookmarks'));
+    }
+
+    public function AddBookmark($id)
+    {
+        $user_id = Auth::id();
+        $bulletin = BulletinRecord::find($id);
+        $bookmark = new BookmarkRecord;
+        $bookmark -> bulletin_id = $bulletin->id;
+        $bookmark -> user_id = $user_id;
+        $bookmark->save();
+        return back()->with('success', 'Item bookmarked successfully');
+    }
+
+
 }
 
 

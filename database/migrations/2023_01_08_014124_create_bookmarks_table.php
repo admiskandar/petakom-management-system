@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bookmarks', function (Blueprint $table) {
-            // $table->id();
-            $table->increments('bookmark_id');
-            $table->unsignedInteger('bulletin_id')->nullable();
+            $table->id();
+            $table->unsignedBigInteger('bulletin_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
 
-            //$table->foreign('bulletin_id')->references('bulletin_id')->on('bulletins');
+            $table->foreign('bulletin_id')->references('id')->on('bulletins');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

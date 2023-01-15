@@ -22,5 +22,16 @@ class BulletinRecord extends Model
         'bulletin_image',
         'bulletin_video',
         'bulletin_link',
+        // foreign key
     ];
+
+    // public function getBookmarkRecord()
+    // {
+    //     return $this->hasMany(BookmarkRecord::class);
+    // }
+
+    public function bookmark()
+    {
+        return $this->hasMany('App\BookmarkRecord');
+    }
 }

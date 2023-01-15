@@ -43,7 +43,8 @@
                                 </div>
                             </li>
                             <li class="list-inline-item">
-                                <button type="button" class="btn btn-gradient-primary"><a href="{{ route('bookmark') }}">My Bookmark</a></button>
+                                <!-- <button type="button" class="btn btn-gradient-primary"><a href="{{ route('bookmark') }}">My Bookmark</a></button> -->
+                                <button type="button" class="btn btn-gradient-primary"><a href="{{ route('bulletin.ViewBookmark') }}">My Bookmark</a></button>
                             </li>
                             <li class="list-inline-item">
                                 <button type="button" class="btn btn-gradient-primary">Filter</button>
@@ -80,6 +81,11 @@
                                 </h4>
                                 <p class="text-muted">{{$bulletin->bulletin_excerpt}}</p>
                                 <a href="{{ route('bulletin.show', [$bulletin->id])}}" class="text-primary">Continue Reading<i class="fas fa-long-arrow-alt-right"></i></a>
+                                <!-- <form action="{{ route('bulletin.AddBookmark', [$bulletin->id])}}" method="get"> -->
+                                <form action="{{ route('bulletin.AddBookmark', [$bulletin->id])}}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger"> Add To Bookmark</button>
+                                </form>     
                             </div><!--end blog-card-->                                   
                         </div><!--end card-body-->
                     </div><!--end card-->

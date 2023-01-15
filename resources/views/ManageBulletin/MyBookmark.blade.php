@@ -56,75 +56,36 @@
 
             <!-- Start of Bulletin Post -->
             <div class="row">
-                        <div class="col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="blog-card">
-                                        <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" class="img-fluid"/>
-                                        <div class="meta-box">
-                                            <ul class="p-0 mt-4 list-inline">
-                                                <li class="list-inline-item"><span class="badge badge-secondary px-3">Food</span></li>
-                                                <li class="list-inline-item">26 mars 2019</li>
-                                                <li class="list-inline-item">by <a href="">admin</a></li>
-                                            </ul>
-                                        </div><!--end meta-box-->            
-                                        <h4 class="mt-2 mb-3">
-                                            <a href="">It is a long established fact that a reader will be</a>
-                                        </h4>
-                                        <p class="text-muted">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Cum sociis natoque penatibus et magnis.</p>
-                                        <a href="#" class="text-primary">Continue Reading <i class="fas fa-long-arrow-alt-right"></i></a>
-                                        <button type="button" class="btn btn-gradient-danger waves-effect waves-light">Remove</button>  
-                                    </div><!--end blog-card-->                                   
-                                </div><!--end card-body-->
-                            </div><!--end card-->
-                        </div> <!--end col-->
+                @foreach($bookmarks as $bookmark)
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="blog-card">
+                                <img src="{{ asset('uploads/images/'.$bookmark->bulletin->bulletin_image) }}"  width="70px" height="70px" alt="" class="img-fluid"/>
+                                <!-- <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" class="img-fluid"/> -->
+                                <div class="meta-box">
+                                    <ul class="p-0 mt-4 list-inline">
+                                        <li class="list-inline-item"><span class="badge badge-secondary px-3">{{$bookmark->bulletin->bulletin_category}}</span></li>
+                                        <li class="list-inline-item">{{$bookmark->bulletin->bulletin_date}}</li>
+                                        <li class="list-inline-item">{{$bookmark->bulletin->bulletin_tag}}</li>
+                                    </ul>
+                                </div><!--end meta-box-->            
+                                <h4 class="mt-2 mb-3">
+                                    <a href="">{{$bookmark->bulletin->bulletin_name}}</a>
+                                </h4>
+                                <p class="text-muted">{{$bookmark->bulletin->bulletin_excerpt}}</p>
+                                <a href="{{ route('bulletin.show', [$bookmark->bulletin->id])}}" class="text-primary">Continue Reading<i class="fas fa-long-arrow-alt-right"></i></a>
 
-                        <div class="col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="blog-card">
-                                        <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" class="img-fluid"/>
-                                        <div class="meta-box">
-                                            <ul class="p-0 mt-4 list-inline">
-                                                <li class="list-inline-item"><span class="badge badge-purple px-3">Interior</span></li>
-                                                <li class="list-inline-item">26 mars 2019</li>
-                                                <li class="list-inline-item">by <a href="">admin</a></li>
-                                            </ul>
-                                        </div><!--end meta-box-->            
-                                        <h4 class="mt-2 mb-3">
-                                            <a href="">It is a long established fact that a reader will be</a>
-                                        </h4>
-                                        <p class="text-muted">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Cum sociis natoque penatibus et magnis.</p>
-                                        <a href="#" class="text-primary">Continue Reading <i class="fas fa-long-arrow-alt-right"></i></a>
-                                        <button type="button" class="btn btn-gradient-danger waves-effect waves-light">Remove</button>
-                                    </div><!--end blog-card-->
-                                </div><!--end card-body-->
-                            </div><!--end card-->
-                        </div> <!--end col-->
-
-                        <div class="col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="blog-card">
-                                        <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" class="img-fluid"/>
-                                        <div class="meta-box">
-                                            <ul class="p-0 mt-4 list-inline">
-                                                <li class="list-inline-item"><span class="badge badge-success px-3">Food</span></li>
-                                                <li class="list-inline-item">26 mars 2019</li>
-                                                <li class="list-inline-item">by <a href="">admin</a></li>
-                                            </ul>
-                                        </div><!--end meta-box-->            
-                                        <h4 class="mt-2 mb-3">
-                                            <a href="">It is a long established fact that a reader will be</a>
-                                        </h4>
-                                        <p class="text-muted">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Cum sociis natoque penatibus et magnis.</p>
-                                        <a href="#" class="text-primary">Continue Reading <i class="fas fa-long-arrow-alt-right"></i></a>
-                                        <button type="button" class="btn btn-gradient-danger waves-effect waves-light">Remove</button>
-                                    </div><!--end blog-card-->
-                                </div><!--end card-body-->
-                            </div><!--end card-->
-                        </div> <!--end col-->                           
-                    </div><!--end row-->
+                                <form action="{{ route('bulletin.AddBookmark', [$bookmark->bulletin->id])}}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger"> Add To Bookmark</button>
+                                </form>     
+                            </div><!--end blog-card-->                                   
+                        </div><!--end card-body-->
+                    </div><!--end card-->
+                </div> <!--end col-->    
+                @endforeach                 
+            </div><!--end row-->
             <!-- End of Bulletin Post --> 
         </div><!-- container -->
 

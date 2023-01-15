@@ -50,14 +50,15 @@ Route::middleware([
         return view('ManageReport.ViewProposal');
     })->name('report');
 
-    // Route::get('/bulletins', function () {
-    //     return view('ManageBulletin.BulletinBoard');
-    // })->name('bulletins');
-
-    Route::get('/bookmark', function () {
-        return view('ManageBulletin.MyBookmark');
-    })->name('bookmark');
 });
 
 use App\Http\Controllers\BulletinController;
+Route::get('/bookmark', function () {
+    return view('ManageBulletin.MyBookmark');
+})->name('bookmark');
+
+// Route::get('ViewBookmark', 'BulletinController@ViewBookmark')->name('bulletin.ViewBookmark');
+
 Route::resource('bulletin', BulletinController::class);
+Route::get('/ViewBookmark', [BulletinController::class,'ViewBookmark'])->name('bulletin.ViewBookmark');
+Route::post('/AddBookmark/{id}', [BulletinController::class,'AddBookmark'])->name('bulletin.AddBookmark');
