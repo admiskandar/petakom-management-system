@@ -71,4 +71,8 @@ Route::get('search', [BulletinController::class,'searchBulletin'])->name('bullet
 Route::get('ViewBookmark', [BulletinController::class,'ViewBookmark'])->name('bulletin.ViewBookmark');
 Route::post('AddBookmark/{id}', [BulletinController::class,'AddBookmark'])->name('bulletin.AddBookmark');
 Route::delete('DeleteBookmark/{id}', [BulletinController::class,'DeleteBookmark'])->name('bulletin.DeleteBookmark');
+Route::get('filtercategory', [BulletinController::class,'filterBookmarkCategory'])->name('bulletin.filterBookmarkCategory'); 
+Route::get('filtertag', [BulletinController::class,'filterBookmarkTag'])->name('bulletin.filterBookmarkTag'); 
+Route::get('sorting', [BulletinController::class,'sortBookmark'])->name('bulletin.sortBookmark'); 
+Route::get('searching', [BulletinController::class,'searchBookmark'])->name('bulletin.searchBookmark'); 
 

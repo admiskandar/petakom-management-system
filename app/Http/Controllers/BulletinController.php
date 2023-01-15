@@ -275,7 +275,6 @@ class BulletinController extends Controller
     {
         $user_id = Auth::id();
         $bookmarks = BookmarkRecord::where('user_id', 'like', '%'.$user_id.'%')->get();
-
         return view('ManageBulletin.MyBookmark', compact('bookmarks'));
     }
 
@@ -296,6 +295,68 @@ class BulletinController extends Controller
         $bookmark->delete();
         return back();
     }
+
+    public function filterBookmarkCategory(Request $request)
+    {
+        $user_id = Auth::id();
+        $bulletin = BulletinRecord::all();
+        $category = $request->input('category');
+        $bookmarks = BookmarkRecord::where('user_id', 'like', '%'.$user_id.'%')->with('bulletin')->whereHas('bulletin', function ($query) use ($category) {
+            $query->where('bulletin_category', $category);
+        })->get();
+
+        return view('ManageBulletin.MyBookmark', compact('bookmarks'));
+    }
+
+    public function filterBookmarkTag(Request $request)
+    {
+        $user_id = Auth::id();
+        $bulletin = BulletinRecord::all();
+        $tag = $request->input('tag');
+        $bookmarks = BookmarkRecord::where('user_id', 'like', '%'.$user_id.'%')->with('bulletin')->whereHas('bulletin', function ($query) use ($tag) {
+            $query->where('bulletin_tag', $tag);
+        })->get();
+
+        return view('ManageBulletin.MyBookmark', compact('bookmarks'));
+    }
+
+    public function sortBookmark(Request $request)
+    {
+        $user_id = Auth::id();
+        $sort = $request->input('sort');
+        if ($sort == 'asc') {
+            $bookmarks = BookmarkRecord::where('user_id', 'like', '%'.$user_id.'%')
+                ->join('bulletins', 'bookmarks.bulletin_id', '=', 'bulletins.id')
+                ->orderBy('bulletins.bulletin_date', 'asc')
+                ->get();
+
+        } else {
+            $bookmarks = BookmarkRecord::where('user_id', 'like', '%'.$user_id.'%')
+                ->join('bulletins', 'bookmarks.bulletin_id', '=', 'bulletins.id')
+                ->orderBy('bulletins.bulletin_date', 'desc')
+                ->get();
+
+        }
+        return view('ManageBulletin.MyBookmark', compact('bookmarks'));
+    }
+
+    public function searchBookmark(Request $request)
+    {
+        $user_id = Auth::id();
+        $search = $request->input('search');
+        if ($search) {
+            $bookmarks = BookmarkRecord::join('bulletins', 'bookmarks.bulletin_id', '=', 'bulletins.id')
+                ->where('user_id', 'like', '%'.$user_id.'%')
+                ->where('bulletins.bulletin_name', 'like', '%' . $search . '%')
+                ->get();
+        } else {
+            $bookmarks = BookmarkRecord::get();
+        }
+        return view('ManageBulletin.MyBookmark', compact('bookmarks'));
+    }
+
+
+    
 
 
 }
