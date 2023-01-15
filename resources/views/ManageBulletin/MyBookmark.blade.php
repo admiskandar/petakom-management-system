@@ -36,14 +36,21 @@
                     <div class="text-right">
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <div class="input-group">                               
-                                <form action="{{ route('bulletin.searchBookmark') }}" method="GET">
+                                <div class="input-group">
+                                    <form action="{{ route('bulletin.searchBookmark') }}" method="GET">
                                         @csrf
-                                        <input type="text" name="search" placeholder="Search by name" style="tab-size: 2">
-                                        <button type="submit" class="btn btn-primary" value="Search">Search</button>
+                                        <ul class="list-inline-item">
+                                            <li class="list-inline-item">
+                                            <input type="text" name="search" class="form-control">
+                                            </li>
+                                            <li class="list-inline-item">
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light" value="Search">Search</button>
+                                            </li>
+                                        </ul>
                                     </form>
                                 </div>
                             </li>
+                            
                             <li class="list-inline-item">
                                 <form action="{{ route('bulletin.filterBookmarkCategory')}}" method="GET">
                                     <div class="form-group">
@@ -107,13 +114,23 @@
                                     <a href="">{{$bookmark->bulletin->bulletin_name}}</a>
                                 </h4>
                                 <p class="text-muted">{{$bookmark->bulletin->bulletin_excerpt}}</p>
-                                <a href="{{ route('bulletin.show', [$bookmark->bulletin->id])}}" class="text-primary">Continue Reading<i class="fas fa-long-arrow-alt-right"></i></a>
 
-                                <form action="{{ route('bulletin.DeleteBookmark', [$bookmark->id])}}" method="post" enctype="multipart/form-data">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger"> Remove Bookmark</button>
-                                </form>     
+                                <div class="button-items mb-4">
+                                    <ul class="p-0 mt-4 list-inline">
+                                        <li class="list-inline-item">
+                                            <button type="button" class="btn btn-primary waves-effect waves-light">
+                                            <a href="{{ route('bulletin.show', [$bookmark->bulletin->id])}}" class="text-primary" style="color: #ffffff !important;">Continue Reading</a>
+                                            </button>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <form action="{{ route('bulletin.DeleteBookmark', [$bookmark->id])}}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger"> Remove Bookmark</button>
+                                            </form> 
+                                        </li>
+                                    </ul>
+                                </div>
                             </div><!--end blog-card-->                                   
                         </div><!--end card-body-->
                     </div><!--end card-->

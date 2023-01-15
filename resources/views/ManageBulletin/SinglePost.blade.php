@@ -36,18 +36,27 @@
                                         <h6 class="text-muted font-13">Details :</h6> 
                                         <p class="text mb-4">{{$bulletin->bulletin_detail}}</p>                                             
                                         <h6 class="text-muted font-13">Link :</h6> 
-                                        <p class="text-muted mb-4"><a href="{{$bulletin->bulletin_link}}">{{$bulletin->bulletin_link}}</a>  </p>
-                                        <button type="button" class="btn btn-gradient-primary waves-effect waves-light"><a href="{{ route('bulletin.edit', [$bulletin->id])}}" class="text-primary">Edit</a></button>                                     
-                                        <form action="{{ route('bulletin.AddBookmark', [$bulletin->id])}}" method="post" enctype="multipart/form-data">
-                                            @csrf
-                                            <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger"> Add To Bookmark</button>
-                                        </form>  
-                                        <br>
-                                        <form action="{{ route('bulletin.destroy', [$bulletin->id])}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger">Delete</button>
-                                        </form>                                     
+                                        <p class="text-muted mb-4">
+                                            <a href="{{$bulletin->bulletin_link}}">{{$bulletin->bulletin_link}}</a>
+                                        </p>
+                                        <ul class="p-0 mt-4 list-inline">
+                                            <li class="list-inline-item">
+                                                <button type="button" class="btn btn-primary waves-effect waves-light"><a href="{{ route('bulletin.edit', [$bulletin->id])}}" class="text-primary" style="color: #ffffff !important;">Edit</a></button>                                     
+                                            </li> 
+                                            <li class="list-inline-item">
+                                                <form action="{{ route('bulletin.AddBookmark', [$bulletin->id])}}" method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <button class="btn btn-secondary waves-effect waves-light" type="submit" > Add To Bookmark</button>
+                                                </form> 
+                                            
+                                            <li class="list-inline-item">
+                                                <form action="{{ route('bulletin.destroy', [$bulletin->id])}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger waves-effect waves-light" type="submit" >Delete</button>
+                                                </form> 
+                                            </li>    
+                                        </ul>                                 
                                     </div>
                                 </div><!--end col-->                                            
                             </div><!--end row-->

@@ -101,8 +101,8 @@
                                     </div>
                                     <div class="form-group row">
                                         <div>
-                                            <button type="submit" class="btn btn-gradient-primary">Submit</button>
-                                            <button type="button" class="btn btn-gradient-danger">Cancel</button>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                            <button type="button" class="btn btn-danger waves-effect waves-light"><a href="{{ route('bulletin.show', [$bulletin->id])}}" style="color: #ffffff !important;">Cancel</a></button>
                                         </div>
                                     </div>  
                                     

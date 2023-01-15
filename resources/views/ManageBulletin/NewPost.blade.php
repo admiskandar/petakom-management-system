@@ -66,32 +66,20 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="bulletin_image">Images</label>
-                                        <!-- <div class="custom-file mb-3">
-                                            <input type="file" class="custom-file-input" name="bulletin_image">
-                                            <label class="custom-file-label" for="bulletin_image">Choose file</label>
-                                        </div> -->
                                         <input type="file" name="bulletin_image" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="bulletin_video">Videos</label>
-                                        <!-- <div class="custom-file mb-3">
-                                            <input type="file" class="custom-file-input" name="bulletin_video">
-                                            <label class="custom-file-label" for="bulletin_video">Choose file</label>
-                                        </div> -->
                                         <input type="file" name="bulletin_video" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="bulletin_pdf">PDF</label>
-                                        <!-- <div class="custom-file mb-3">
-                                            <input type="file" class="custom-file-input" name="bulletin_pdf">
-                                            <label class="custom-file-label" for="bulletin_pdf">Choose file</label>
-                                        </div> -->
                                         <input type="file" name="bulletin_pdf" class="form-control">
                                     </div>
                                     <div class="form-group row">
                                         <div>
-                                            <button type="submit" class="btn btn-gradient-primary">Submit</button>
-                                            <button type="button" class="btn btn-gradient-danger">Cancel</button>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                            <button type="button" class="btn btn-danger waves-effect waves-light"><a href="{{ route('bulletin.index') }}" style="color: #ffffff !important;">Cancel</a></button>
                                         </div>
                                     </div>
                                 </div>

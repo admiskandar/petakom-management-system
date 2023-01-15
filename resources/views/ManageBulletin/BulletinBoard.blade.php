@@ -38,18 +38,20 @@
                                 <div class="input-group">
                                     <form action="{{ route('bulletin.searchBulletin') }}" method="GET">
                                         @csrf
-                                        <input type="text" name="search" placeholder="Search by name" style="tab-size: 2">
-                                        <button type="submit" class="btn btn-primary" value="Search">Search</button>
+                                        <ul class="list-inline-item">
+                                            <li class="list-inline-item">
+                                            <input type="text" name="search" class="form-control">
+                                            </li>
+                                            <li class="list-inline-item">
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light" value="Search">Search</button>
+                                            </li>
+                                        </ul>
                                     </form>
-                                    <!-- <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
-                                    <span class="input-group-append">
-                                        <button type="button" class="btn btn-gradient-primary"><i class="fas fa-search">Search</i></button>
-                                    </span> -->
                                 </div>
                             </li>
                             <li class="list-inline-item">
                                 <!-- <button type="button" class="btn btn-gradient-primary"><a href="{{ route('bookmark') }}">My Bookmark</a></button> -->
-                                <button type="button" class="btn btn-gradient-primary"><a href="{{ route('bulletin.ViewBookmark') }}">Bookmark</a></button>
+                                <button type="button" class="btn btn-primary waves-effect waves-light"><a href="{{ route('bulletin.ViewBookmark') }}" style="color: #ffffff !important;">Bookmark</a></button>
                             </li>
                             <li class="list-inline-item">
                                 <form action="{{ route('bulletin.filterBulletinCategory')}}" method="GET">
@@ -89,7 +91,7 @@
                                 </form>
                             </li>
                             <li class="list-inline-item">
-                                <button type="button" class="btn btn-gradient-primary"><a href="{{ route('bulletin.create') }}">New</a></button>
+                                <button type="button" class="btn btn-primary waves-effect waves-light"><a href="{{ route('bulletin.create') }}" style="color: #ffffff !important;">New</a></button>
                             </li>
                         </ul>
                     </div>                            
@@ -107,7 +109,7 @@
                                 <!-- <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" class="img-fluid"/> -->
                                 <div class="meta-box">
                                     <ul class="p-0 mt-4 list-inline">
-                                        <li class="list-inline-item"><span class="badge badge-secondary px-3">{{$bulletin->bulletin_category}}</span></li>
+                                        <li class="list-inline-item"><span class="badge badge-warning px-3">{{$bulletin->bulletin_category}}</span></li>
                                         <li class="list-inline-item">{{$bulletin->bulletin_date}}</li>
                                         <li class="list-inline-item">{{$bulletin->bulletin_tag}}</li>
                                     </ul>
@@ -116,11 +118,21 @@
                                     <a href="">{{$bulletin->bulletin_name}}</a>
                                 </h4>
                                 <p class="text-muted">{{$bulletin->bulletin_excerpt}}</p>
-                                <a href="{{ route('bulletin.show', [$bulletin->id])}}" class="text-primary">Continue Reading<i class="fas fa-long-arrow-alt-right"></i></a>
-                                <form action="{{ route('bulletin.AddBookmark', [$bulletin->id])}}" method="post" enctype="multipart/form-data">
-                                            @csrf
-                                            <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger"> Add To Bookmark</button>
-                                </form>     
+                                <div class="button-items mb-4">
+                                    <ul class="p-0 mt-4 list-inline">
+                                        <li class="list-inline-item">
+                                            <button type="button" class="btn btn-primary waves-effect waves-light">
+                                                <a href="{{ route('bulletin.show', [$bulletin->id])}}" class="text-primary" style="color: #ffffff !important;">Continue Reading</a>
+                                            </button>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <form action="{{ route('bulletin.AddBookmark', [$bulletin->id])}}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <button class="btn btn-secondary waves-effect" type="submit">Add To Bookmark</button>
+                                            </form> 
+                                        </li>
+                                    </ul>
+                                </div>       
                             </div><!--end blog-card-->                                   
                         </div><!--end card-body-->
                     </div><!--end card-->
