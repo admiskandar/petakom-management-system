@@ -6,14 +6,17 @@
             <br>
 
 
+            
             @if(Auth::user()->user_type == "Coordinator")
-            <div class="card" style="display: none">
+            <div class="card">
                 <button type="button" class="btn btn-gradient-primary"><a href="{{route('activity.ActivityInterface')}}">Activity</a></button>
                 <button type="button" class="btn btn-gradient-primary"><a href="{{route('calendar')}}">Calendar</a></button>
+                <button type="button" class="btn btn-gradient-primary"><a href="{{route('election')}}">Election</a></button>
+                <button type="button" class="btn btn-gradient-primary"><a href="{{route('report')}}">Report</a></button>
+                <button type="button" class="btn btn-gradient-primary"><a href="{{route('bulletin.index')}}">Bulletin</a></button> 
             </div>
             @else
             <div class="card">
-
                 <button type="button" class="btn btn-gradient-primary"><a href="{{route('election')}}">Election</a></button>
                 <button type="button" class="btn btn-gradient-primary"><a href="{{route('report')}}">Report</a></button>
                 <button type="button" class="btn btn-gradient-primary"><a href="{{route('bulletin.index')}}">Bulletin</a></button>
