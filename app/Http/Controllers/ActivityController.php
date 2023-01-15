@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActivityRecord;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ActivityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return view('ManageActivity.ActivityInterface');
     }
 
     /**
@@ -23,7 +21,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        //
+        return view('ManageActivity.AddActivityInterface');
     }
 
     /**
@@ -34,7 +32,16 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ActivityRecord::create(
+            [
+                "activity_name" => $request->input('activity_name'),
+                "activity_date" => $request->input('activity_date'),
+                "activity_notes" => $request->input('activity_notes'),
+                "activity_venue" => $request->input('activity_venue'),
+
+            ]
+        );
+        return redirect()->route('activity.ActivityInterface');
     }
 
     /**
@@ -43,9 +50,34 @@ class ActivityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $post = ActivityRecord::all();
+
+        return view(
+            
+            'ManageActivity.ViewActivityInterface',
+            compact('post') //fetch data from db
+            
+        
+        );
+    }
+
+    public function showListActivity(Request $request, $id){
+
+        $activityPost = ActivityRecord::select(
+            
+            'activity_name',
+            'activity_date',
+            'activity_notes',
+            'activity_venue',
+
+        )->where ('id', '=', $id)->first();
+
+
+        return view('ManageActivity.UpdateActivityInterface',compact('activityPost')
+            
+        );
     }
 
     /**
@@ -66,19 +98,37 @@ class ActivityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+
+    public function editPage(Request $request, $id){
+
+        $activityPost = ActivityRecord::find($id);
+        return view('ManageActivity.UpdateActivityInterface',compact('activityPost')
+            
+        );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function update(Request $request, $id)
+    {
+        $post = ActivityRecord::find($id);
+
+        $post->update([
+
+            "activity_name" => $request->input('activity_name'),
+            "activity_date" => $request->input('activity_date'),
+            "activity_notes" => $request->input('activity_notes'),
+            "activity_venue" => $request->input('activity_venue'),
+            
+        ]);
+
+        return redirect()->back()->with('message', 'Your activity details has been updated successfully!');
+    }
+
+    
+    //delete data
     public function destroy($id)
     {
-        //
+        DB::delete('delete from activities where id = ?', [$id]);
+
+        return redirect()->back();
     }
 }

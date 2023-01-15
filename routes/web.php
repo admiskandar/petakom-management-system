@@ -26,11 +26,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    
-
-
-
-
     //temporary
     Route::get('/profile', function () {
         return view('ManageProfile.UpdateProfilePage');
@@ -40,10 +35,33 @@ Route::middleware([
         return view('ManageRegistration.AddRegistrationPage');
     })->name('registration');
 
-    Route::get('/activity', function () {
-        return view('ManageActivity.ActivityInterface');
-    })->name('activity');
+    Route::controller(App\Http\Controllers\ActivityController::class)->group(function(){
+        Route::get('/activity','index')->name('activity.ActivityInterface');
+        Route::get('/addactivity','create')->name('activity.AddActivityInterface');
+        Route::post('/storeactivity','store')->name('store');
+        Route::get('/listactivity', 'show')->name('activity.ViewActivityInterface');
+        Route::get('viewactivity/{id}', 'showListActivity')->name('showListActivity');
+        Route::get('delete/{id}', 'destroy')->name('destroy');
+        Route::post('updateactivity/{id}', 'update')->name('updateactivity');
+        Route::get('editActivity/{id}', 'editPage')->name('editActivity');
 
+
+
+    });
+
+//     Route::get('/activity', function () {
+//          return view('ManageActivity.ActivityInterface');
+//     })->name('activity');
+
+//     Route::get('/addactivity', function () {
+//          return view('ManageActivity.AddActivityInterface');
+//     })->name('addactivity');
+
+//     Route::post('/store', function () {
+//         return view('store');
+//    })->name('storeActivity');
+
+   
     Route::get('/calendar', function () {
         return view('ManageCalendar.CalendarHome');
     })->name('calendar');
