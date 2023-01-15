@@ -253,6 +253,13 @@ class BulletinController extends Controller
         return back()->with('success', 'Item bookmarked successfully');
     }
 
+    public function DeleteBookmark($id)
+    {
+        $bookmark = BookmarkRecord::find($id);
+        $bookmark->delete();
+        return back();
+    }
+
 
 }
 

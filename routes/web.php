@@ -62,3 +62,4 @@ Route::get('/bookmark', function () {
 Route::resource('bulletin', BulletinController::class);
 Route::get('/ViewBookmark', [BulletinController::class,'ViewBookmark'])->name('bulletin.ViewBookmark');
 Route::post('/AddBookmark/{id}', [BulletinController::class,'AddBookmark'])->name('bulletin.AddBookmark');
+Route::delete('DeleteBookmark/{id}', [BulletinController::class,'DeleteBookmark'])->name('bulletin.DeleteBookmark');

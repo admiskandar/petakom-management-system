@@ -76,9 +76,10 @@
                                 <p class="text-muted">{{$bookmark->bulletin->bulletin_excerpt}}</p>
                                 <a href="{{ route('bulletin.show', [$bookmark->bulletin->id])}}" class="text-primary">Continue Reading<i class="fas fa-long-arrow-alt-right"></i></a>
 
-                                <form action="{{ route('bulletin.AddBookmark', [$bookmark->bulletin->id])}}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('bulletin.DeleteBookmark', [$bookmark->id])}}" method="post" enctype="multipart/form-data">
                                             @csrf
-                                            <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger"> Add To Bookmark</button>
+                                            @method('DELETE')
+                                            <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger"> Remove Bookmark</button>
                                 </form>     
                             </div><!--end blog-card-->                                   
                         </div><!--end card-body-->

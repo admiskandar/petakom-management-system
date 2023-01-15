@@ -81,7 +81,6 @@
                                 </h4>
                                 <p class="text-muted">{{$bulletin->bulletin_excerpt}}</p>
                                 <a href="{{ route('bulletin.show', [$bulletin->id])}}" class="text-primary">Continue Reading<i class="fas fa-long-arrow-alt-right"></i></a>
-                                <!-- <form action="{{ route('bulletin.AddBookmark', [$bulletin->id])}}" method="get"> -->
                                 <form action="{{ route('bulletin.AddBookmark', [$bulletin->id])}}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger"> Add To Bookmark</button>
