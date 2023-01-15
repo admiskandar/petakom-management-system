@@ -36,6 +36,7 @@
                             <br>
 
                             <br>
+                            @if ($vote->vote_year != $date)
 
                             {{-- <form action="{{ route('election.voteedit') }}" method="POST"> --}}
                             @csrf
@@ -57,7 +58,7 @@
 
                                     <tbody>
                                         @forelse($election as $election)
-                                            @if ($vote->vote_year != $date)
+                                            
                                             {{-- <tr style="display: none;"> --}}
                                             <tr>
                                                 <td><img src="{{ asset('uploads/candidates/' . $election->candidate_picture) }}"
@@ -76,13 +77,18 @@
                                                 </form>
                                                 </td>
                                             </tr>
-                                            @endif
+                                            
                                         @empty
                                             <p class="text-warning">No candidate registered</p>
                                         @endforelse
 
                                     </tbody>
                                 </table>
+                                @else
+                                <div class="card">
+                                    <h1 style="text-align: center">You have already voted for this year!!!</h1>
+                                    </div>
+                                @endif
                             </div>
                             {{-- <a href="{{ route('election.vote') }}"><button
                                         class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"style="margin-right: 30px;"><i
