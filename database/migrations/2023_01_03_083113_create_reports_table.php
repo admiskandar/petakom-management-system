@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('proposal_id');//foreign key
-            $table->date('date');
+            $table->dateTime('date');
             $table->integer('status');
             $table->timestamps();
             $table->foreign('proposal_id')->references('id')->on('proposals');//foreign key

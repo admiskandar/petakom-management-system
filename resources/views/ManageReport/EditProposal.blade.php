@@ -1,4 +1,3 @@
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -21,7 +20,9 @@
                                 </div>
                                 <div class="card-content collpase show">
                                     <div class="card-body">
-                                        <form class="form form-horizontal" action="" method="POST" enctype="multipart/form-data">
+                                        <form class="form form-horizontal" action="{{route('update' , ['id' => $reports->id])}}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="mdi mdi-emoticon">&nbsp;&nbsp;&nbsp;</i>Program Details</h4>
                                                 <hr>
@@ -30,7 +31,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control">Program Name</label>
                                                             <div class="col-md-9 mx-auto">
-                                                                <input type="text" class="form-control border-primary" placeholder="Program name" value="{{ $data->title }}" id="title" name="title">
+                                                                <input type="text" class="form-control border-primary" placeholder="Program name" value="{{ old('title', $reports->title) }}" id="title" name="title">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -38,7 +39,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control">Objective</label>
                                                             <div class="col-md-9 mx-auto">
-                                                                <input type="text" class="form-control border-primary" placeholder="Objective of the program" name="objective" id="objective">
+                                                                <input type="text" class="form-control border-primary" placeholder="Objective of the program" value="{{ old('objective', $reports->objective) }}" name="objective" id="objective">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -48,7 +49,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control">Organizer</label>
                                                             <div class="col-md-9 mx-auto">
-                                                                <input type="text" class="form-control border-primary" placeholder="Organizer" name="organizer" id="organizer">
+                                                                <input type="text" class="form-control border-primary" placeholder="Organizer" value="{{ old('organizer', $reports->organizer) }}" name="organizer" id="organizer">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -56,7 +57,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control">Location</label>
                                                             <div class="col-md-9 mx-auto">
-                                                                <input type="text" class="form-control border-primary" placeholder="Program's Location" name="location" id="location">
+                                                                <input type="text" class="form-control border-primary" placeholder="Program's Location" value="{{ old('location', $reports->location) }}" name="location" id="location">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -66,7 +67,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-md-3 label-control">Paticipation</label>
                                                             <div class="col-md-9 mx-auto">
-                                                                <input class="form-control border-primary" type="number" placeholder="Number of participation" name="participation" id="participation">
+                                                                <input class="form-control border-primary" type="number" placeholder="Number of participation" value="{{ old('participation', $reports->participation) }}" name="participation" id="participation">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -79,7 +80,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control">Start Date</label>
                                                         <div class="col-md-9 mx-auto">
-                                                            <input type="date" class="form-control border-primary" placeholder="" id="start_date" name="start_date">
+                                                            <input type="date" class="form-control border-primary" value="{{ old('start_date', $reports->start_date) }}"  placeholder="" id="start_date" name="start_date">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,7 +88,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control">End Date</label>
                                                         <div class="col-md-9 mx-auto">
-                                                            <input type="date" class="form-control border-primary" placeholder="" name="end_date" id="end_date">
+                                                            <input type="date" class="form-control border-primary" value="{{ old('end_date', $reports->end_date) }}" placeholder="" name="end_date" id="end_date">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -97,7 +98,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control">Start Time</label>
                                                         <div class="col-md-9 mx-auto">
-                                                            <input type="time" class="form-control border-primary" placeholder="" id="start_time" name="start_time">
+                                                            <input type="time" class="form-control border-primary" placeholder="" value="{{ old('start_time', $reports->start_time) }}" id="start_time" name="start_time">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -105,7 +106,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control">End Date</label>
                                                         <div class="col-md-9 mx-auto">
-                                                            <input type="time" class="form-control border-primary" placeholder="" name="end_time" id="end_time">
+                                                            <input type="time" class="form-control border-primary" placeholder=""  value="{{ old('end_time', $reports->end_time) }}" name="end_time" id="end_time">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -118,7 +119,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-md-3 label-control">Estimate Budget</label>
                                                         <div class="col-md-9 mx-auto">
-                                                            <input class="form-control border-primary" type="text" placeholder="Amount of the budget" value=" " name="budget" id="budget">
+                                                            <input class="form-control border-primary" type="text" placeholder="Amount of the budget" value="{{ old('budget', $reports->budget) }}" name="budget" id="budget">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -126,7 +127,7 @@
                                             <hr>
                                             <div class="form-actions text-center">
                                                 <button class="btn btn-primary float-md-right" type="submit">
-                                                    <i class="fa fa-dot-circle-o"></i>Save</button>&nbsp;&nbsp;
+                                                    <i class="fa fa-dot-circle-o"></i>Update</button>&nbsp;&nbsp;
                                             </div>
                                         </form>
                                     </div>

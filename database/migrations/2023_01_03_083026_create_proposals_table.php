@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
-            $table->text('title');
-            $table->text('objective');
-            $table->text('organizer');
+            $table->string('title');
+            $table->string('objective');
+            $table->string('organizer');
             $table->date('start_date');
             $table->date('end_date');
             $table->time('start_time');
             $table->time('end_time');
-            $table->text('location');
+            $table->string('location');
             $table->integer('participation');
             $table->decimal('budget');
             $table->integer('status');

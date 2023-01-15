@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="card-content collpase show">
                                     <div class="card-body">
-                                        <form class="form form-horizontal" action="{{route('report.store')}}" method="POST" enctype="multipart/form-data">
+                                        <form class="form form-horizontal" action="{{route('store')}}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="mdi mdi-emoticon">&nbsp;&nbsp;&nbsp;</i>Program Details</h4>
