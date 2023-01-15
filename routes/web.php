@@ -57,9 +57,8 @@ Route::get('/bookmark', function () {
     return view('ManageBulletin.MyBookmark');
 })->name('bookmark');
 
-// Route::get('ViewBookmark', 'BulletinController@ViewBookmark')->name('bulletin.ViewBookmark');
 
-Route::resource('/bulletin', BulletinController::class);
+Route::resource('bulletin', BulletinController::class);
 Route::get('filterbycategory', [BulletinController::class,'filterBulletinCategory'])->name('bulletin.filterBulletinCategory'); 
 Route::get('filterbytag', [BulletinController::class,'filterBulletinTag'])->name('bulletin.filterBulletinTag'); 
 Route::get('sort', [BulletinController::class,'sortBulletin'])->name('bulletin.sortBulletin'); 

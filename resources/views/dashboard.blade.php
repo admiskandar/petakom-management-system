@@ -16,8 +16,7 @@
 
                 <button type="button" class="btn btn-gradient-primary"><a href="{{route('election')}}">Election</a></button>
                 <button type="button" class="btn btn-gradient-primary"><a href="{{route('report')}}">Report</a></button>
-                <button type="button" class="btn btn-gradient-primary"><a href="{{route('bulletin')}}">Bulletin</a></button>
-                  
+                <button type="button" class="btn btn-gradient-primary"><a href="{{route('bulletin.index')}}">Bulletin</a></button>
             </div>
             @endif
 

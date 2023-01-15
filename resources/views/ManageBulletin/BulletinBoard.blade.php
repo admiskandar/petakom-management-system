@@ -90,9 +90,14 @@
                                     </div>
                                 </form>
                             </li>
+                            
+                            @if(Auth::user()->user_type == "Petakom Committee")
                             <li class="list-inline-item">
                                 <button type="button" class="btn btn-primary waves-effect waves-light"><a href="{{ route('bulletin.create') }}" style="color: #ffffff !important;">New</a></button>
                             </li>
+                            @else
+
+                            @endif
                         </ul>
                     </div>                            
                 </div><!--end col-->

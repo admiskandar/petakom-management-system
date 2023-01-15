@@ -42,14 +42,14 @@ class BulletinController extends Controller
 
         //To validate required fields
         // $request->validate([
-        //     // 'bulletin_name'=> 'required',
-        //     // 'bulletin_category'=> 'required',
-        //     // 'bulletin_date'=> 'required',
-        //     // 'bulletin_tag'=> 'required',
-        //     // 'bulletin_excerpt'=> 'required',
-        //     // 'bulletin_detail'=> 'required',
+        //     'bulletin_name'=> 'required',
+        //     'bulletin_category'=> 'required',
+        //     'bulletin_date'=> 'required',
+        //     'bulletin_tag'=> 'required',
+        //     'bulletin_excerpt'=> 'required',
+        //     'bulletin_detail'=> 'required',
         //     // 'bulletin_pdf'=> 'required',
-        //     'bulletin_image'=> 'required|image|mimes:png,jpg,jpeg|max:2048',
+        //     // 'bulletin_image'=> 'required|image|mimes:png,jpg,jpeg|max:2048',
         //     // 'bulletin_video'=> 'required',
         //     // 'bulletin_link' => 'required'
         // ]);

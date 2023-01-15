@@ -17,19 +17,19 @@
                                     <div class="form-group row">
                                         <label for="bulletin_name" class="col-sm-2 col-form-label text-right">Title</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="bulletin_name" value="{{$bulletin->bulletin_name}}">
+                                            <input class="form-control" type="text" name="bulletin_name" value="{{$bulletin->bulletin_name}}" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="bulletin_date" class="col-sm-2 col-form-label text-right">Date</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="date" name="bulletin_date" value="{{$bulletin->bulletin_date}}">
+                                            <input class="form-control" type="date" name="bulletin_date" value="{{$bulletin->bulletin_date}}" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label text-right">Category</label>
                                         <div class="col-sm-10">
-                                            <select class="bulletin_category" name="bulletin_category">
+                                            <select class="bulletin_category" name="bulletin_category" required>
                                                 <option value="GENERAL" {{ old('bulletin_category', $bulletin->bulletin_category) == 'GENERAL' ? 'selected' : '' }}>GENERAL</option>
                                                 <option value="CLASS" {{ old('bulletin_category', $bulletin->bulletin_category) == 'CLASS' ? 'selected' : '' }}>CLASS</option>
                                                 <option value="EVENT" {{ old('bulletin_category', $bulletin->bulletin_category) == 'EVENT' ? 'selected' : '' }}>EVENT</option>
@@ -40,7 +40,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label text-right">Tag</label>
                                         <div class="col-sm-10">
-                                            <select class="bulletin_tag" name="bulletin_tag">
+                                            <select class="bulletin_tag" name="bulletin_tag" required>
                                             <option value="PETAKOM" {{ old('bulletin_tag', $bulletin->bulletin_tag) == 'PETAKOM' ? 'selected' : '' }}>PETAKOM</option>
                                             <option value="FKOM" {{ old('bulletin_tag', $bulletin->bulletin_tag) == 'FKOM' ? 'selected' : '' }}>FKOM</option>
                                             </select>
@@ -56,7 +56,7 @@
                                     <div class="form-group">
                                         <label for="bulletin_excerpt" class="col-sm-2 col-form-label text-right">Excerpt</label>
                                         <div>
-                                            <textarea class="form-control" rows="4" name="bulletin_excerpt">{{$bulletin->bulletin_excerpt}}</textarea>
+                                            <textarea class="form-control" rows="4" name="bulletin_excerpt" required>{{$bulletin->bulletin_excerpt}}</textarea>
                                         </div>
                                     </div>                                                                
                                 </div>
@@ -66,7 +66,7 @@
                                     <div class="form-group">
                                         <label for="bulletin_detail">Details</label>
                                         <div>
-                                            <textarea class="form-control" rows="4" name="bulletin_detail">{{$bulletin->bulletin_detail}}</textarea>
+                                            <textarea class="form-control" rows="4" name="bulletin_detail" required>{{$bulletin->bulletin_detail}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">

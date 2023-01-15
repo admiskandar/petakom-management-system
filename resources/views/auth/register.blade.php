@@ -46,7 +46,7 @@
                         <option selected>Open this select menu</option>
                         <option value="coordinator">Coordinator</option>
                         <option value="Student">Student</option>
-                        <option value="Petakom Committe">Petakom Committee</option>
+                        <option value="Petakom Committee">Petakom Committee</option>
                         <option value="Lecturer">Lecturer</option>
                         <option value="Dean">Dean</option>
                         <option value="Head of Program">Head of Program</option>

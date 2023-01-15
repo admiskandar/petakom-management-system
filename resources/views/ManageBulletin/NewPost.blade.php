@@ -14,19 +14,19 @@
                                     <div class="form-group row">
                                         <label for="bulletin_name" class="col-sm-2 col-form-label text-right">Title</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="bulletin_name">
+                                            <input class="form-control" type="text" name="bulletin_name" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="bulletin_date" class="col-sm-2 col-form-label text-right">Date</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="date" name="bulletin_date">
+                                            <input class="form-control" type="date" name="bulletin_date" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label text-right">Category</label>
                                         <div class="col-sm-10">
-                                            <select class="bulletin_category" name="bulletin_category">
+                                            <select class="bulletin_category" name="bulletin_category" required>
                                                 <option value="GENERAL">GENERAL</option>
                                                 <option value="CLASS">CLASS</option>
                                                 <option value="EVENT">EVENT</option>
@@ -37,7 +37,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label text-right">Tag</label>
                                         <div class="col-sm-10">
-                                            <select class="bulletin_tag" name="bulletin_tag">
+                                            <select class="bulletin_tag" name="bulletin_tag" required>
                                                 <option value="PETAKOM">PETAKOM</option>
                                                 <option value="FKOM">FKOM</option>
                                             </select>
@@ -52,7 +52,7 @@
                                     <div class="form-group">
                                         <label for="bulletin_excerpt" class="col-sm-2 col-form-label text-right">Excerpt</label>
                                         <div>
-                                            <textarea class="form-control" rows="4" name="bulletin_excerpt"></textarea>
+                                            <textarea class="form-control" rows="4" name="bulletin_excerpt" required></textarea>
                                         </div>
                                     </div>                                                                
                                 </div>
@@ -61,7 +61,7 @@
                                     <div class="form-group">
                                         <label for="bulletin_detail">Details</label>
                                         <div>
-                                            <textarea class="form-control" rows="4" name="bulletin_detail"></textarea>
+                                            <textarea class="form-control" rows="4" name="bulletin_detail" required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">

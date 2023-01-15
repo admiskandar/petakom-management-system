@@ -40,22 +40,33 @@
                                             <a href="{{$bulletin->bulletin_link}}">{{$bulletin->bulletin_link}}</a>
                                         </p>
                                         <ul class="p-0 mt-4 list-inline">
-                                            <li class="list-inline-item">
-                                                <button type="button" class="btn btn-primary waves-effect waves-light"><a href="{{ route('bulletin.edit', [$bulletin->id])}}" class="text-primary" style="color: #ffffff !important;">Edit</a></button>                                     
-                                            </li> 
+
+                                            @if(Auth::user()->user_type == "Petakom Committee")
+                                                <li class="list-inline-item">
+                                                    <button type="button" class="btn btn-primary waves-effect waves-light"><a href="{{ route('bulletin.edit', [$bulletin->id])}}" class="text-primary" style="color: #ffffff !important;">Edit</a></button>                                     
+                                                </li>
+                                            @else
+
+                                            @endif
+                                             
                                             <li class="list-inline-item">
                                                 <form action="{{ route('bulletin.AddBookmark', [$bulletin->id])}}" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     <button class="btn btn-secondary waves-effect waves-light" type="submit" > Add To Bookmark</button>
                                                 </form> 
-                                            
+                                            </li>
+
+                                            @if(Auth::user()->user_type == "Petakom Committee")
                                             <li class="list-inline-item">
                                                 <form action="{{ route('bulletin.destroy', [$bulletin->id])}}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger waves-effect waves-light" type="submit" >Delete</button>
                                                 </form> 
-                                            </li>    
+                                            </li>  
+                                            @else
+
+                                            @endif
                                         </ul>                                 
                                     </div>
                                 </div><!--end col-->                                            
