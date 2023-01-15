@@ -87,11 +87,10 @@
                     // check if proposal id already exists in reports table
                     var proposalId = $(this).data('proposal-id'); // get the proposal id from the button
                     var url = '{{ route("checkProposalId", ":proposalId") }}'; // set the url to check proposal id
-                    // url = url.replace(':proposalId', proposalId); // replace the placeholder with the actual proposal id
+                    url = url.replace(':proposalId', proposalId); // replace the placeholder with the actual proposal id
                     $.ajax({
                         url: url,
                         type: 'GET',
-                        data:{ proposalId: proposalId },
                         success: function(response) {
                             if (response.exists) { // if proposal id already exists in reports table
                                 Swal.fire({
@@ -125,7 +124,12 @@
                             }
                         },
                         error: function(xhr, status, error) {
-                            console.log(xhr.responseText);
+                            Swal.fire({
+                                title: 'Error!',
+                                text: "An error occurred while checking the proposal id. Please try again.",
+                                type: 'error',
+                                confirmButtonText: 'OK'
+                            });
                         }
                     });
                 });
