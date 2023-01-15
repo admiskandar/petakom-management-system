@@ -38,7 +38,10 @@
                                         <h6 class="text-muted font-13">Link :</h6> 
                                         <p class="text-muted mb-4"><a href="{{$bulletin->bulletin_link}}">{{$bulletin->bulletin_link}}</a>  </p>
                                         <button type="button" class="btn btn-gradient-primary waves-effect waves-light"><a href="{{ route('bulletin.edit', [$bulletin->id])}}" class="text-primary">Edit</a></button>                                     
-                                        <button type="button" class="btn btn-gradient-primary waves-effect waves-light">Add to Bookmark</button>
+                                        <form action="{{ route('bulletin.AddBookmark', [$bulletin->id])}}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger"> Add To Bookmark</button>
+                                        </form>  
                                         <br>
                                         <form action="{{ route('bulletin.destroy', [$bulletin->id])}}" method="post">
                                             @csrf

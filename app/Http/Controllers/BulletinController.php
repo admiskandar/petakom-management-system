@@ -156,9 +156,9 @@ class BulletinController extends Controller
         $bulletin -> bulletin_excerpt = $request->get('bulletin_excerpt');
         $bulletin -> bulletin_detail = $request->get('bulletin_detail');
         $bulletin -> bulletin_link = $request->get('bulletin_link');
+        
 
-        if($request->hasfile('bulletin_pdf'))
-        {
+        if($request->hasfile('bulletin_pdf')){
             $destination = 'uploads/pdf/'.$bulletin->bulletin_pdf;
             if(File::exists($destination))
             {
@@ -171,7 +171,7 @@ class BulletinController extends Controller
             $bulletin->bulletin_pdf = $filename;
         }
 
-        {
+        if($request->hasfile('bulletin_image')){
             $destination = 'uploads/images/'.$bulletin->bulletin_image;
             if(File::exists($destination))
             {
@@ -184,7 +184,7 @@ class BulletinController extends Controller
             $bulletin->bulletin_image = $filename;
         }
         
-        {
+        if($request->hasfile('bulletin_video')){
             $destination = 'uploads/videos/'.$bulletin->bulletin_video;
             if(File::exists($destination))
             {
@@ -194,7 +194,7 @@ class BulletinController extends Controller
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
             $file->move('uploads/videos/', $filename);
-            $bulletin->bulletin_videos = $filename;
+            $bulletin->bulletin_video = $filename;
         }
         $bulletin->update();
 
