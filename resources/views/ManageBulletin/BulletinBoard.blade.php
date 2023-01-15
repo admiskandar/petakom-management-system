@@ -1,6 +1,7 @@
 <x-app-layout>
         {{-- <button class="btn btn-gradient-primary"><a href="{{ route('bulletin.show', $bulletin->id) }}">View More</a></button> --}}
 
+
     <!-- Page Content-->
     <div class="page-content">
         <div class="container-fluid">
@@ -146,6 +147,7 @@
             </div><!--end row-->
             <!-- End of Bulletin Post --> 
         </div><!-- container -->
+
 
         <footer class="footer text-center text-sm-left">
             &copy; 2019 Metrica <span class="text-muted d-none d-sm-inline-block float-right">Crafted with <i class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>

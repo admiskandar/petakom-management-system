@@ -1180,6 +1180,7 @@
         {
             "name": "laravel/fortify",
 
+
             "version": "v1.16.0",
             "source": {
                 "type": "git",
@@ -1430,6 +1431,7 @@
                 "source": "https://github.com/laravel/framework"
             },
 
+
             "time": "2023-01-10T16:10:09+00:00"
         },
         {
@@ -1502,6 +1504,7 @@
                 "source": "https://github.com/laravel/jetstream"
             },
 
+
             "time": "2023-01-09T14:38:56+00:00"
         },
         {
@@ -1516,6 +1519,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/sanctum/zipball/bf5cb6c256d19a108bdfaca121b2594da063fbd5",
                 "reference": "bf5cb6c256d19a108bdfaca121b2594da063fbd5",
+
 
                 "shasum": ""
             },
@@ -1568,6 +1572,7 @@
                 "issues": "https://github.com/laravel/sanctum/issues",
                 "source": "https://github.com/laravel/sanctum"
             },
+
 
             "time": "2023-01-06T15:43:53+00:00"
 
@@ -6450,6 +6455,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
+
 
             "time": "2023-01-10T16:14:21+00:00"
 

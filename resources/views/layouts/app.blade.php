@@ -18,17 +18,48 @@
     <!-- Styles -->
     @livewireStyles
 
+
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('build/assets/images/favicon.ico') }}">
 
     <link href="{{ asset('build/assets/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet">
     <link href="{{ asset('build/assets/plugins/filter/magnific-popup.css') }}" rel="stylesheet" type="text/css" />
 
+
     <!-- App css -->
     <link rel="stylesheet" href="{{ asset('build/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/icons.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/metisMenu.min.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Styles -->
+    @livewireStyles
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('build') }}/assets/images/petakom-logo.png">
+
+    <!-- App css -->
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/css/icons.css">
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/css/metisMenu.min.css">
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/css/style.css">
+
+    <!-- calendar css -->
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/core/main.css">
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/core/main.css" />
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/daygrid/main.css" />
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/bootstrap/main.css" />
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/timegrid/main.css" />
+    <link rel="stylesheet" href="{{ asset('build') }}/assets/plugins/fullcalendar/packages/list/main.css" />
+
+    <!-- calendar css -->
+
 
 
 </head>
@@ -68,6 +99,30 @@
     <script src="{{ asset('build/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('build/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
 
+
+    <!-- App js -->
+    <script src="{{ asset('build/assets/js/app.js') }}"></script>
+    <!-- jQuery  -->
+    <script src="{{ asset('build') }}/assets/js/jquery.min.js"></script>
+    <script src="{{ asset('build') }}/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('build') }}/assets/js/metisMenu.min.js"></script>
+    <script src="{{ asset('build') }}/assets/js/waves.min.js"></script>
+    <script src="{{ asset('build') }}/assets/js/jquery.slimscroll.min.js"></script>
+
+    <script src="{{ asset('build') }}/assets/plugins/apexcharts/apexcharts.min.js"></script>
+    <script src="{{ asset('build') }}/assets/pages/jquery.analytics_dashboard.init.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/moment/moment.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/fullcalendar/packages/core/main.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/fullcalendar/packages/daygrid/main.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/fullcalendar/packages/timegrid/main.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/fullcalendar/packages/interaction/main.js"></script>
+    <script src="{{ asset('build') }}/assets/plugins/fullcalendar/packages/list/main.js"></script>
+    <!-- <script src="{{ asset('build') }}/assets/pages/jquery.calendar.js"></script> -->
+
+    <!-- App js -->
+    <script src="{{ asset('build') }}/assets/js/app.js"></script>
+
     <script src="{{ asset('build/assets/plugins/dropify/js/dropify.min.js') }}"></script>
     <script src="{{ asset('build/assets/pages/jquery.form-upload.init.js') }}"></script>
 
@@ -78,6 +133,7 @@
 
     <!-- App js -->
     <script src="{{ asset('build/assets/js/app.js') }}"></script>
+
 </body>
 
 </html>
