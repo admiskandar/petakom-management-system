@@ -5,6 +5,7 @@
             <br>
             <br>
 
+
             @if(Auth::user()->user_type == "Coordinator")
             <div class="card" style="display: none">
                 <button type="button" class="btn btn-gradient-primary"><a href="{{route('activity')}}">Activity</a></button>
