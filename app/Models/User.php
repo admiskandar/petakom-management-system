@@ -58,4 +58,13 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function voter(){
+        
+        return $this->hasmany('App\VoterData');
+
+
+    }
+
+
 }
