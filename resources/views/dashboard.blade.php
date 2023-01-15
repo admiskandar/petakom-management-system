@@ -8,7 +8,7 @@
 
             @if(Auth::user()->user_type == "Coordinator")
             <div class="card" style="display: none">
-                <button type="button" class="btn btn-gradient-primary"><a href="{{route('activity')}}">Activity</a></button>
+                <button type="button" class="btn btn-gradient-primary"><a href="{{route('activity.ActivityInterface')}}">Activity</a></button>
                 <button type="button" class="btn btn-gradient-primary"><a href="{{route('calendar')}}">Calendar</a></button>
             </div>
             @else
@@ -19,6 +19,7 @@
                 <button type="button" class="btn btn-gradient-primary"><a href="{{route('bulletin.index')}}">Bulletin</a></button>
             </div>
             @endif
+
 
         </h2>
     </x-slot>
