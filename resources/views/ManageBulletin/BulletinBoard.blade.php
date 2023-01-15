@@ -35,22 +35,58 @@
                     <div class="text-right">
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <div class="input-group">                               
-                                    <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
+                                <div class="input-group">
+                                    <form action="{{ route('bulletin.searchBulletin') }}" method="GET">
+                                        @csrf
+                                        <input type="text" name="search" placeholder="Search by name" style="tab-size: 2">
+                                        <button type="submit" class="btn btn-primary" value="Search">Search</button>
+                                    </form>
+                                    <!-- <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
                                     <span class="input-group-append">
                                         <button type="button" class="btn btn-gradient-primary"><i class="fas fa-search">Search</i></button>
-                                    </span>
+                                    </span> -->
                                 </div>
                             </li>
                             <li class="list-inline-item">
                                 <!-- <button type="button" class="btn btn-gradient-primary"><a href="{{ route('bookmark') }}">My Bookmark</a></button> -->
-                                <button type="button" class="btn btn-gradient-primary"><a href="{{ route('bulletin.ViewBookmark') }}">My Bookmark</a></button>
+                                <button type="button" class="btn btn-gradient-primary"><a href="{{ route('bulletin.ViewBookmark') }}">Bookmark</a></button>
                             </li>
                             <li class="list-inline-item">
-                                <button type="button" class="btn btn-gradient-primary">Filter</button>
+                                <form action="{{ route('bulletin.filterBulletinCategory')}}" method="GET">
+                                    <div class="form-group">
+                                        <label for="category">Filter by Category</label>
+                                        <select class="form-control" name="category" onchange="this.form.submit()">
+                                            <option selected>CATEGORY</option>
+                                            <option value="GENERAL">GENERAL</option>
+                                            <option value="CLASS">CLASS</option>
+                                            <option value="EVENT">EVENT</option>
+                                            <option value="WEBINAR">WEBINAR</option>                                                
+                                        </select>
+                                    </div>
+                                </form>
                             </li>
                             <li class="list-inline-item">
-                                <button type="button" class="btn btn-gradient-primary">Sort</button>
+                                <form action="{{ route('bulletin.filterBulletinTag')}}" method="GET">
+                                    <div class="form-group">
+                                        <label for="tag">Filter by Tag</label>
+                                        <select class="form-control" name="tag" onchange="this.form.submit()">
+                                            <option selected>TAG</option>
+                                            <option value="PETAKOM">PETAKOM</option>
+                                            <option value="FKOM">FKOM</option>                                                
+                                        </select>
+                                    </div>
+                                </form>
+                            </li>
+                            <li class="list-inline-item">
+                                <form action="{{ route('bulletin.sortBulletin')}}" method="GET">
+                                    <div class="form-group">
+                                        <label for="date">Sort by Date</label>
+                                        <select class="form-control" name="sort" onchange="this.form.submit()">
+                                            <option value="asc">ASC</option>
+                                            <option value="desc">DESC</option>                                                
+                                        </select>
+                                    </div>
+                                </form>
                             </li>
                             <li class="list-inline-item">
                                 <button type="button" class="btn btn-gradient-primary"><a href="{{ route('bulletin.create') }}">New</a></button>

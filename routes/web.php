@@ -59,7 +59,16 @@ Route::get('/bookmark', function () {
 
 // Route::get('ViewBookmark', 'BulletinController@ViewBookmark')->name('bulletin.ViewBookmark');
 
-Route::resource('bulletin', BulletinController::class);
-Route::get('/ViewBookmark', [BulletinController::class,'ViewBookmark'])->name('bulletin.ViewBookmark');
-Route::post('/AddBookmark/{id}', [BulletinController::class,'AddBookmark'])->name('bulletin.AddBookmark');
+Route::resource('/bulletin', BulletinController::class);
+Route::get('filterbycategory', [BulletinController::class,'filterBulletinCategory'])->name('bulletin.filterBulletinCategory'); 
+Route::get('filterbytag', [BulletinController::class,'filterBulletinTag'])->name('bulletin.filterBulletinTag'); 
+Route::get('sort', [BulletinController::class,'sortBulletin'])->name('bulletin.sortBulletin'); 
+Route::get('search', [BulletinController::class,'searchBulletin'])->name('bulletin.searchBulletin'); 
+
+
+
+
+Route::get('ViewBookmark', [BulletinController::class,'ViewBookmark'])->name('bulletin.ViewBookmark');
+Route::post('AddBookmark/{id}', [BulletinController::class,'AddBookmark'])->name('bulletin.AddBookmark');
 Route::delete('DeleteBookmark/{id}', [BulletinController::class,'DeleteBookmark'])->name('bulletin.DeleteBookmark');
+

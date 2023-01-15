@@ -233,7 +233,44 @@ class BulletinController extends Controller
     }
 
 
-    // Bookmark function
+    public function filterBulletinCategory(Request $request)
+    {
+        $category = $request->input('category');
+        $bulletins = BulletinRecord::where('bulletin_category', $category)->get();
+        return view('ManageBulletin.BulletinBoard', compact('bulletins'));
+    }
+    public function filterBulletinTag(Request $request)
+    {
+        $tag = $request->input('tag');
+        $bulletins = BulletinRecord::where('bulletin_tag', $tag)->get();
+        return view('ManageBulletin.BulletinBoard', compact('bulletins'));
+    }
+    
+    public function sortBulletin(Request $request)
+    {
+        $sort = $request->input('sort');
+        if ($sort == 'asc') {
+            $bulletins = BulletinRecord::orderBy('bulletin_date', 'asc')->get();
+        } else {
+            $bulletins = BulletinRecord::orderBy('bulletin_date', 'desc')->get();
+        }
+        return view('ManageBulletin.BulletinBoard', compact('bulletins'));
+    }
+
+
+    public function searchBulletin(Request $request)
+    {
+        $search = $request->input('search');
+        if ($search) {
+            $bulletins = BulletinRecord::where('bulletin_name', 'like', '%' . $search . '%')->get();
+        } else {
+            $bulletins = BulletinRecord::get();
+        }
+        return view('ManageBulletin.BulletinBoard', compact('bulletins'));
+    }
+
+
+    // BOOKMARK
     public function ViewBookmark()
     {
         $user_id = Auth::id();

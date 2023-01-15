@@ -38,7 +38,7 @@
                                         <label class="col-sm-2 col-form-label text-right">Tag</label>
                                         <div class="col-sm-10">
                                             <select class="bulletin_tag" name="bulletin_tag">
-                                            <option value="PETAKOM">PETAKOM</option>
+                                                <option value="PETAKOM">PETAKOM</option>
                                                 <option value="FKOM">FKOM</option>
                                             </select>
                                         </div>
