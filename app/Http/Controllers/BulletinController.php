@@ -355,10 +355,6 @@ class BulletinController extends Controller
         return view('ManageBulletin.MyBookmark', compact('bookmarks'));
     }
 
-
-    
-
-
 }
 
 
