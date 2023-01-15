@@ -74,7 +74,28 @@ Route::middleware([
         return view('ManageReport.ViewProposal');
     })->name('report');
 
-    Route::get('/bulletin', function () {
-        return view('ManageBulletin.BulletinBoard');
-    })->name('bulletin');
 });
+
+use App\Http\Controllers\BulletinController;
+Route::get('/bookmark', function () {
+    return view('ManageBulletin.MyBookmark');
+})->name('bookmark');
+
+
+Route::resource('bulletin', BulletinController::class);
+Route::get('filterbycategory', [BulletinController::class,'filterBulletinCategory'])->name('bulletin.filterBulletinCategory'); 
+Route::get('filterbytag', [BulletinController::class,'filterBulletinTag'])->name('bulletin.filterBulletinTag'); 
+Route::get('sort', [BulletinController::class,'sortBulletin'])->name('bulletin.sortBulletin'); 
+Route::get('search', [BulletinController::class,'searchBulletin'])->name('bulletin.searchBulletin'); 
+
+
+
+
+Route::get('ViewBookmark', [BulletinController::class,'ViewBookmark'])->name('bulletin.ViewBookmark');
+Route::post('AddBookmark/{id}', [BulletinController::class,'AddBookmark'])->name('bulletin.AddBookmark');
+Route::delete('DeleteBookmark/{id}', [BulletinController::class,'DeleteBookmark'])->name('bulletin.DeleteBookmark');
+Route::get('filtercategory', [BulletinController::class,'filterBookmarkCategory'])->name('bulletin.filterBookmarkCategory'); 
+Route::get('filtertag', [BulletinController::class,'filterBookmarkTag'])->name('bulletin.filterBookmarkTag'); 
+Route::get('sorting', [BulletinController::class,'sortBookmark'])->name('bulletin.sortBookmark'); 
+Route::get('searching', [BulletinController::class,'searchBookmark'])->name('bulletin.searchBookmark'); 
+

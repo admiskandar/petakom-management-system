@@ -9,6 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+// use Spatie\Permission\Traits\HasRoles;
+// use Spatie\Permission\Models\Role;
+
+// $adminRole = Role::create(['name' => 'admin']);
+// $user->assignRole($adminRole);
 
 class User extends Authenticatable
 {
@@ -17,16 +22,21 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    // use HasRoles;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
-    protected $fillable = [
+    
+     protected $fillable = [
         'name',
         'email',
         'password',
+        'user_type',
+        'user_phonenum',
+        'user_matric',
     ];
 
     /**
