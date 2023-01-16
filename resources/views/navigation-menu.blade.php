@@ -15,14 +15,14 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                 
+                    @if(Auth::user()->user_type != "Student" && Auth::user()->user_type != "Lecturer")
                     <x-jet-nav-link href="{{ route('report.ReportHomePage') }}" :active="request()->routeIs('report.*')" >
                         {{ __('Report') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('report.ViewProposal') }}" :active="request()->routeIs('report.*')" >
                         {{ __('Generate Report') }}
                     </x-jet-nav-link>
-                   
+                   @endif
                 </div>
             </div>
 
