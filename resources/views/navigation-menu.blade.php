@@ -15,6 +15,7 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+
                     @if(Auth::user()->user_type == "Student" && Auth::user()->user_type == "Lecturer")
                     <x-jet-nav-link href="{{ route('report.ReportHomePage') }}" :active="request()->routeIs('report.*')" class="card hidden">
                         {{ __('Report') }}
@@ -23,6 +24,7 @@
                         {{ __('Generate Report') }}
                     </x-jet-nav-link>
                     @endif
+
                 </div>
             </div>
 
