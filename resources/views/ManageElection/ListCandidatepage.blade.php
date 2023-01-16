@@ -6,8 +6,8 @@
                     <br>
                     <div class="card">
                         <div class="card-body">
-                            @if (Auth::user()->user_type == 'Student')
-                                <div style="display: none">
+                            @if (Auth::user()->user_type != 'Student')
+                                <div>
                                     <a href="{{ route('election.create') }}"><button
                                             class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"><i
                                                 class="mdi mdi-plus-circle-outline mr-2"></i>Add new candidate</button>
@@ -95,8 +95,8 @@
                                                 <td class="text-center">{{ $election->election_year }}</td>
                                                 <td>
 
-                                                    @if (Auth::user()->user_type == 'Student')
-                                                        <div class="card" style="display: none">
+                                                    @if (Auth::user()->user_type != 'Student')
+                                                        <div class="card">
                                                             <a href="{{ route('election.edit', $election->id) }}">
                                                                 <button
                                                                     class="dripicons-document-edit"><i></i></button></a>
