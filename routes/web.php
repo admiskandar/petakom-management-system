@@ -99,16 +99,6 @@ Route::middleware([
     //     return view('ManageElection.ViewLeaderboard');
     // })->name('election');
 
-    Route::get('/report', function () {
-        return view('ManageReport.ViewProposal');
-    })->name('report');
-
-
-    Route::get('/bulletin', function () {
-        return view('ManageBulletin.BulletinBoard');
-    })->name('bulletin');
-
-
 
 // });
 
