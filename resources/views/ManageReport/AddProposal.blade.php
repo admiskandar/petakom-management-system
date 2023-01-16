@@ -167,7 +167,7 @@
                                 title: 'Success!',
                                 text: 'Your data has been saved.',
                                 type: 'success',
-                                timer: 20000,
+                                timer: 2000,
                                 showConfirmButton: false
                             })
                         }

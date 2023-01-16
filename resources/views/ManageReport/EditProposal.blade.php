@@ -168,7 +168,7 @@
                                 title: 'Success!',
                                 text: 'Your data has been updated.',
                                 type: 'success',
-                                timer: 50000,
+                                timer: 2000,
                                 showConfirmButton: false
                             })
                         }
