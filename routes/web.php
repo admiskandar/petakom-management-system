@@ -1,7 +1,11 @@
 <?php
 
+
+use App\Http\Controllers\ElectionController;
+
 use App\Http\Controllers\CalendarController;
 use GuzzleHttp\Promise\Create;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +74,11 @@ Route::middleware([
     })->name('calendar');
 
 
+    // Route::get('/election', function () {
+    //     return view('ManageElection.ViewLeaderboard');
+    // })->name('election');
+
+
     // Route::resource('/calendar', CalendarController::class);
     // Route::get('/add', function () {
     //     return view('loadCalendar');
@@ -98,6 +107,23 @@ Route::middleware([
     Route::get('/report', function () {
         return view('ManageReport.ViewProposal');
     })->name('report');
+
+
+    Route::get('/bulletin', function () {
+        return view('ManageBulletin.BulletinBoard');
+    })->name('bulletin');
+
+    Route::resource('/election', ElectionController::class);
+
+    Route::get('leaderboard', [ElectionController::class,'leaderboard'])->name('election.leaderboard'); 
+    Route::get('ranking', [ElectionController::class,'ranking'])->name('election.ranking'); 
+    Route::get('filter', [ElectionController::class,'filter'])->name('election.filter'); 
+    Route::get('sort', [ElectionController::class,'sort'])->name('election.sort'); 
+    Route::get('search', [ElectionController::class,'search'])->name('election.search'); 
+    Route::get('vote', [ElectionController::class,'vote'])->name('election.vote'); 
+    Route::get('filter2', [ElectionController::class,'filter2'])->name('election.filter2'); 
+    Route::get('voteedit/{id}', [ElectionController::class,'voteedit'])->name('election.voteedit'); 
+
 
 });
 

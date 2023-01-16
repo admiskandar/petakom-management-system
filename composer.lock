@@ -4,7 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+
     "content-hash": "79a5e89f2d26b77db203727aafd60392",
+
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -61,6 +63,52 @@
             "time": "2022-12-07T17:46:57+00:00"
         },
         {
+            "name": "balping/json-raw-encoder",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/balping/json-raw-encoder.git",
+                "reference": "e2b0ab888342b0716f1f0628e2fa13b345c5f276"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/balping%2Fjson-raw-encoder/repository/archive.zip?sha=e2b0ab888342b0716f1f0628e2fa13b345c5f276",
+                "reference": "e2b0ab888342b0716f1f0628e2fa13b345c5f276",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Balping\\JsonRaw\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Balázs Dura-Kovács"
+                }
+            ],
+            "description": "Encode arrays to json with raw JS objects (eg. callbacks) in them",
+            "keywords": [
+                "callback",
+                "encode",
+                "json"
+            ],
+            "support": {
+                "issues": "https://gitlab.com/api/v4/projects/6731265/issues"
+            },
+            "time": "2020-06-06T16:24:31+00:00"
+        },
+        {
             "name": "brick/math",
             "version": "0.10.2",
             "source": {
@@ -115,6 +163,62 @@
                 }
             ],
             "time": "2022-08-10T22:54:19+00:00"
+        },
+        {
+            "name": "consoletvs/charts",
+            "version": "6.5.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ConsoleTVs/Charts.git",
+                "reference": "6914e85086749ac90832b0b14479642fe0337cf4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ConsoleTVs/Charts/zipball/6914e85086749ac90832b0b14479642fe0337cf4",
+                "reference": "6914e85086749ac90832b0b14479642fe0337cf4",
+                "shasum": ""
+            },
+            "require": {
+                "balping/json-raw-encoder": "^1.0",
+                "illuminate/console": "^5.0|^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^5.0|^6.0|^7.0|^8.0|^9.0",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ConsoleTVs\\Charts\\ChartsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ConsoleTVs\\Charts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Èrik Campobadal Forés",
+                    "email": "soc@erik.cat"
+                }
+            ],
+            "description": "The laravel charting package",
+            "support": {
+                "issues": "https://github.com/ConsoleTVs/Charts/issues",
+                "source": "https://github.com/ConsoleTVs/Charts/tree/6.5.6"
+            },
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/ErikCampobadal",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-08-08T11:01:59+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -1180,7 +1284,6 @@
         {
             "name": "laravel/fortify",
 
-
             "version": "v1.16.0",
             "source": {
                 "type": "git",
@@ -1256,7 +1359,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/92810d88f9a4252095a56c05541b07940363367c",
                 "reference": "92810d88f9a4252095a56c05541b07940363367c",
-
+ 
                 "shasum": ""
             },
             "require": {
@@ -1431,7 +1534,6 @@
                 "source": "https://github.com/laravel/framework"
             },
 
-
             "time": "2023-01-10T16:10:09+00:00"
         },
         {
@@ -1504,7 +1606,6 @@
                 "source": "https://github.com/laravel/jetstream"
             },
 
-
             "time": "2023-01-09T14:38:56+00:00"
         },
         {
@@ -1519,8 +1620,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/sanctum/zipball/bf5cb6c256d19a108bdfaca121b2594da063fbd5",
                 "reference": "bf5cb6c256d19a108bdfaca121b2594da063fbd5",
-
-
+ 
                 "shasum": ""
             },
             "require": {
@@ -1575,7 +1675,7 @@
 
 
             "time": "2023-01-06T15:43:53+00:00"
-
+ 
         },
         {
             "name": "laravel/serializable-closure",
@@ -3520,6 +3620,7 @@
                 }
             ],
             "time": "2023-01-12T18:13:24+00:00"
+
         },
         {
             "name": "spatie/laravel-permission",
@@ -3602,6 +3703,7 @@
                 }
             ],
             "time": "2023-01-14T05:16:37+00:00"
+
         },
         {
             "name": "symfony/console",
@@ -6458,6 +6560,7 @@
 
 
             "time": "2023-01-10T16:14:21+00:00"
+
 
         },
         {
