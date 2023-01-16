@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <a href="{{route('report.ReportHomePage')}}"><button class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"><i class="fas fa-chevron-left"></i></button></a>
                             @if(Auth::user()->user_type == "Petakom Committee" && Auth::user()->user_type == "Coordinator" && Auth::user()->user_type == "Head of Program")
-                            <div class="card" hidden>
+                            <div class="card">
                                 <div class="card-body invoice-head">
                                     <div class="row">
                                         <div class="col-md-4 align-self-center">
