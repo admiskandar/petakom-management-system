@@ -1284,6 +1284,7 @@
         {
             "name": "laravel/fortify",
 
+
             "version": "v1.16.0",
             "source": {
                 "type": "git",
@@ -1294,6 +1295,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/fortify/zipball/e626fc70fcd940d01326c6c44512398cccc3113c",
                 "reference": "e626fc70fcd940d01326c6c44512398cccc3113c",
+
 
                 "shasum": ""
             },
@@ -1345,6 +1347,7 @@
                 "source": "https://github.com/laravel/fortify"
             },
 
+
             "time": "2023-01-06T15:57:08+00:00"
         },
         {
@@ -1360,6 +1363,7 @@
                 "url": "https://api.github.com/repos/laravel/framework/zipball/92810d88f9a4252095a56c05541b07940363367c",
                 "reference": "92810d88f9a4252095a56c05541b07940363367c",
  
+
                 "shasum": ""
             },
             "require": {
@@ -1534,6 +1538,7 @@
                 "source": "https://github.com/laravel/framework"
             },
 
+
             "time": "2023-01-10T16:10:09+00:00"
         },
         {
@@ -1548,6 +1553,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/jetstream/zipball/6f661f6355be719490107cc0dd8e424083af3ca9",
                 "reference": "6f661f6355be719490107cc0dd8e424083af3ca9",
+
 
                 "shasum": ""
             },
@@ -1606,6 +1612,7 @@
                 "source": "https://github.com/laravel/jetstream"
             },
 
+
             "time": "2023-01-09T14:38:56+00:00"
         },
         {
@@ -1621,6 +1628,7 @@
                 "url": "https://api.github.com/repos/laravel/sanctum/zipball/bf5cb6c256d19a108bdfaca121b2594da063fbd5",
                 "reference": "bf5cb6c256d19a108bdfaca121b2594da063fbd5",
  
+
                 "shasum": ""
             },
             "require": {
@@ -1674,8 +1682,9 @@
             },
 
 
+
             "time": "2023-01-06T15:43:53+00:00"
- 
+
         },
         {
             "name": "laravel/serializable-closure",
@@ -3531,6 +3540,7 @@
         },
         {
             "name": "ramsey/uuid",
+
             "version": "4.7.3",
             "source": {
                 "type": "git",
@@ -3541,6 +3551,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/ramsey/uuid/zipball/433b2014e3979047db08a17a205f410ba3869cf2",
                 "reference": "433b2014e3979047db08a17a205f410ba3869cf2",
+
                 "shasum": ""
             },
             "require": {
@@ -3607,7 +3618,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/uuid/issues",
+
                 "source": "https://github.com/ramsey/uuid/tree/4.7.3"
+
             },
             "funding": [
                 {
@@ -3619,6 +3632,7 @@
                     "type": "tidelift"
                 }
             ],
+
             "time": "2023-01-12T18:13:24+00:00"
 
         },
@@ -3703,6 +3717,7 @@
                 }
             ],
             "time": "2023-01-14T05:16:37+00:00"
+
 
         },
         {
@@ -6173,6 +6188,7 @@
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
+
             "version": "2.0.0",
             "source": {
                 "type": "git",
@@ -6183,12 +6199,14 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/instantiator/zipball/c6222283fa3f4ac679f8b9ced9a4e23f163e80d0",
                 "reference": "c6222283fa3f4ac679f8b9ced9a4e23f163e80d0",
+
                 "shasum": ""
             },
             "require": {
                 "php": "^8.1"
             },
             "require-dev": {
+
                 "doctrine/coding-standard": "^11",
                 "ext-pdo": "*",
                 "ext-phar": "*",
@@ -6197,6 +6215,7 @@
                 "phpstan/phpstan-phpunit": "^1.3",
                 "phpunit/phpunit": "^9.5.27",
                 "vimeo/psalm": "^5.4"
+
             },
             "type": "library",
             "autoload": {
@@ -6223,7 +6242,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/instantiator/issues",
+
                 "source": "https://github.com/doctrine/instantiator/tree/2.0.0"
+
             },
             "funding": [
                 {
@@ -6239,7 +6260,9 @@
                     "type": "tidelift"
                 }
             ],
+
             "time": "2022-12-30T00:23:10+00:00"
+
         },
         {
             "name": "fakerphp/faker",
@@ -6433,6 +6456,7 @@
         },
         {
             "name": "laravel/pint",
+
             "version": "v1.4.0",
             "source": {
                 "type": "git",
@@ -6443,6 +6467,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/pint/zipball/0e7ffdb0af871be10d798e234772ea5d4020ae4a",
                 "reference": "0e7ffdb0af871be10d798e234772ea5d4020ae4a",
+
                 "shasum": ""
             },
             "require": {
@@ -6495,6 +6520,7 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
+
             "time": "2023-01-10T20:03:42+00:00"
         },
         {
@@ -6510,6 +6536,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/sail/zipball/77feb38df1cf8700c19487957dfb12087cd696c7",
                 "reference": "77feb38df1cf8700c19487957dfb12087cd696c7",
+
 
                 "shasum": ""
             },
@@ -6559,7 +6586,9 @@
             },
 
 
+
             "time": "2023-01-10T16:14:21+00:00"
+
 
 
         },

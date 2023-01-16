@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,6 +19,7 @@
     @livewireStyles
 
 
+
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('build/assets/images/favicon.ico') }}">
 
@@ -29,6 +31,16 @@
     <link rel="stylesheet" href="{{ asset('build/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/icons.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/metisMenu.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}" <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('build/assets/plugins/datatables/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/plugins/datatables/buttons.bootstrap4.min.css') }}">
+    <!-- Responsive datatable examples -->
+    <link rel="stylesheet" href="{{ asset('build/assets/plugins/datatables/responsive.bootstrap4.min.css') }}">
+    <!-- Sweet Alert -->
+    <link href="{{ asset('build/assets/plugins/sweet-alert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('build/assets/plugins/animate/animate.css')}}" type="text/css">
+
     <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}">
 
     <!-- Fonts -->
@@ -98,6 +110,13 @@
     <script src="{{ asset('build/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('build/assets/pages/jquery.analytics_dashboard.init.js') }}"></script>
 
+    <!-- Required datatable js -->
+    <script src="{{ asset('build/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('build/assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('build/assets/plugins/peity-chart/jquery.peity.min.js') }}"></script>
+
+    <script src="{{ asset('build/assets/pages/jquery.ana_customers.inity.js') }}"></script>
+
 
     <!-- App js -->
     <script src="{{ asset('build/assets/js/app.js') }}"></script>
@@ -130,8 +149,16 @@
     <script src="{{ asset('build/assets/plugins/filter/query.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('build/assets/pages/jquery.gallery.inity.js') }}"></script>
 
+
     <!-- App js -->
     <script src="{{ asset('build/assets/js/app.js') }}"></script>
+
+
+    <script src="{{ asset('build/assets/plugins/sweet-alert2/sweetalert2.min.js')}}"></script>
+    <!-- <script src="{{ asset('build/assets/pages/jquery.sweet-alert.init.js')}}"></script> -->
+</body>
+
+</html>
 
 </body>
 

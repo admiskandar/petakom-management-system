@@ -1,10 +1,14 @@
 <?php
 
 
+use App\Http\Controllers\ReportController;
+
+
 use App\Http\Controllers\ElectionController;
 
 use App\Http\Controllers\CalendarController;
 use GuzzleHttp\Promise\Create;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +27,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -31,6 +36,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
 
     //temporary
     Route::get('/profile', function () {
@@ -100,6 +106,40 @@ Route::middleware([
     // })->name('election');
 
 
+    // Route::get('/report', function () {
+    //     return view('ManageReport.ReportHome');
+    // })->name('report');
+
+
+    Route::get('/bulletin', function () {
+        return view('ManageBulletin.BulletinBoard');
+    })->name('bulletin');
+
+});
+
+// The route we have created to show all report.
+// Route::resource('/report', ReportController::class);
+Route::controller(App\Http\Controllers\ReportController::class)->group(function () {
+
+    Route::get('/home', 'index')->name('report.ReportHomePage');//link to go to reporthomepage
+    Route::get('/add', 'create')->name('report.AddProposal');//link to go to add page
+    Route::get('/show/{id}', 'App\Http\Controllers\ReportController@show')->name('report.ViewReport');//link to go to show page
+    Route::post('/store', 'store')->name('store');//link to store the data in the database
+    Route::get('edit/{id}', 'App\Http\Controllers\ReportController@edit')->name('edit');//link to go to edit page
+    Route::put('update/{id}', 'App\Http\Controllers\ReportController@update')->name('update');//link to update the data in the database
+    Route::put('updateStatusApproved/{id}', 'App\Http\Controllers\ReportController@updateStatusApproved')->name('updateStatusApproved');//link to update status the data in the database
+    Route::put('updateStatusReject/{id}', 'App\Http\Controllers\ReportController@updateStatusReject')->name('updateStatusReject');//link to update status the data in the database
+    Route::delete('report/{report}', 'App\Http\Controllers\ReportController@destroy')->name('destroy');//link to delete the data from the database
+
+    Route::get('/report', 'App\Http\Controllers\ReportController@generate')->name('report.ViewProposal');//link to go to reporthomepage
+    Route::post('/generate/{id}', 'App\Http\Controllers\ReportController@storeReport')->name('storeReport');//link to store the data in the database
+    Route::get('/check-proposal-id/{proposalId}', 'YourController@checkProposalId')->name('checkProposalId');
+
+}); 
+
+
+
+
 // });
 
     use App\Http\Controllers\BulletinController;
@@ -125,6 +165,7 @@ Route::middleware([
     Route::get('sorting', [BulletinController::class,'sortBookmark'])->name('bulletin.sortBookmark'); 
     Route::get('searching', [BulletinController::class,'searchBookmark'])->name('bulletin.searchBookmark'); 
 
+
     Route::controller(App\Http\Controllers\ReportController::class)->group(function () {
 
         Route::get('/home', 'index')->name('report.ReportHomePage');//link to go to reporthomepage
@@ -142,4 +183,5 @@ Route::middleware([
         Route::get('/check-proposal-id/{proposalId}', 'YourController@checkProposalId')->name('checkProposalId');
     
     }); 
+
 
