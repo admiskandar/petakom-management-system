@@ -73,3 +73,49 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    ! function($) {
+        "use strict";
+
+        var SweetAlert = function() {};
+
+        SweetAlert.prototype.init = function() {
+
+                //Parameter
+                $('#generate').click(function(e) {
+                    e.preventDefault(); // prevent the form from submitting
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to generate this data!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '$success',
+                        cancelButtonColor: '$danger',
+                        confirmButtonText: 'Yes, generate it!'
+                    }).then((result) => {
+                        if (result.value) {
+                            //submit the form here
+                            $("#generate-form").submit();
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Your data has been generated.',
+                                type: 'success',
+                                timer: 2000,
+                                showConfirmButton: false
+                            })
+                        }
+                    })
+                });
+
+
+            },
+            //init
+            $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
+    }(window.jQuery),
+
+    //initializing
+    function($) {
+        "use strict";
+        $.SweetAlert.init()
+    }(window.jQuery);
+</script>

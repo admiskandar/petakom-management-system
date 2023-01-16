@@ -36,6 +36,8 @@
                             <br>
 
                             <br>
+                            {{ $vote->vote_year }}
+                            {{ $date }}
                             @if ($vote->vote_year != $date)
 
                             {{-- <form action="{{ route('election.voteedit') }}" method="POST"> --}}

@@ -205,8 +205,8 @@ class ElectionController extends Controller
         $user_id = Auth::id();
         $date = Carbon::now()->format('Y');
         $election = ElectionData::where('election_year', 'like', '%'.$date.'%')->get();
-        $vote = VoterData::where('user_id', 'like', '%'.$user_id.'%')
-            ->latest()->first();
+        $vote = VoterData::where('user_id', 'like', '%'.$user_id.'%')->orderBy('voter.user_id', 'desc')->first();
+        // $vote = VoterData::where('user_id', 'like', '%'.$user_id.'%')->latest()->first();
 
         // $election = ElectionData::join('voter', 'election.election_year', '=', 'voter.vote_year')
         //     ->select('election.*', 'voter.*')

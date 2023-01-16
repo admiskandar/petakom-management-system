@@ -9,7 +9,7 @@
                                     <div class="float-right">
                                     <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    <li class="breadcrumb-item"><a href="{{ route('activity.ActivityInterface') }}">Calendar</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('activity.ActivityInterface') }}">Activity</a></li>
                                     <li class="breadcrumb-item active">Updated Activity</li>
                                 </ol>
                                     </div>

@@ -105,7 +105,7 @@ class ReportController extends Controller
         $report->generate_status = 0;
         $report->save();
 
-        return redirect()->route('report.ViewProposal');
+        return redirect()->route('reports.ViewProposal');
     }
 
     /**
