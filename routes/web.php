@@ -110,7 +110,7 @@ Route::controller(App\Http\Controllers\ReportController::class)->group(function 
     Route::put('updateStatusReject/{id}', 'App\Http\Controllers\ReportController@updateStatusReject')->name('updateStatusReject');//link to update status the data in the database
     Route::delete('report/{report}', 'App\Http\Controllers\ReportController@destroy')->name('destroy');//link to delete the data from the database
 
-    Route::get('/report', 'App\Http\Controllers\ReportController@generate')->name('report.ViewProposal');//link to go to reporthomepage
+    Route::get('/report', 'App\Http\Controllers\ReportController@generate')->name('reports.ViewProposal');//link to go to reporthomepage
     Route::post('/generate/{id}', 'App\Http\Controllers\ReportController@storeReport')->name('storeReport');//link to store the data in the database
 
 

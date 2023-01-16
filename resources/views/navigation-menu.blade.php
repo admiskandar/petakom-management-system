@@ -16,15 +16,30 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                     @if(Auth::user()->user_type != "Student" && Auth::user()->user_type != "Lecturer")
-                    <x-jet-nav-link href="{{ route('report.ReportHomePage') }}" :active="request()->routeIs('report.*')" class="card hidden">
+                    <x-jet-nav-link href="{{ route('report.ReportHomePage') }}" :active="request()->routeIs('report.*')" >
                         {{ __('Report') }}
                     </x-jet-nav-link>
                     @endif
                     @if(Auth::user()->user_type != "Student" && Auth::user()->user_type != "Lecturer")
-                    <x-jet-nav-link href="{{ route('report.ViewProposal') }}" :active="request()->routeIs('report.*')" class="card hidden">
+                    <x-jet-nav-link href="{{ route('reports.ViewProposal') }}" :active="request()->routeIs('reports.*')" >
                         {{ __('Generate Report') }}
                     </x-jet-nav-link>
                     @endif
+                    @if(Auth::user()->user_type != "Dean")
+                    <x-jet-nav-link href="{{ route('activity.ActivityInterface') }}" :active="request()->routeIs('activity.*')" >
+                        {{ __('Activity') }}
+                    </x-jet-nav-link>
+                    @endif
+                    <x-jet-nav-link href="{{ route('calendar.CalendarHomePage') }}" :active="request()->routeIs('calendar.*')" >
+                        {{ __('Calendar') }}
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('election.index') }}" :active="request()->routeIs('election.*')" >
+                        {{ __('Election') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('bulletin.index') }}" :active="request()->routeIs('bulletin.*')">
+                        {{ __('Bulletin') }}
+                    </x-jet-nav-link>
 
                 </div>
             </div>

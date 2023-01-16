@@ -53,7 +53,7 @@
     @livewireStyles
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('build') }}/assets/images/petakom-logo.png">
+    <link rel="shortcut icon" href="{{ asset('build') }}/assets/images/fk.png">
 
     <!-- App css -->
     <link rel="stylesheet" href="{{ asset('build') }}/assets/css/bootstrap.min.css">

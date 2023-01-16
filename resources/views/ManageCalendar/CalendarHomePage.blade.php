@@ -28,8 +28,10 @@
 
                 <div class="row">
                     <div class="col-sm-12 text-center">
+                        @if(Auth::user()->user_type != "Student" && Auth::user()->user_type != "Lecturer")
                         <a href="{{ route('calendar.AddCalendarPage') }}" class="btn btn-outline-dark px-3 float-center mt-0 mb-3"><i class="mdi mdi-plus-circle-outline mr-2"></i>CREATE EVENT</a>
-                        <a href="{{ route('calendar.ListCalendarPage') }}" class="btn btn-outline-dark px-4 float-center mt-0 mb-3"><i class="mdi mdi-format-list-bulleted mr-2"></i>  LIST EVENT</a>
+                        @endif
+                        <a href="{{ route('calendar.ListCalendarPage') }}" class="btn btn-outline-dark px-4 float-center mt-0 mb-3"><i class="mdi mdi-format-list-bulleted mr-2"></i> LIST EVENT</a>
 
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <x-app-layout>
-        {{-- <button class="btn btn-gradient-primary"><a href="{{ route('bulletin.show', $bulletin->id) }}">View More</a></button> --}}
+    {{-- <button class="btn btn-gradient-primary"><a href="{{ route('bulletin.show', $bulletin->id) }}">View More</a></button> --}}
 
     <!-- Page Content-->
     <div class="page-content">
@@ -41,16 +41,16 @@
                                         @csrf
                                         <ul class="list-inline-item">
                                             <li class="list-inline-item">
-                                            <input type="text" name="search" class="form-control">
+                                                <input type="text" name="search" class="form-control">
                                             </li>
                                             <li class="list-inline-item">
-                                            <button type="submit" class="btn btn-primary waves-effect waves-light" value="Search">Search</button>
+                                                <button type="submit" class="btn btn-primary waves-effect waves-light" value="Search">Search</button>
                                             </li>
                                         </ul>
                                     </form>
                                 </div>
                             </li>
-                            
+
                             <li class="list-inline-item">
                                 <form action="{{ route('bulletin.filterBookmarkCategory')}}" method="GET">
                                     <div class="form-group">
@@ -60,7 +60,7 @@
                                             <option value="GENERAL">GENERAL</option>
                                             <option value="CLASS">CLASS</option>
                                             <option value="EVENT">EVENT</option>
-                                            <option value="WEBINAR">WEBINAR</option>          
+                                            <option value="WEBINAR">WEBINAR</option>
                                         </select>
                                     </div>
                                 </form>
@@ -72,7 +72,7 @@
                                         <select class="form-control" name="tag" onchange="this.form.submit()">
                                             <option selected>TAG</option>
                                             <option value="PETAKOM">PETAKOM</option>
-                                            <option value="FKOM">FKOM</option>             
+                                            <option value="FKOM">FKOM</option>
                                         </select>
                                     </div>
                                 </form>
@@ -84,13 +84,13 @@
                                         <select class="form-control" name="sort" onchange="this.form.submit()">
                                             <option selected>SORT</option>
                                             <option value="asc">ASC</option>
-                                            <option value="desc">DESC</option>                                                
+                                            <option value="desc">DESC</option>
                                         </select>
                                     </div>
                                 </form>
                             </li>
                         </ul>
-                    </div>                            
+                    </div>
                 </div><!--end col-->
             </div><!--end row-->
 
@@ -101,7 +101,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="blog-card">
-                                <img src="{{ asset('uploads/images/'.$bookmark->bulletin->bulletin_image) }}"  width="70px" height="70px" alt="" class="img-fluid"/>
+                                <img src="{{ asset('uploads/images/'.$bookmark->bulletin->bulletin_image) }}" width="70px" height="70px" alt="" class="img-fluid" />
                                 <!-- <img src="{{ asset('build/assets/images/widgets/p-1.svg') }}" alt="" class="img-fluid"/> -->
                                 <div class="meta-box">
                                     <ul class="p-0 mt-4 list-inline">
@@ -109,7 +109,7 @@
                                         <li class="list-inline-item">{{$bookmark->bulletin->bulletin_date}}</li>
                                         <li class="list-inline-item">{{$bookmark->bulletin->bulletin_tag}}</li>
                                     </ul>
-                                </div><!--end meta-box-->            
+                                </div><!--end meta-box-->
                                 <h4 class="mt-2 mb-3">
                                     <a href="">{{$bookmark->bulletin->bulletin_name}}</a>
                                 </h4>
@@ -119,33 +119,81 @@
                                     <ul class="p-0 mt-4 list-inline">
                                         <li class="list-inline-item">
                                             <button type="button" class="btn btn-primary waves-effect waves-light">
-                                            <a href="{{ route('bulletin.show', [$bookmark->bulletin->id])}}" class="text-primary" style="color: #ffffff !important;">Continue Reading</a>
+                                                <a href="{{ route('bulletin.show', [$bookmark->bulletin->id])}}" class="text-primary" style="color: #ffffff !important;">Continue Reading</a>
                                             </button>
                                         </li>
                                         <li class="list-inline-item">
-                                            <form action="{{ route('bulletin.DeleteBookmark', [$bookmark->id])}}" method="post" enctype="multipart/form-data">
+                                            <form action="{{ route('bulletin.DeleteBookmark', [$bookmark->id])}}" method="post" enctype="multipart/form-data" id="delete-form">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger"> Remove Bookmark</button>
-                                            </form> 
+                                                <button class="btn btn-danger" type="submit" class="btn btn-gradient-danger" id="delbutton"> Remove Bookmark</button>
+                                            </form>
                                         </li>
                                     </ul>
                                 </div>
-                            </div><!--end blog-card-->                                   
+                            </div><!--end blog-card-->
                         </div><!--end card-body-->
                     </div><!--end card-->
-                </div> <!--end col-->    
-                @endforeach                 
+                </div> <!--end col-->
+                @endforeach
             </div><!--end row-->
-            <!-- End of Bulletin Post --> 
+            <!-- End of Bulletin Post -->
         </div><!-- container -->
 
         <footer class="footer text-center text-sm-left">
             &copy; 2019 Metrica <span class="text-muted d-none d-sm-inline-block float-right">Crafted with <i class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
         </footer><!--end footer-->
     </div>
-        <!-- end page content -->
+    <!-- end page content -->
 </x-app-layout>
 
-        <!-- refer file:///C:/Users/iski/Documents/light-material-vertical/projects/projects-project.html -->
-        <!-- refer file:///C:/Users/iski/Documents/light-material-vertical/pages/pages-blogs.html -->
+<!-- refer file:///C:/Users/iski/Documents/light-material-vertical/projects/projects-project.html -->
+<!-- refer file:///C:/Users/iski/Documents/light-material-vertical/pages/pages-blogs.html -->
+
+
+<script>
+    ! function($) {
+        "use strict";
+
+        var SweetAlert = function() {};
+
+        SweetAlert.prototype.init = function() {
+
+                //Parameter
+                $('#delbutton').click(function(e) {
+                    e.preventDefault(); // prevent the form from submitting
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to delete this data!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '$success',
+                        cancelButtonColor: '$danger',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.value) {
+                            //submit the form here
+                            $("#delete-form").submit();
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Your data has been deleted.',
+                                type: 'success',
+                                timer: 2000,
+                                showConfirmButton: false
+                            })
+                        }
+                    })
+                });
+
+
+            },
+            //init
+            $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
+    }(window.jQuery),
+
+    //initializing
+    function($) {
+        "use strict";
+        $.SweetAlert.init()
+    }(window.jQuery);
+</script>

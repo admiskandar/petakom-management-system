@@ -10,8 +10,8 @@
 
     <body class="dark-topbar">
         <div class="page-content">
-            
-        <div class="container-fluid">
+
+            <div class="container-fluid">
                 <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
@@ -56,8 +56,10 @@
                                         <td>{{$calendarpost->message}}</td>
                                         <td>{{$calendarpost->url}}</td>
                                         <td>
+                                            @if(Auth::user()->user_type != "Student" && Auth::user()->user_type != "Lecturer")
                                             <a href="{{ route('showCalendar' , $calendarpost->id) }}"><i class="far fa-edit text-info mr-1"></i></a>
                                             <a href="{{ route('destroyCalendar' , $calendarpost->id )  }}" onclick="return confirm('Are you sure want to delete?')"><i class="far fa-trash-alt text-danger"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
 

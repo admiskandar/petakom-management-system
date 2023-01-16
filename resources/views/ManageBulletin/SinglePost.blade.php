@@ -58,10 +58,10 @@
 
                                             @if(Auth::user()->user_type == "Petakom Committee")
                                             <li class="list-inline-item">
-                                                <form action="{{ route('bulletin.destroy', [$bulletin->id])}}" method="post">
+                                                <form action="{{ route('bulletin.destroy', [$bulletin->id])}}" method="post" id="delete-form">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-danger waves-effect waves-light" type="submit" >Delete</button>
+                                                    <button class="btn btn-danger waves-effect waves-light" type="submit" id="delbutton">Delete</button>
                                                 </form> 
                                             </li>  
                                             @else
@@ -130,3 +130,49 @@
 </x-app-layout>
 
 <!-- refer C:/Users/iski/Documents/light-material-vertical/ecommerce/ecommerce-product-detail.html -->
+<script>
+    ! function($) {
+        "use strict";
+
+        var SweetAlert = function() {};
+
+        SweetAlert.prototype.init = function() {
+
+                //Parameter
+                $('#delbutton').click(function(e) {
+                    e.preventDefault(); // prevent the form from submitting
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to delete this data!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '$success',
+                        cancelButtonColor: '$danger',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.value) {
+                            //submit the form here
+                            $("#delete-form").submit();
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Your data has been deleted.',
+                                type: 'success',
+                                timer: 2000,
+                                showConfirmButton: false
+                            })
+                        }
+                    })
+                });
+
+
+            },
+            //init
+            $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
+    }(window.jQuery),
+
+    //initializing
+    function($) {
+        "use strict";
+        $.SweetAlert.init()
+    }(window.jQuery);
+</script>

@@ -7,22 +7,16 @@
                     <div class="card">
                         <div class="card-body">
                             @if (Auth::user()->user_type != 'Student')
-                                <div>
-                                    <a href="{{ route('election.create') }}"><button
-                                            class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"><i
-                                                class="mdi mdi-plus-circle-outline mr-2"></i>Add new candidate</button>
-                                    </a>
-                                    <a href="{{ route('election.leaderboard') }}"><button
-                                            class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"style="margin-right: 30px;"><i
-                                                class="mdi mdi-plus-circle-outline mr-2"></i>View Leaderboard</button>
-                                    </a>
-                                </div>
+                            <div>
+                                <a href="{{ route('election.create') }}"><button class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"><i class="mdi mdi-plus-circle-outline mr-2"></i>Add new candidate</button>
+                                </a>
+                                <a href="{{ route('election.leaderboard') }}"><button class="btn btn-gradient-primary px-4 float-right mt-0 mb-3" style="margin-right: 30px;"><i class="mdi mdi-plus-circle-outline mr-2"></i>View Leaderboard</button>
+                                </a>
+                            </div>
                             @else
-                                <div>
-                                    <a href="{{ route('election.vote') }}"><button
-                                            class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"style="margin-right: 30px;"><i
-                                                class="mdi mdi-plus-circle-outline mr-2"></i>Vote</button> </a>
-                                </div>
+                            <div>
+                                <a href="{{ route('election.vote') }}"><button class="btn btn-gradient-primary px-4 float-right mt-0 mb-3" style="margin-right: 30px;"><i class="mdi mdi-plus-circle-outline mr-2"></i>Vote</button> </a>
+                            </div>
                             @endif
 
                             <h4 class="header-title mt-0">List of Candidates</h4>
@@ -33,8 +27,7 @@
                             <form action="{{ route('election.search') }}" method="GET">
                                 @csrf
 
-                                <input type="text" name="search" placeholder="Search by name"
-                                    style="border: none; border-bottom: 1px solid black;">
+                                <input type="text" name="search" placeholder="Search by name" style="border: none; border-bottom: 1px solid black;">
                                 <button type="submit" class="fas fa-search" value="Search"></button>
 
                             </form>
@@ -84,60 +77,95 @@
 
                                     <tbody>
                                         @forelse($election as $election)
-                                            <tr>
-                                                <td><img src="{{ asset('uploads/candidates/' . $election->candidate_picture) }}"
-                                                        alt="candidate_picture" width="50" height="50"></td>
-                                                <td class="text-center">{{ $election->candidate_name }}</td>
-                                                <td class="text-center">{{ $election->candidate_faculty }}</td>
-                                                <td class="text-center">{{ $election->candidate_year }}</td>
-                                                <td class="text-center">{{ $election->candidate_course }}</td>
-                                                <td class="text-center">{{ $election->candidate_manifesto }}</td>
-                                                <td class="text-center">{{ $election->election_year }}</td>
-                                                <td>
+                                        <tr>
+                                            <td><img src="{{ asset('uploads/candidates/' . $election->candidate_picture) }}" alt="candidate_picture" width="50" height="50"></td>
+                                            <td class="text-center">{{ $election->candidate_name }}</td>
+                                            <td class="text-center">{{ $election->candidate_faculty }}</td>
+                                            <td class="text-center">{{ $election->candidate_year }}</td>
+                                            <td class="text-center">{{ $election->candidate_course }}</td>
+                                            <td class="text-center">{{ $election->candidate_manifesto }}</td>
+                                            <td class="text-center">{{ $election->election_year }}</td>
+                                            <td>
 
-                                                    @if (Auth::user()->user_type != 'Student')
-                                                        <div class="card">
-                                                            <a href="{{ route('election.edit', $election->id) }}">
-                                                                <button
-                                                                    class="dripicons-document-edit"><i></i></button></a>
-                                                            <br>
+                                                @if (Auth::user()->user_type != 'Student')
 
-                                                            <form
-                                                                action="{{ route('election.destroy', $election->id) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" button class="dripicons-trash"
-                                                                    onclick="return confirm('Are you sure you want to delete this candidate?')"></button>
-                                                            </form>
-                                                        @else
-                                                            <div class="card" style="align-items: center">
-                                                                <a href="{{ route('election.show', $election->id) }}">
-                                                                    <button
-                                                                        class="dripicons-preview"><i></i></button></a>
-                                                            </div>
-                                                    @endif
+                                                <a href="{{ route('election.edit', $election->id) }}">
+                                                    <button class="dripicons-document-edit"><i></i></button></a>
+                                                <form id="delete-form" action="{{ route('election.destroy', $election->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button id="delbutton" type="submit" button class="dripicons-trash"></button>
+                                                </form>
+                                                @else
+                                                <a href="{{ route('election.show', $election->id) }}">
+                                                    <button class="dripicons-preview"><i></i></button></a>
+                                                @endif
+
+                                            </td>
+                                        </tr>
+                                        <!--end tr-->
+                                        @empty
+                                        <p class="text-warning">No candidate registered</p>
+                                        @endforelse
+
+                                    </tbody>
+                                </table>
                             </div>
-
-
-                            </td>
-                            </tr>
-                            <!--end tr-->
-                        @empty
-                            <p class="text-warning">No candidate registered</p>
-                            @endforelse
-
-                            </tbody>
-                            </table>
                         </div>
+                        <!--end card-body-->
                     </div>
-                    <!--end card-body-->
+                    <!--end card-->
                 </div>
-                <!--end card-->
+                <!--end col-->
             </div>
-            <!--end col-->
+            <!--end row-->
         </div>
-        <!--end row-->
-    </div>
     </div>
 </x-app-layout>
+
+<script>
+    ! function($) {
+        "use strict";
+
+        var SweetAlert = function() {};
+
+        SweetAlert.prototype.init = function() {
+
+                //Parameter
+                $('#delbutton').click(function(e) {
+                    e.preventDefault(); // prevent the form from submitting
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You want to delete this data!",
+                        type: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '$success',
+                        cancelButtonColor: '$danger',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.value) {
+                            //submit the form here
+                            $("#delete-form").submit();
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Your data has been deleted.',
+                                type: 'success',
+                                timer: 2000,
+                                showConfirmButton: false
+                            })
+                        }
+                    })
+                });
+
+
+            },
+            //init
+            $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
+    }(window.jQuery),
+
+    //initializing
+    function($) {
+        "use strict";
+        $.SweetAlert.init()
+    }(window.jQuery);
+</script>
