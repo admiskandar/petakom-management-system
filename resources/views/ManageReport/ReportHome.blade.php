@@ -13,7 +13,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <button class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"><i class="mdi mdi-plus-circle-outline mr-2"></i><a href="{{route('report.AddProposal')}}">Add Proposal</a></button>
+                        @if(Auth::user()->user_type == "Petakom Committee")
+                            <button class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"><i class="mdi mdi-plus-circle-outline mr-2" class="card hidden"></i><a href="{{route('report.AddProposal')}}">Add Proposal</a></button>
+                            @endif
                             <h4 class="header-title mt-0">Proposal Details</h4>
                             <div class="table-responsive dash-social">
                                 <table id="datatable" class="table">

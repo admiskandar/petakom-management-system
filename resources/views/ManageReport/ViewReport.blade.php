@@ -13,6 +13,7 @@
                     <div class="card">
                         <div class="card-body">
                             <a href="{{route('report.ReportHomePage')}}"><button class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"><i class="fas fa-chevron-left"></i></button></a>
+                            @if(Auth::user()->user_type == "Petakom Committee" && Auth::user()->user_type == "Coordinator" && Auth::user()->user_type == "Head of Program")
                             <div class="card" hidden>
                                 <div class="card-body invoice-head">
                                     <div class="row">
@@ -152,8 +153,10 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
 
                             <!--begin::Tab-->
+                            @if(Auth::user()->user_type == "Dean")
                             <div class="tab-pane show active px-7" id="kt_user_edit_tab_1" role="tabpanel">
                                 <!--begin::Row-->
                                 <div>
@@ -275,13 +278,14 @@
                                                 @csrf
                                                 @method('PUT')
                                                 <input value="2" name="statusReject" hidden>
-                                                <button id="reject-button" class="btn btn-danger float-md-right mx-3 class=" card hidden" type="submit">Reject</button>
+                                                <button id="reject-button" class="btn btn-danger float-md-right mx-3  type=" submit" class="card hidden">Reject</button>
                                             </form>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         </div><!--end card-->
                     </div><!--end card-body-->
                 </div><!--end card-->
