@@ -47,7 +47,7 @@
                                             <td>{{$activityPost->activity_venue}}</td>
                                             <td>
                                                 <a href="{{ route('editActivity' , $activityPost->id) }}"><i class="far fa-edit text-info mr-1"></i></a>
-                                                <a href="{{ route('destroy' , $activityPost->id )  }}"><i class="far fa-trash-alt text-danger"></i></a>
+                                                <a href="{{ route('destroyActivity' , $activityPost->id )  }}"><i class="far fa-trash-alt text-danger"></i></a>
                                             </td>
                                         </tr>
 

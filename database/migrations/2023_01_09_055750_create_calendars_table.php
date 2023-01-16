@@ -16,6 +16,12 @@ return new class extends Migration
         Schema::create('calendars', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('date')->nullable();
+            $table->string('category')->nullable;
+            $table->string('title')->nullable;
+            $table->string('message')->nullable;
+            $table->string('url')->nullable;
+
         });
     }
 

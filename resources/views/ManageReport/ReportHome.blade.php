@@ -13,7 +13,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                        @if(Auth::user()->user_type == "Petakom Committee")
+                            @if(Auth::user()->user_type == "Petakom Committee")
                             <button class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"><i class="mdi mdi-plus-circle-outline mr-2" class="card hidden"></i><a href="{{route('report.AddProposal')}}">Add Proposal</a></button>
                             @endif
                             <h4 class="header-title mt-0">Proposal Details</h4>
@@ -31,7 +31,6 @@
 
                                     <tbody>
                                         @foreach($reports as $report)
-                                        @if ($report->user_id == auth()->user()->id)
                                         <tr>
                                             <td>{{$report->title}}</td>
                                             <td>{{$report->start_date}}</td>
@@ -56,20 +55,17 @@
                                                 <span class="{{ $labelcolor }}">{{ $labelstatus }}</span>
                                             </td>
                                             <td>
-                                                @if ($report->user_id == auth()->user()->id)
-                                                <form  action="{{ route('destroy', $report->id) }}" method="POST" id="delete=form">
+                                                <form action="{{ route('destroy', $report->id) }}" method="POST" id="delete-form">
                                                     @method('DELETE')
                                                     @csrf
                                                     <a href="{{route('report.ViewReport',[$report->id])}}" class="mr-2"><i class="fas fa-eye text-info font-16"></i></a>
+                                                    @if(Auth::user()->user_type != "Dean" && Auth::user()->user_type != "Coordinator" && Auth::user()->user_type != "Head of Program")
                                                     <a href="{{route('edit', ['id' => $report->id])}}" class="mr-2"><i class="fas fa-edit text-info font-16"></i></a>
-                                                    <button type="submit"><i class="fas fa-trash-alt text-danger font-16" id="delete-button"></i></button>
+                                                    <button id="delbutton" type="submit"><i class="fas fa-trash-alt text-danger font-16"></i></button>
+                                                    @endif
                                                 </form>
-                                                @else
-
-                                                @endif
                                             </td>
                                         </tr>
-                                        @endif
                                         @endforeach
                                         <!--end tr-->
                                     </tbody>
@@ -92,7 +88,7 @@
         SweetAlert.prototype.init = function() {
 
                 //Parameter
-                $('#delete-button').click(function(e) {
+                $('#delbutton').click(function(e) {
                     e.preventDefault(); // prevent the form from submitting
                     Swal.fire({
                         title: 'Are you sure?',

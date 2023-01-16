@@ -32,7 +32,7 @@
                             <div class="card">
                                 <div class="card-body">        
                                     <h4 class="mt-0 header-title">ADD PETAKOM ACTIVITIES</h4>
-                                   <form action="{{route('store')}}" method="POST" id="activityNew" enctype="multipart/form-data">
+                                   <form action="{{route('storeActivity')}}" method="POST" id="activityNew" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <div class="col-lg-12">

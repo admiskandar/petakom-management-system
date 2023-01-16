@@ -46,15 +46,6 @@ class ReportController extends Controller
     }
 
 
-    public function checkProposalId(Request $request)
-    {
-        $proposalId = $request->proposalId;
-        $exists = ReportRecord::where('proposal_id', $proposalId)->exists();
-
-        return response()->json(['exists' => $exists]);
-    }
-
-
     public function generate()
     {
         //
@@ -133,6 +124,20 @@ class ReportController extends Controller
 
         // Show the report detail page
         return view('ManageReport.ViewReport', [
+            'proposal' => $proposal,
+        ]);
+    }
+
+    public function showGenerate($id)
+    {
+        // Retrieve the report data from the database
+        $proposal = ReportRecord::join('users', 'proposals.user_id', '=', 'users.id') //join table proposals with users
+            ->select('proposals.*', 'users.name')
+            ->where('proposals.id', $id)
+            ->first();
+
+        // Show the report detail page
+        return view('ManageReport.ViewGenerate', [
             'proposal' => $proposal,
         ]);
     }

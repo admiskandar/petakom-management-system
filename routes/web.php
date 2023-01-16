@@ -47,10 +47,6 @@ Route::middleware([
         return view('ManageRegistration.AddRegistrationPage');
     })->name('registration');
 
-    
-    Route::get('/calendar', function () {
-        return view('ManageCalendar.CalendarHome');
-    })->name('calendar');
 
     Route::resource('/election', ElectionController::class);
     Route::get('electionleaderboard', [ElectionController::class,'leaderboard'])->name('election.leaderboard'); 
@@ -81,49 +77,32 @@ Route::middleware([
     Route::controller(App\Http\Controllers\ActivityController::class)->group(function(){
         Route::get('/activity','index')->name('activity.ActivityInterface');
         Route::get('/addactivity','create')->name('activity.AddActivityInterface');
-        Route::post('/storeactivity','store')->name('store');
+        Route::post('/storeactivity','store')->name('storeActivity');
         Route::get('/listactivity', 'show')->name('activity.ViewActivityInterface');
         Route::get('viewactivity/{id}', 'showListActivity')->name('showListActivity');
-        Route::get('delete/{id}', 'destroy')->name('destroy');
+        Route::get('delete/{id}', 'destroy')->name('destroyActivity');
         Route::post('updateactivity/{id}', 'update')->name('updateactivity');
         Route::get('editActivity/{id}', 'editPage')->name('editActivity');
     });
 
     Route::controller(App\Http\Controllers\CalendarController::class)->group(function () {
-        Route::get('/home', 'index')->name('calendar.CalendarHomePage');
-        Route::get('/add', 'loadCalendar')->name('calendar.AddCalendarPage');
-        Route::post('/store', 'store')->name('storeC');
-        Route::get('/list', 'show')->name('calendar.ListCalendarPage');
+        Route::get('/home/calendar', 'index')->name('calendar.CalendarHomePage');
+        Route::get('/add/calendar', 'loadCalendar')->name('calendar.AddCalendarPage');
+        Route::post('/store/calendar', 'store')->name('storeC');
+        Route::get('/list/calendar', 'show')->name('calendar.ListCalendarPage');
         Route::get('calendarDetails/{id}', 'showCalendar')->name('showCalendar');
         Route::post('update/{id}', 'update')->name('update');
-        Route::get('delete/{id}', 'destroy')->name('destroy');
+        Route::get('deleteCalendar/{id}', 'destroy')->name('destroyCalendar');
 
     }); 
 
  
-    // Route::get('/election', function () {
-    //     return view('ManageElection.ViewLeaderboard');
-    // })->name('election');
-
-
-    // Route::get('/report', function () {
-    //     return view('ManageReport.ReportHome');
-    // })->name('report');
-
-
-    Route::get('/bulletin', function () {
-        return view('ManageBulletin.BulletinBoard');
-    })->name('bulletin');
-
-});
-
-// The route we have created to show all report.
-// Route::resource('/report', ReportController::class);
 Route::controller(App\Http\Controllers\ReportController::class)->group(function () {
 
     Route::get('/home', 'index')->name('report.ReportHomePage');//link to go to reporthomepage
     Route::get('/add', 'create')->name('report.AddProposal');//link to go to add page
     Route::get('/show/{id}', 'App\Http\Controllers\ReportController@show')->name('report.ViewReport');//link to go to show page
+    Route::get('/showGenerate/{id}', 'App\Http\Controllers\ReportController@showGenerate')->name('report.ViewGenerate');//link to go to show page
     Route::post('/store', 'store')->name('store');//link to store the data in the database
     Route::get('edit/{id}', 'App\Http\Controllers\ReportController@edit')->name('edit');//link to go to edit page
     Route::put('update/{id}', 'App\Http\Controllers\ReportController@update')->name('update');//link to update the data in the database
@@ -133,7 +112,7 @@ Route::controller(App\Http\Controllers\ReportController::class)->group(function 
 
     Route::get('/report', 'App\Http\Controllers\ReportController@generate')->name('report.ViewProposal');//link to go to reporthomepage
     Route::post('/generate/{id}', 'App\Http\Controllers\ReportController@storeReport')->name('storeReport');//link to store the data in the database
-    Route::get('/check-proposal-id/{proposalId}', 'YourController@checkProposalId')->name('checkProposalId');
+
 
 }); 
 
@@ -166,22 +145,5 @@ Route::controller(App\Http\Controllers\ReportController::class)->group(function 
     Route::get('searching', [BulletinController::class,'searchBookmark'])->name('bulletin.searchBookmark'); 
 
 
-    Route::controller(App\Http\Controllers\ReportController::class)->group(function () {
-
-        Route::get('/home', 'index')->name('report.ReportHomePage');//link to go to reporthomepage
-        Route::get('/add', 'create')->name('report.AddProposal');//link to go to add page
-        Route::get('/show/{id}', 'App\Http\Controllers\ReportController@show')->name('report.ViewReport');//link to go to show page
-        Route::post('/store', 'store')->name('store');//link to store the data in the database
-        Route::get('edit/{id}', 'App\Http\Controllers\ReportController@edit')->name('edit');//link to go to edit page
-        Route::put('update/{id}', 'App\Http\Controllers\ReportController@update')->name('update');//link to update the data in the database
-        Route::put('updateStatusApproved/{id}', 'App\Http\Controllers\ReportController@updateStatusApproved')->name('updateStatusApproved');//link to update status the data in the database
-        Route::put('updateStatusReject/{id}', 'App\Http\Controllers\ReportController@updateStatusReject')->name('updateStatusReject');//link to update status the data in the database
-        Route::delete('report/{report}', 'App\Http\Controllers\ReportController@destroy')->name('destroy');//link to delete the data from the database
-    
-        Route::get('/report', 'App\Http\Controllers\ReportController@generate')->name('report.ViewProposal');//link to go to reporthomepage
-        Route::post('/generate/{id}', 'App\Http\Controllers\ReportController@storeReport')->name('storeReport');//link to store the data in the database
-        Route::get('/check-proposal-id/{proposalId}', 'YourController@checkProposalId')->name('checkProposalId');
-    
-    }); 
 
 

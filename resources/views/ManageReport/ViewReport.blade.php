@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <a href="{{route('report.ReportHomePage')}}"><button class="btn btn-gradient-primary px-4 float-right mt-0 mb-3"><i class="fas fa-chevron-left"></i></button></a>
                             @if(Auth::user()->user_type == "Petakom Committee" && Auth::user()->user_type == "Coordinator" && Auth::user()->user_type == "Head of Program")
-                            <div class="card" hidden>
+                            <div class="card">
                                 <div class="card-body invoice-head">
                                     <div class="row">
                                         <div class="col-md-4 align-self-center">
@@ -156,7 +156,6 @@
                             @endif
 
                             <!--begin::Tab-->
-                            @if(Auth::user()->user_type == "Dean")
                             <div class="tab-pane show active px-7" id="kt_user_edit_tab_1" role="tabpanel">
                                 <!--begin::Row-->
                                 <div>
@@ -266,6 +265,7 @@
                                             </div>
                                         </div>
                                         <hr>
+                                        @if(Auth::user()->user_type == "Dean")
                                         <div class="form-actions text-center">
                                             @if ($proposal->status != 1 && $proposal->status != 2)
                                             <form id="approve" class="form form-horizontal" action="{{route('updateStatusApproved' , ['id' => $proposal->id])}}" method="POST" enctype="multipart/form-data">
@@ -282,10 +282,10 @@
                                             </form>
                                             @endif
                                         </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-                            @endif
                         </div><!--end card-->
                     </div><!--end card-body-->
                 </div><!--end card-->

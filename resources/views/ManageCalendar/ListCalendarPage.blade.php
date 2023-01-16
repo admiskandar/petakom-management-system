@@ -57,7 +57,7 @@
                                         <td>{{$calendarpost->url}}</td>
                                         <td>
                                             <a href="{{ route('showCalendar' , $calendarpost->id) }}"><i class="far fa-edit text-info mr-1"></i></a>
-                                            <a href="{{ route('destroy' , $calendarpost->id )  }}" onclick="return confirm('Are you sure want to delete?')"><i class="far fa-trash-alt text-danger"></i></a>
+                                            <a href="{{ route('destroyCalendar' , $calendarpost->id )  }}" onclick="return confirm('Are you sure want to delete?')"><i class="far fa-trash-alt text-danger"></i></a>
                                         </td>
                                     </tr>
 

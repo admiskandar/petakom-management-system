@@ -26,7 +26,6 @@
 
                                     <tbody>
                                         @foreach($reports as $report)
-                                        @if ($report->user_id == auth()->user()->id)
                                         @if ($report->status == 1)
                                         <tr>
                                             <td>{{$report->title}}</td>
@@ -54,12 +53,13 @@
                                             <td>
                                                 <form id="generate-form" action="{{route('storeReport',  ['id' => $report->id])}}" method="POST">
                                                     @csrf
-                                                    <a href="{{route('report.ViewReport',[$report->id])}}" class="mr-2"><i class="fas fa-eye text-info font-16"></i></a>
-                                                    <button type="submit" class="btn btn-gradient-primary" id="generate" data-proposal-id="{{ $report->proposal_id }}"><i class="mdi mdi-plus-circle-outline mr-2"></i>Generate</button>
+                                                    <a href="{{route('report.ViewGenerate',[$report->id])}}" class="mr-2"><i class="fas fa-eye text-info font-16"></i></a>
+                                                    @if(Auth::user()->user_type != "Dean" && Auth::user()->user_type != "Petakom Committee")
+                                                    <button type="submit" class="btn btn-gradient-primary" id="generate" ><i class="mdi mdi-plus-circle-outline mr-2"></i>Generate</button>
+                                                    @endif
                                                 </form>
                                             </td>
                                         </tr>
-                                        @endif
                                         @endif
                                         @endforeach
                                         <!--end tr-->
@@ -73,75 +73,3 @@
         </div>
     </div>
 </x-app-layout>
-<script>
-    ! function($) {
-        "use strict";
-
-        var SweetAlert = function() {};
-
-        SweetAlert.prototype.init = function() {
-
-                $('#generate').click(function(e) {
-                    e.preventDefault(); // prevent the form from submitting
-
-                    // check if proposal id already exists in reports table
-                    var proposalId = $(this).data('proposal-id'); // get the proposal id from the button
-                    var url = '{{ route("checkProposalId", ":proposalId") }}'; // set the url to check proposal id
-                    url = url.replace(':proposalId', proposalId); // replace the placeholder with the actual proposal id
-                    $.ajax({
-                        url: url,
-                        type: 'GET',
-                        success: function(response) {
-                            if (response.exists) { // if proposal id already exists in reports table
-                                Swal.fire({
-                                    title: 'Error!',
-                                    text: "Proposal already generated!",
-                                    type: 'error',
-                                    confirmButtonText: 'OK'
-                                });
-                            } else { // if proposal id does not exist in reports table
-                                Swal.fire({
-                                    title: 'Are you sure?',
-                                    text: "You want to generate this proposal!",
-                                    type: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '$success',
-                                    cancelButtonColor: '$danger',
-                                    confirmButtonText: 'Yes, generate it!'
-                                }).then((result) => {
-                                    if (result.value) {
-                                        //submit the form here
-                                        $("#generate-form").submit();
-                                        Swal.fire({
-                                            title: 'Success!',
-                                            text: 'The proposal has been generated.',
-                                            type: 'success',
-                                            timer: 2000,
-                                            showConfirmButton: false
-                                        });
-                                    }
-                                });
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            Swal.fire({
-                                title: 'Error!',
-                                text: "An error occurred while checking the proposal id. Please try again.",
-                                type: 'error',
-                                confirmButtonText: 'OK'
-                            });
-                        }
-                    });
-                });
-            },
-
-            //init
-            $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
-    }(window.jQuery),
-
-    //initializing
-    function($) {
-        "use strict";
-        $.SweetAlert.init()
-    }(window.jQuery);
-</script>
