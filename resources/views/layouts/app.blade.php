@@ -32,7 +32,8 @@
     <link rel="stylesheet" href="{{ asset('build/assets/css/icons.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/css/metisMenu.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}" <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('build/assets/css/style.css') }}" 
+    <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('build/assets/plugins/datatables/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('build/assets/plugins/datatables/buttons.bootstrap4.min.css') }}">
     <!-- Responsive datatable examples -->
